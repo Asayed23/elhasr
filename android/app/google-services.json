@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1054964926117",
+    "project_id": "elhasr-decd9",
+    "storage_bucket": "elhasr-decd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054964926117:android:123f8d528b8ff0d8616f4c",
+        "android_client_info": {
+          "package_name": "com.techiecube.elhasr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054964926117-u4q2dbah9q0gvp4cr8jsq4uglr52elce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtaJ5y-5Uv3VU7jhdX42i-z61wrLGsiWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054964926117-u4q2dbah9q0gvp4cr8jsq4uglr52elce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
