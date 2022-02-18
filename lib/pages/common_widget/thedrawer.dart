@@ -2,44 +2,44 @@
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // import 'package:get/get.dart';
-// import 'package:sportive/core/local_colors.dart';
-// import 'package:sportive/pages/Auth/Model/users.dart';
-// import 'package:sportive/pages/Auth/login/change_password.dart';
-// import 'package:sportive/pages/Auth/register/phone_handler.dart';
-// import 'package:sportive/pages/Auth/register/ploicy.dart';
-// import 'package:sportive/pages/MyAccount/controller/account_controller.dart';
-// import 'package:sportive/pages/MyAccount/myaccount_page.dart';
-// import 'package:sportive/pages/My_favorite/favorite_page.dart';
+// import 'package:elhasr/pages/common_widget/local_colors.dart';
+// import 'package:elhasr/pages/Auth/Model/users.dart';
+// import 'package:elhasr/pages/Auth/login/change_password.dart';
+// import 'package:elhasr/pages/Auth/register/phone_handler.dart';
+// import 'package:elhasr/pages/Auth/register/ploicy.dart';
+// import 'package:elhasr/pages/MyAccount/controller/account_controller.dart';
+// import 'package:elhasr/pages/MyAccount/myaccount_page.dart';
+// import 'package:elhasr/pages/My_favorite/favorite_page.dart';
 
-// import 'package:sportive/pages/company/company_page.dart';
-// import 'package:sportive/pages/company_offers/offers_home.dart';
-// import 'package:sportive/pages/company_offers/show_ads_ite,.dart';
-// import 'package:sportive/pages/home/home.dart';
-// import 'package:sportive/pages/pay/pay_controller/payment_check.dart';
-// import 'package:sportive/pages/pay/pay_pal.dart';
-// import 'package:sportive/pages/pay/pay_selection.dart';
-// import 'package:sportive/pages/pay/paytest2.dart';
-// import 'package:sportive/pages/profile/Model/global_profile_Model.dart';
+// import 'package:elhasr/pages/company/company_page.dart';
+// import 'package:elhasr/pages/company_offers/offers_home.dart';
+// import 'package:elhasr/pages/company_offers/show_ads_ite,.dart';
+// import 'package:elhasr/pages/home_page/view/home_page.dart';
+// import 'package:elhasr/pages/pay/pay_controller/payment_check.dart';
+// import 'package:elhasr/pages/pay/pay_pal.dart';
+// import 'package:elhasr/pages/pay/pay_selection.dart';
+// import 'package:elhasr/pages/pay/paytest2.dart';
+// import 'package:elhasr/pages/profile/Model/global_profile_Model.dart';
 
-// import 'package:sportive/pages/profile/controller/agent_club/playerlist_controller.dart';
-// import 'package:sportive/pages/Auth/controller/sharedpref_function.dart';
-// import 'package:sportive/pages/Auth/controller/currentUser_controller.dart';
-// import 'package:sportive/pages/Auth/login/login_page.dart';
-// import 'package:sportive/pages/Auth/register/register_page.dart';
-// import 'package:sportive/pages/profile/controller/company/ads_controller.dart';
+// import 'package:elhasr/pages/profile/controller/agent_club/playerlist_controller.dart';
+// import 'package:elhasr/pages/Auth/controller/sharedpref_function.dart';
+// import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
+// import 'package:elhasr/pages/Auth/login/login_page.dart';
+// import 'package:elhasr/pages/Auth/register/register_page.dart';
+// import 'package:elhasr/pages/profile/controller/company/ads_controller.dart';
 
-// import 'package:sportive/pages/profile/controller/current_profile_Controller.dart';
-// import 'package:sportive/pages/profile/controller/error_snackbar.dart';
-// import 'package:sportive/pages/profile/controller/selectedPlayer_controller.dart';
-// import 'package:sportive/pages/profile/form_mainPage.dart';
-// import 'package:sportive/pages/profile/general_profile_main.dart';
-// import 'package:sportive/pages/search/search_page.dart';
-// import 'package:sportive/pages/test2.dart';
-// import 'package:sportive/pages/test3.dart';
-// import 'package:sportive/pages/test_page.dart';
-// import 'package:sportive/pages/unlock_profiles/unlock_page.dart';
-// import 'package:sportive/test4.dart';
-// import 'package:sportive/translation/translation_page.dart';
+// import 'package:elhasr/pages/profile/controller/current_profile_Controller.dart';
+// import 'package:elhasr/pages/common_widget/error_snackbar.dart';
+// import 'package:elhasr/pages/profile/controller/selectedPlayer_controller.dart';
+// import 'package:elhasr/pages/profile/form_mainPage.dart';
+// import 'package:elhasr/pages/profile/general_profile_main.dart';
+// import 'package:elhasr/pages/search/search_page.dart';
+// import 'package:elhasr/pages/test2.dart';
+// import 'package:elhasr/pages/test3.dart';
+// import 'package:elhasr/pages/test_page.dart';
+// import 'package:elhasr/pages/unlock_profiles/unlock_page.dart';
+// import 'package:elhasr/test4.dart';
+// import 'package:elhasr/translation/translation_page.dart';
 
 // class Thedrawer extends StatefulWidget {
 //   @override

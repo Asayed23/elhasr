@@ -4,12 +4,12 @@
 // import 'package:flutter_svg/svg.dart';
 // import 'package:get/get.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:elhasr/core/local_colors.dart';
+// import 'package:elhasr/pages/common_widget/local_colors.dart';
 // import 'package:elhasr/core/size_config.dart';
 // import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 // import 'package:elhasr/pages/Auth/controller/sharedpref_function.dart';
 // import 'package:elhasr/pages/home/controller/home_controller.dart';
-// import 'package:elhasr/pages/home/home.dart';
+// import 'package:elhasr/pages/home_page/view/home_page.dart';
 
 // class TrnaslationPage extends StatefulWidget {
 //   @override

@@ -1,3 +1,4 @@
+import 'package:elhasr/pages/Auth/register/register_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,12 +19,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Sportivie',
-      // theme: LocalThemes.darkTheme,
+      title: 'ElHasr',
+      theme: LocalThemes.lightTheme,
       debugShowCheckedModeBanner: false,
       // our home page is the splash
       //home: Application(),
-      home: const HomePage(),
+      home: HomePage(),
       // all the below for translating using getx
       translations: Translate(),
       // Main language ( ar & en are dictionary contains all arabic & text english )
