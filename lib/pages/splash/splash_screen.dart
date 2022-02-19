@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:elhasr/pages/Auth/register/register_page.dart';
+import 'package:elhasr/pages/category/view/category.dart';
 import 'package:elhasr/pages/home_page/view/home_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -44,16 +45,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: AnimatedSplashScreen.withScreenFunction(
-        animationDuration: Duration(seconds: 2),
+        animationDuration: const Duration(seconds: 2),
 
-        splash: Container(
+        splash: SizedBox(
           height: h(50),
           child: ListView(children: const [
             // "assets/images/logigif.gif",
 
             // SvgPicture.asset("assets/images/mylogo.svg",
             //     width: sp(80), height: sp(90)),
-            Text('Hello'),
+            Text('Elhasr'),
           ]),
         ),
         screenFunction: () async {
@@ -69,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
           } catch (e) {
             removeUserData('user');
           }
-          return RegisterPage();
+          return CategoryPage();
           // } else {
           //   return NoConnectionPage();
           // }

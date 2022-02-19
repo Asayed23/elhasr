@@ -78,18 +78,18 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    "assets/images/mylogo.svg",
+                  Image.asset(
+                    "assets/images/app_logo.jpg",
                     width: sp(60),
                     height: sp(60),
                     //color: Colors.red,
                   ),
-                  SvgPicture.asset(
-                    "assets/images/sportive1.svg",
-                    width: sp(30),
-                    height: sp(30),
-                  ),
-                  SizedBox(height: h(1)),
+                  // SvgPicture.asset(
+                  //   "assets/images/sportive1.svg",
+                  //   width: sp(30),
+                  //   height: sp(30),
+                  // ),
+                  // SizedBox(height: h(1)),
 
                   SizedBox(height: sp(10)),
 

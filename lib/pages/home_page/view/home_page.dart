@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text('Hello')),
+      body: const Center(child: Text('Home')),
       bottomNavigationBar: mybottomBarWidget(),
     );
   }
