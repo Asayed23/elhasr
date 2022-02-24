@@ -8,6 +8,7 @@ import 'package:elhasr/core/theme.dart';
 import 'package:elhasr/translation/translation.dart';
 
 import 'pages/home_page/view/home_page.dart';
+import 'pages/splash/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // our home page is the splash
       //home: Application(),
-      home: HomePage(),
+      home: const SplashScreen(),
       // all the below for translating using getx
       translations: Translate(),
       // Main language ( ar & en are dictionary contains all arabic & text english )

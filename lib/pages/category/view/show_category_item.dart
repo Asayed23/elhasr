@@ -1,0 +1,87 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:elhasr/pages/category/model/category_model.dart';
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../core/db_links/db_links.dart';
+import '../../../core/size_config.dart';
+import '../../common_widget/local_colors.dart';
+import '../../sub_category/control/subCategory_control.dart';
+import '../../sub_category/view/sub_category_page.dart';
+import '../control/category_controller.dart';
+
+//  String playerFirstName;
+//   String playerLastName;
+//   String nationality;
+//   String birthday;
+//   double height;
+//   double weight;
+//   String currentCountry;
+//   String currentCity;
+//   String game;
+//   String image;
+//   String gender;
+final SubCategoryController subCategoryController =
+    Get.put(SubCategoryController());
+Widget showCategoryItem(CategoryModel shownItem, int _selecteditem) {
+  return GestureDetector(
+    onTap: () async {
+      subCategoryController.getsubcategorydata(shownItem.id);
+      print(dbImageurl + shownItem.image);
+      subCategoryController.selecteditem = _selecteditem;
+      subCategoryController.categoryimage.value = shownItem.image;
+      Get.to(SubCategoryPage());
+      // _paymentCheckController
+      //     .showProfileCheking(currentProfileController.profile.value);
+    },
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.grey, borderRadius: BorderRadius.circular(15)),
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              width: w(22),
+              height: h(12),
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(sp(8)),
+                border: Border.all(
+                  color: Colors.grey.shade800,
+                  width: sp(1),
+                ),
+              ),
+              child: Padding(
+                  padding: EdgeInsets.all(sp(0)),
+                  child: Hero(
+                    tag: shownItem.image,
+                    child: Image.network(
+                      dbImageurl + shownItem.image,
+                      fit: BoxFit.fill,
+                    ),
+                  )
+                  //  fit: BoxFit.contain,
+                  //   imageUrl: dbImageurl + shownItem.image,
+                  //   progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  //       CircularProgressIndicator(value: downloadProgress.progress),
+                  //   errorWidget: (context, url, error) => Icon(Icons.error),
+                  // ),
+                  ),
+            ),
+            Text(
+              shownItem.name,
+              style: TextStyle(
+                  //  color: lgreen,
+                  //  fontSize: h(2),
+                  fontSize: sp(20)),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
+}

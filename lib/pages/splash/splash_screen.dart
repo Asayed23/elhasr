@@ -1,17 +1,20 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:elhasr/pages/Auth/register/register_page.dart';
+
 import 'package:elhasr/pages/category/view/category.dart';
-import 'package:elhasr/pages/home_page/view/home_page.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:get/get.dart';
 
 import '../../core/size_config.dart';
 import '../Auth/controller/currentUser_controller.dart';
 import '../Auth/controller/sharedpref_function.dart';
+import '../category/control/category_controller.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -19,6 +22,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final CurrentUserController currentUserController =
       Get.put(CurrentUserController());
+
+  final CategoryController categoryController = Get.put(CategoryController());
 
   String? mytoken;
   @override
@@ -49,19 +54,25 @@ class _SplashScreenState extends State<SplashScreen> {
 
         splash: SizedBox(
           height: h(50),
-          child: ListView(children: const [
+          child: ListView(children: [
             // "assets/images/logigif.gif",
 
+            Image.asset(
+              "assets/images/app_logo.jpg",
+              width: sp(80),
+              height: sp(80),
+              //color: Colors.red,
+            ),
             // SvgPicture.asset("assets/images/mylogo.svg",
             //     width: sp(80), height: sp(90)),
-            Text('Elhasr'),
+            const Text('Elhasr'),
           ]),
         ),
         screenFunction: () async {
           // bool isOnline = await hasNetwork();
           // if (isOnline) {
           // unlockController.getlist();
-          // favController.getdata();
+          categoryController.getdata();
           // homeController.getdata();
 
           try {
@@ -77,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
         },
         splashTransition: SplashTransition.rotationTransition,
         //pageTransitionType: PageTransitionType.scale,
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.black,
       ),
     );
   }

@@ -4,18 +4,20 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'package:elhasr/core/db_links/db_links.dart';
 
-class CategoryController extends GetxController {
+import '../model/subCategory_model.dart';
+
+class SubCategoryController extends GetxController {
   ///===============================================================
   /// variableds (from , to , showitems "PlayerProfile" , isloading)
   /// functions getdata () , update  showitems "PlayerProfile"  it uess unifyfunction
   ///
   ///===============================================
-  var totalListLen = 1.obs;
-  var currentListLen = 0.obs;
+
   var selecteditem = -1.obs;
+  var categoryimage = "".obs;
   var from = 0.obs;
   int _step = 30;
-  var shownCatgeroy = [CategoryModel()].obs;
+  var shownsubCatgeroy = [SubCategoryModel()].obs;
   var isLoading = false.obs;
   // final UnlockController unlockController = Get.put(UnlockController());
 
@@ -25,20 +27,21 @@ class CategoryController extends GetxController {
   }
 
   Future getdatarefresh() async {
-    shownCatgeroy.value = [CategoryModel()];
+    shownsubCatgeroy.value = [SubCategoryModel()];
     from.value = 0;
     // unlockController.getlist();
-    getdata();
+    getsubcategorydata(0);
   }
 
-  Future getdata() async {
+  Future getsubcategorydata(int id) async {
     try {
       isLoading(true);
       var dio = Dio();
-      shownCatgeroy.value = [CategoryModel()];
+      shownsubCatgeroy.value = [SubCategoryModel()];
       var response = await dio.post(
-        categoryUrl,
+        subcategoryUrl,
         data: {
+          'id': id
           // 'from': from.value.toString(),
           // 'to': (from.value + _step).toString()
 
@@ -68,7 +71,7 @@ class CategoryController extends GetxController {
         {
           // list.contains(x);
           // dic['unlock'] = _list[dic['accountType']].contains(dic['accountId']);
-          shownCatgeroy.add(CategoryModel.fromJson(dic));
+          shownsubCatgeroy.add(SubCategoryModel.fromJson(dic));
         }
 
         // print(shownCatgeroy);

@@ -60,3 +60,12 @@ const String deletedad_Url = "${db_url1}deletedad/";
 const String adsListall_Url = "${db_url1}adsListall/";
 const String showprofilepayement_Url = "${db_url1}showprofile/";
 const String unlock_Url = "${db_url1}unlock/";
+
+// ElHasr
+
+const String dburl = "http://elhasrapp.pythonanywhere.com/services";
+const String dbImageurl = "http://elhasrapp.pythonanywhere.com";
+
+const String categoryUrl = "$dburl/category/list/";
+
+const String subcategoryUrl = "$dburl/category/details/";

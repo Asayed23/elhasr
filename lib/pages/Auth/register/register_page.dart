@@ -353,74 +353,74 @@ class _RegisterPageState extends State<RegisterPage> {
                                 /// check OTP===================
                                 // =======================
 
-                                Get.defaultDialog(
-                                  barrierDismissible: false,
-                                  onCancel: () {},
-                                  title: "OTP_Check",
-                                  content: Form(
-                                    key: _formKeyotp,
-                                    child: Column(
-                                      children: [
-                                        TextFormField(
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty ||
-                                                  value.length < 2) {
-                                                return 'Enter_OTP'.tr;
-                                              }
-                                              return null;
-                                            },
-                                            onSaved: (val) => phoneController
-                                                .userotp.value = val!,
-                                            decoration: InputDecoration(
-                                              prefixIcon: const Icon(
-                                                Icons.sms,
-                                                //color: Colors.white,
-                                              ),
-                                              border: InputBorder.none,
-                                              hintText: 'Enter_OTP'.tr,
-                                            )),
-                                        Obx(() => (phoneController
-                                                    .authStatus.value) !=
-                                                'OTP_Sent'
-                                            ? Text(phoneController
-                                                .authStatus.value)
-                                            : ElevatedButton(
-                                                child: Text(
-                                                  'OTP_Check'.tr,
-                                                ),
-                                                onPressed: () async {
-                                                  Navigator.of(context).pop();
+                                // Get.defaultDialog(
+                                //   barrierDismissible: false,
+                                //   onCancel: () {},
+                                //   title: "OTP_Check",
+                                //   content: Form(
+                                //     key: _formKeyotp,
+                                //     child: Column(
+                                //       children: [
+                                //         TextFormField(
+                                //             validator: (value) {
+                                //               if (value == null ||
+                                //                   value.isEmpty ||
+                                //                   value.length < 2) {
+                                //                 return 'Enter_OTP'.tr;
+                                //               }
+                                //               return null;
+                                //             },
+                                //             onSaved: (val) => phoneController
+                                //                 .userotp.value = val!,
+                                //             decoration: InputDecoration(
+                                //               prefixIcon: const Icon(
+                                //                 Icons.sms,
+                                //                 //color: Colors.white,
+                                //               ),
+                                //               border: InputBorder.none,
+                                //               hintText: 'Enter_OTP'.tr,
+                                //             )),
+                                //         Obx(() => (phoneController
+                                //                     .authStatus.value) !=
+                                //                 'OTP_Sent'
+                                //             ? Text(phoneController
+                                //                 .authStatus.value)
+                                //             : ElevatedButton(
+                                //                 child: Text(
+                                //                   'OTP_Check'.tr,
+                                //                 ),
+                                //                 onPressed: () async {
+                                //                   Navigator.of(context).pop();
 
-                                                  final form2 =
-                                                      _formKeyotp.currentState;
-                                                  if (form2!.validate()) {
-                                                    form2.save();
-                                                    // phoneController.verifyPhone("+201022645564");
+                                //                   final form2 =
+                                //                       _formKeyotp.currentState;
+                                //                   if (form2!.validate()) {
+                                //                     form2.save();
+                                //                     // phoneController.verifyPhone("+201022645564");
 
-                                                    var otpcorrect =
-                                                        await phoneController
-                                                            .otpVerify(
-                                                                phoneController
-                                                                    .userotp
-                                                                    .value);
+                                //                     var otpcorrect =
+                                //                         await phoneController
+                                //                             .otpVerify(
+                                //                                 phoneController
+                                //                                     .userotp
+                                //                                     .value);
 
-                                                    if (otpcorrect) {
-                                                      phoneController
-                                                          .otpcorrect(false);
-                                                      await registerController
-                                                          .registeruser();
-                                                    } else {
-                                                      Get.snackbar("Invalid",
-                                                          'user error');
-                                                    }
-                                                  }
-                                                },
-                                              )),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                //                     if (otpcorrect) {
+                                //                       phoneController
+                                //                           .otpcorrect(false);
+                                //                       await registerController
+                                //                           .registeruser();
+                                //                     } else {
+                                //                       Get.snackbar("Invalid",
+                                //                           'user error');
+                                //                     }
+                                //                   }
+                                //                 },
+                                //               )),
+                                //       ],
+                                //     ),
+                                //   ),
+                                // );
                                 // =======================
                                 // / Save User in DB===================
                                 // =======================

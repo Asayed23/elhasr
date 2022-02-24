@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/size_config.dart';
-import '../control/category_controller.dart';
-import 'show_category_item.dart';
+import '../../category/control/category_controller.dart';
 
-class CategoryPage extends StatefulWidget {
-  const CategoryPage({Key? key}) : super(key: key);
+class DetailPage extends StatefulWidget {
+  const DetailPage({Key? key}) : super(key: key);
 
   @override
-  _CategoryPageState createState() => _CategoryPageState();
+  _DetailPageState createState() => _DetailPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage> {
+class _DetailPageState extends State<DetailPage> {
   final scrollController = ScrollController();
   //final SearchController searchController = Get.put(SearchController());
 
@@ -119,9 +118,11 @@ class _CategoryPageState extends State<CategoryPage> {
                         mainAxisSpacing: sp(10)),
                     itemCount: categoryController.shownCatgeroy.length - 1,
                     itemBuilder: (BuildContext ctx, index) {
-                      return showCategoryItem(
-                          categoryController.shownCatgeroy[index + 1],
-                          index + 1);
+                      return Text('detail');
+
+                      //  showCategoryItem(
+                      //     categoryController.shownCatgeroy[index + 1],
+                      //    index + 1);
                     }),
               ),
             ]),
