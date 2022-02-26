@@ -1,5 +1,5 @@
-const String db_url1 = "http://3.65.187.183/api/";
-const String db_url = "http://3.65.187.183/";
+const String db_url1 = "http://elhasrapp.pythonanywhere.com/api/";
+const String db_url = "http://elhasrapp.pythonanywhere.com/";
 ///////////////////////////////////////////////////////////////////////
 
 const String login_url = "${db_url1}login/";

@@ -22,6 +22,7 @@ class User {
       this.password = "",
       this.email = "",
       this.phoneNumber = "",
+      this.villaArea = -1,
       this.fullName = "",
       this.city = "",
       this.country = "",
@@ -65,6 +66,7 @@ class User {
   bool caneditContact;
   bool canshowcontact;
   int profileBalance;
+  int villaArea;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
@@ -72,10 +74,11 @@ class User {
         email: json["email"],
         phoneNumber: json["phoneNumber"],
         fullName: json["fullName"],
+        villaArea: json["villaArea"] ?? -1,
         // city: json["city"],
         // country: json["country"],
         // image: json["image"],
-        accountType: json["accountType"],
+        accountType: json["accountType"] ?? "",
         playerId: json["playerId"] ?? -1,
         token: json["token"],
         membership: json['membership'] ?? "free",
@@ -105,5 +108,6 @@ class User {
         "showType": showType,
         "fullName": fullName,
         "profileBalance": profileBalance,
+        "villaArea": villaArea,
       };
 }

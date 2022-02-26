@@ -146,7 +146,9 @@ class _LoginPageState extends State<LoginPage> {
 
                 /// Password
                 TextFormField(
-                  style: TextStyle(fontSize: sp(12), color: Colors.white),
+                  style: TextStyle(
+                    fontSize: sp(12),
+                  ),
                   onSaved: (val) => loginController.password.value = val!,
 
                   validator: (val) =>
@@ -178,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                     contentPadding: const EdgeInsets.only(
                         left: 14.0, bottom: 6.0, top: 8.0),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: lgreen),
+                      //borderSide: BorderSide(color: lgreen),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     enabledBorder: UnderlineInputBorder(

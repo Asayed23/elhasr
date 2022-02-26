@@ -14,6 +14,8 @@ import 'package:elhasr/pages/Auth/controller/register_controller.dart';
 import 'package:elhasr/pages/Auth/login/login_page.dart';
 
 import 'package:elhasr/translation/translate_ctrl.dart';
+
+import 'otp_forgetpassword.dart';
 //import 'package:awesome_dialog/awesome_dialog.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -288,81 +290,82 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                 var resp = await phoneController
                                     .verifyPhone(_user.phoneNumber);
 
+                                Get.to(OtpForgetPassPage());
                                 // =======================
                                 /// check OTP===================
                                 // =======================
 
-                                Get.defaultDialog(
-                                  barrierDismissible: false,
-                                  onCancel: () {},
-                                  title: "code_check",
-                                  content: Form(
-                                    key: _formKeyotp,
-                                    child: Column(
-                                      children: [
-                                        TextFormField(
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  value.isEmpty ||
-                                                  value.length < 1) {
-                                                return 'Enter_OTP'.tr;
-                                              }
-                                              return null;
-                                            },
-                                            onSaved: (val) => phoneController
-                                                .userotp.value = val!,
-                                            decoration: InputDecoration(
-                                              prefixIcon: Icon(
-                                                Icons.sms,
-                                                //color: Colors.white,
-                                              ),
-                                              border: InputBorder.none,
-                                              hintText: 'Enter_OTP'.tr,
-                                            )),
-                                        Obx(() => (phoneController
-                                                    .authStatus.value) !=
-                                                'OTP_Sent'
-                                            ? Text(phoneController
-                                                .authStatus.value)
-                                            : ElevatedButton(
-                                                child: Text(
-                                                  'code_check'.tr,
-                                                ),
-                                                onPressed: () async {
-                                                  Navigator.of(context).pop();
+                                // Get.defaultDialog(
+                                //   barrierDismissible: false,
+                                //   onCancel: () {},
+                                //   title: "code_check",
+                                //   content: Form(
+                                //     key: _formKeyotp,
+                                //     child: Column(
+                                //       children: [
+                                //         TextFormField(
+                                //             validator: (value) {
+                                //               if (value == null ||
+                                //                   value.isEmpty ||
+                                //                   value.length < 1) {
+                                //                 return 'Enter_OTP'.tr;
+                                //               }
+                                //               return null;
+                                //             },
+                                //             onSaved: (val) => phoneController
+                                //                 .userotp.value = val!,
+                                //             decoration: InputDecoration(
+                                //               prefixIcon: Icon(
+                                //                 Icons.sms,
+                                //                 //color: Colors.white,
+                                //               ),
+                                //               border: InputBorder.none,
+                                //               hintText: 'Enter_OTP'.tr,
+                                //             )),
+                                //         Obx(() => (phoneController
+                                //                     .authStatus.value) !=
+                                //                 'OTP_Sent'
+                                //             ? Text(phoneController
+                                //                 .authStatus.value)
+                                //             : ElevatedButton(
+                                //                 child: Text(
+                                //                   'code_check'.tr,
+                                //                 ),
+                                //                 onPressed: () async {
+                                //                   Navigator.of(context).pop();
 
-                                                  final form2 =
-                                                      _formKeyotp.currentState;
-                                                  if (form2!.validate()) {
-                                                    form2.save();
-                                                    // phoneController.verifyPhone("+201022645564");
-                                                    var otpcorrect =
-                                                        await phoneController
-                                                            .otpVerify(
-                                                                phoneController
-                                                                    .userotp
-                                                                    .value);
+                                //                   final form2 =
+                                //                       _formKeyotp.currentState;
+                                //                   if (form2!.validate()) {
+                                //                     form2.save();
+                                //                     // phoneController.verifyPhone("+201022645564");
+                                //                     var otpcorrect =
+                                //                         await phoneController
+                                //                             .otpVerify(
+                                //                                 phoneController
+                                //                                     .userotp
+                                //                                     .value);
 
-                                                    if (otpcorrect) {
-                                                      phoneController
-                                                          .otpcorrect(false);
-                                                      await forgerPassController
-                                                          .resetpassword(
-                                                              _password,
-                                                              phoneController
-                                                                  .usernum
-                                                                  .value);
-                                                    } else {
-                                                      Get.snackbar("Invalid",
-                                                          'user error');
-                                                    }
-                                                  }
-                                                },
-                                              )),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                //                     if (otpcorrect) {
+                                //                       phoneController
+                                //                           .otpcorrect(false);
+                                //                       await forgerPassController
+                                //                           .resetpassword(
+                                //                               _password,
+                                //                               phoneController
+                                //                                   .usernum
+                                //                                   .value);
+                                //                     } else {
+                                //                       Get.snackbar("Invalid",
+                                //                           'user error');
+                                //                     }
+                                //                   }
+                                //                 },
+                                //               )),
+                                //       ],
+                                //     ),
+                                //   ),
+                                // );
                                 // =======================
                                 /// Save User in DB===================
                                 // =======================

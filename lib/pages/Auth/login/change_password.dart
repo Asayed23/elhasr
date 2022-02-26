@@ -1,3 +1,4 @@
+import 'package:elhasr/pages/category/view/category.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -257,7 +258,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   TextButton(
                       onPressed: () {
-                        Get.to(() => HomePage());
+                        Get.to(() => CategoryPage());
                       },
                       child: Text('Go_To_home_page'.tr,
                           style: TextStyle(fontSize: sp(10)))),
@@ -267,7 +268,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   "assets/images/mylogo.svg",
                   width: sp(60),
                   height: sp(60),
-                  //color: Colors.red,
+                  color: Colors.red,
                 ),
                 SvgPicture.asset(
                   "assets/images/sportive1.svg",

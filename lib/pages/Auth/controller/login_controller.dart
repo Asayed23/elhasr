@@ -1,3 +1,4 @@
+import 'package:elhasr/pages/category/view/category.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
@@ -8,6 +9,8 @@ import 'package:elhasr/pages/Auth/controller/profileIdStoring.dart';
 
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/common_widget/error_snackbar.dart';
+
+import 'sharedpref_function.dart';
 
 class LoginController extends GetxController {
   var phone = "".obs;
@@ -45,6 +48,10 @@ class LoginController extends GetxController {
         User _regiuser = User.fromJson(response.data);
         userctrl.currentUser.value = _regiuser;
 
+        storeUserData(userctrl.currentUser.value,
+            'user'); // save UserID, User name , Phone Num
+        Get.offAll(CategoryPage());
+
         ///
         ///
         ///
@@ -57,7 +64,7 @@ class LoginController extends GetxController {
         // userctrl.currentUser.value.memberShipExpireDate =
         //     DateFormat('yyyy-MM-dd')
         //         .format(DateTime.now().add(Duration(days: 30)));
-        getprofileID(_regiuser);
+        //getprofileID(_regiuser);
 
         // storeUserData(userctrl.currentUser.value, 'user');
 

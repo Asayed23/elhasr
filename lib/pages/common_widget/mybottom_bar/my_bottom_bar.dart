@@ -1,11 +1,12 @@
 import 'package:elhasr/pages/Auth/register/register_page.dart';
-import 'package:elhasr/pages/home_page/view/home_page.dart';
+
 import 'package:elhasr/pages/order/view/order_page.dart';
-import 'package:elhasr/pages/user_profile/view/user_profile.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Auth/controller/currentUser_controller.dart';
+import '../../Auth/profile/profile_page.dart';
 import '../../category/view/category.dart';
 import 'bottom_bar_controller.dart';
 

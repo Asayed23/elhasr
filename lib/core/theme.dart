@@ -4,6 +4,8 @@ import 'package:elhasr/pages/common_widget/local_colors.dart';
 
 //https://api.flutter.dev/flutter/material/ThemeData-class.html
 
+var clickIconColor = Color.fromARGB(255, 18, 74, 117);
+
 class LocalThemes {
   static final darkTheme = ThemeData(
       // background color
@@ -53,20 +55,22 @@ class LocalThemes {
       )));
 
   static final lightTheme = ThemeData(
-    colorScheme: const ColorScheme.light(primary: Colors.amber),
-    iconTheme: const IconThemeData(color: Colors.amber),
-    primaryIconTheme: const IconThemeData(color: Colors.amber),
+    colorScheme:
+        const ColorScheme.light(primary: Color.fromARGB(255, 230, 159, 52)),
+    iconTheme: const IconThemeData(color: Color.fromARGB(255, 230, 159, 52)),
+    primaryIconTheme:
+        const IconThemeData(color: Color.fromARGB(255, 230, 159, 52)),
 
-    primarySwatch: Colors.amber,
+    primarySwatch: Colors.indigo,
     //ElvatedButton theme
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            primary: Colors.amber, // background color
+            primary: clickIconColor, // background color
             textStyle: const TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               // fontStyle: FontStyle.italic,
             ))),
 
@@ -77,7 +81,7 @@ class LocalThemes {
     // text button theme
     textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-      primary: Colors.amber,
+      primary: Color.fromARGB(255, 230, 159, 52),
       textStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic,

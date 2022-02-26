@@ -62,6 +62,18 @@ Widget showCategoryItem(CategoryModel shownItem, int _selecteditem) {
                     child: Image.network(
                       dbImageurl + shownItem.image,
                       fit: BoxFit.fill,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
                     ),
                   )
                   //  fit: BoxFit.contain,
