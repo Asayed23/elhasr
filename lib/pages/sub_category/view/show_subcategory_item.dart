@@ -1,3 +1,4 @@
+import 'package:elhasr/pages/detail/view/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,11 +25,12 @@ final SubCategoryController subCategoryController =
 Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
   return GestureDetector(
     onTap: () async {
-      subCategoryController.getsubcategorydata(shownItem.id);
-      print(dbImageurl + shownItem.image);
-      subCategoryController.selecteditem = _selecteditem;
-      subCategoryController.categoryimage.value = shownItem.image;
-      Get.to(SubCategoryPage());
+      // subCategoryController.getsubcategorydata(shownItem.id);
+      // print(dbImageurl + shownItem.image);
+      // subCategoryController.selecteditem = _selecteditem;
+      // subCategoryController.categoryimage.value = shownItem.image;
+      // Get.to(const SubCategoryPage());
+      Get.to(() => DetailPage());
       // _paymentCheckController
       //     .showProfileCheking(currentProfileController.profile.value);
     },

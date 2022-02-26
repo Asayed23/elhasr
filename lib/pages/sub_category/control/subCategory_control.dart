@@ -30,7 +30,7 @@ class SubCategoryController extends GetxController {
     shownsubCatgeroy.value = [SubCategoryModel()];
     from.value = 0;
     // unlockController.getlist();
-    getsubcategorydata(0);
+    getsubcategorydata(selecteditem);
   }
 
   Future getsubcategorydata(int id) async {
