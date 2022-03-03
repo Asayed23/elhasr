@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -124,6 +125,58 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                       border: InputBorder.none,
                       hintText: 'Enter_yourName'.tr,
+                      filled: false,
+                      fillColor: lblue,
+                      contentPadding: const EdgeInsets.only(
+                          left: 14.0, bottom: 6.0, top: 8.0),
+                      focusedBorder: OutlineInputBorder(
+                        //  borderSide: BorderSide(color: lgreen),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        //  borderSide: const BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+
+                    /// end of decoration
+                  ),
+                  SizedBox(height: sp(10)),
+
+                  ///=======================================================================
+                  ///==================== Villa Size ========================================
+                  ///=======================================================================
+                  // Name
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null ||
+                          value.isEmpty ||
+                          int.parse(value) < 80) {
+                        return 'Less Size is 100 m'.tr;
+                      }
+                      return null;
+                    },
+                    onSaved: (val) => registerController.registeruserdata.value
+                        .villaArea = val.toString() as int,
+
+                    //autofocus: false,
+                    // Text Style
+                    style: TextStyle(
+                        fontSize: sp(10),
+                        color: Color.fromARGB(255, 180, 56, 56)),
+                    keyboardType: TextInputType.number,
+                    // inputFormatters: [
+                    //   FilteringTextInputFormatter.allow(RegExp('[0-9.,+]+'))
+                    // ],
+
+                    /// decoration
+                    decoration: InputDecoration(
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: const FaIcon(FontAwesomeIcons.rulerVertical),
+                      ),
+                      border: InputBorder.none,
+                      hintText: 'Enter Size in metere'.tr,
                       filled: false,
                       fillColor: lblue,
                       contentPadding: const EdgeInsets.only(

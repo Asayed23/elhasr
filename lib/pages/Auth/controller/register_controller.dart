@@ -1,3 +1,4 @@
+import 'package:elhasr/pages/category/view/category.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
@@ -9,6 +10,8 @@ import 'package:elhasr/pages/Auth/controller/profileIdStoring.dart';
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/home_page/view/home_page.dart';
 import 'package:elhasr/pages/common_widget/error_snackbar.dart';
+
+import 'sharedpref_function.dart';
 
 class RegisterController extends GetxController {
   // Loading flag for Registeration
@@ -75,6 +78,10 @@ class RegisterController extends GetxController {
 
         currentUserController.currentUser.value = _regiuser;
 
+        storeUserData(currentUserController.currentUser.value,
+            'user'); // save UserID, User name , Phone Num
+        Get.offAll(CategoryPage());
+
         ///
         ///
         ///
@@ -91,14 +98,14 @@ class RegisterController extends GetxController {
         getprofileID(_regiuser);
 
         //paySelectionController.upgrademyaccount("Silver");
-        Get.defaultDialog(
-          barrierDismissible: false,
-          title: "Congratulation".tr,
-          content: Text("won_prize".tr),
-          onConfirm: () {
-            Get.offAll(HomePage());
-          },
-        );
+        // Get.defaultDialog(
+        //   barrierDismissible: false,
+        //   title: "Congratulation".tr,
+        //   content: Text("won_prize".tr),
+        //   onConfirm: () {
+        //     Get.offAll(HomePage());
+        //   },
+        // );
 
         // storeUserData(currentUserController.currentUser.value,
         //     'user'); // save UserID, User name , Phone Num
