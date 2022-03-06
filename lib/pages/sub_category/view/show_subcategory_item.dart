@@ -1,4 +1,5 @@
 import 'package:elhasr/pages/detail/view/detail_page.dart';
+import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,8 @@ import '../model/subCategory_model.dart';
 //   String gender;
 final SubCategoryController subCategoryController =
     Get.put(SubCategoryController());
+
+final CartController cartController = Get.put(CartController());
 Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
   return GestureDetector(
     onTap: () async {
@@ -89,7 +92,27 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
                   //  color: lgreen,
                   //  fontSize: h(2),
                   fontSize: sp(20)),
-            )
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              Text(
+                shownItem.price.toString() + ' SR',
+                style: TextStyle(
+                    //  color: lgreen,
+                    //  fontSize: h(2),
+                    fontSize: sp(10)),
+              ),
+              IconButton(
+                  onPressed: () {
+                    cartController.addtoCart(shownItem.service_id);
+                  },
+                  icon: Icon(
+                    Icons.add_chart,
+                    color:
+                        cartController.cartIDList.contains(shownItem.service_id)
+                            ? Colors.white
+                            : Colors.red,
+                  ))
+            ]),
           ],
         ),
       ),

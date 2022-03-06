@@ -12,33 +12,37 @@ String subCategoryModelToJson(SubCategoryModel data) =>
 
 class SubCategoryModel {
   SubCategoryModel({
-    this.id = -1,
+    this.service_id = -1,
     this.name = "",
     this.image = "",
     this.category = -1,
     this.description = "",
+    this.price = 0.0,
   });
 
-  int id;
+  int service_id;
   String name;
   String image;
   String description;
   int category;
+  double price;
 
   factory SubCategoryModel.fromJson(Map<String, dynamic> json) =>
       SubCategoryModel(
-        id: json["id"] ?? -1,
+        service_id: json["service_id"] ?? -1,
         name: json["name"] ?? "",
         image: json["image"] ?? "",
         description: json["description"] ?? "",
         category: json["category"] ?? -1,
+        price: json["price"] ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
+        "service_id": service_id,
         "name": name,
         "image": image,
         "description": description,
         "category": category,
+        "price": price,
       };
 }

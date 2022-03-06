@@ -22,7 +22,7 @@ class User {
       this.password = "",
       this.email = "",
       this.phoneNumber = "",
-      this.villaArea = -1,
+      this.villaArea = 0,
       this.fullName = "",
       this.city = "",
       this.country = "",

@@ -69,3 +69,7 @@ const String dbImageurl = "http://elhasrapp.pythonanywhere.com";
 const String categoryUrl = "$dburl/category/list/";
 
 const String subcategoryUrl = "$dburl/category/details/";
+
+const String cartListUrl = "$dbImageurl/orders/cart/list/";
+const String cartAddUrl = "$dbImageurl/orders/cart/add/";
+const String cartDelUrl = "$dbImageurl/orders/cart/delete/";

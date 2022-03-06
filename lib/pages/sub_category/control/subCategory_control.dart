@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'package:elhasr/core/db_links/db_links.dart';
 
+import '../../Auth/controller/currentUser_controller.dart';
 import '../model/subCategory_model.dart';
 
 class SubCategoryController extends GetxController {
@@ -19,7 +20,8 @@ class SubCategoryController extends GetxController {
   int _step = 30;
   var shownsubCatgeroy = [SubCategoryModel()].obs;
   var isLoading = false.obs;
-  // final UnlockController unlockController = Get.put(UnlockController());
+  final CurrentUserController currentUserController =
+      Get.put(CurrentUserController());
 
   @override
   void onInit() {
@@ -41,7 +43,8 @@ class SubCategoryController extends GetxController {
       var response = await dio.post(
         subcategoryUrl,
         data: {
-          'id': id
+          'category_id': id.toString(),
+          'size': currentUserController.currentUser.value.villaArea.toString(),
           // 'from': from.value.toString(),
           // 'to': (from.value + _step).toString()
 
@@ -51,7 +54,7 @@ class SubCategoryController extends GetxController {
         options: Options(
           followRedirects: false,
           validateStatus: (status) {
-            return status! < 500;
+            return status! < 800;
           },
           //headers: {},
         ),
