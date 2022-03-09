@@ -156,8 +156,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                       return null;
                     },
-                    onSaved: (val) => registerController.registeruserdata.value
-                        .villaArea = val.toString() as int,
+                    onSaved: (val) => registerController
+                        .registeruserdata.value.villaArea = int.parse(val!),
 
                     //autofocus: false,
                     // Text Style
@@ -165,9 +165,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         fontSize: sp(10),
                         color: Color.fromARGB(255, 180, 56, 56)),
                     keyboardType: TextInputType.number,
-                    // inputFormatters: [
-                    //   FilteringTextInputFormatter.allow(RegExp('[0-9.,+]+'))
-                    // ],
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[0-9.,]'))
+                    ],
 
                     /// decoration
                     decoration: InputDecoration(

@@ -11,6 +11,7 @@ import '../../core/size_config.dart';
 import '../Auth/controller/currentUser_controller.dart';
 import '../Auth/controller/sharedpref_function.dart';
 import '../category/control/category_controller.dart';
+import '../sub_category/control/cart_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Get.put(CurrentUserController());
 
   final CategoryController categoryController = Get.put(CategoryController());
-
+  final CartController cartController = Get.put(CartController());
   String? mytoken;
   @override
   void initState() {
@@ -73,11 +74,11 @@ class _SplashScreenState extends State<SplashScreen> {
           // if (isOnline) {
           // unlockController.getlist();
           categoryController.getdata();
-          // homeController.getdata();
 
           try {
             currentUserController.currentUser.value =
                 await loadUserData('user');
+            cartController.getcartList();
           } catch (e) {
             removeUserData('user');
           }

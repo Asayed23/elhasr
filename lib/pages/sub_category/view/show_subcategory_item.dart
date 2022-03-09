@@ -89,9 +89,10 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
             Text(
               shownItem.name,
               style: TextStyle(
+                  overflow: TextOverflow.fade,
                   //  color: lgreen,
                   //  fontSize: h(2),
-                  fontSize: sp(20)),
+                  fontSize: sp(10)),
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               Text(
@@ -101,17 +102,19 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
                     //  fontSize: h(2),
                     fontSize: sp(10)),
               ),
-              IconButton(
+              Obx(() => IconButton(
                   onPressed: () {
-                    cartController.addtoCart(shownItem.service_id);
+                    cartController.cartIDList.contains(shownItem.service_id)
+                        ? cartController.delFromCart(shownItem.service_id)
+                        : cartController.addtoCart(shownItem.service_id);
                   },
                   icon: Icon(
                     Icons.add_chart,
                     color:
                         cartController.cartIDList.contains(shownItem.service_id)
-                            ? Colors.white
-                            : Colors.red,
-                  ))
+                            ? Colors.red
+                            : Colors.white,
+                  )))
             ]),
           ],
         ),

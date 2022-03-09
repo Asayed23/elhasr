@@ -8,6 +8,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "argon_buttons_flutter",
+      "rootUri": "file:///C:/Flutter_setup/flutter_windows_2.2.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/argon_buttons_flutter-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/Flutter_setup/flutter_windows_2.2.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2",
       "packageUri": "lib/",
@@ -62,6 +68,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "circular_countdown_timer",
+      "rootUri": "file:///C:/Flutter_setup/flutter_windows_2.2.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/circular_countdown_timer-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "clock",
       "rootUri": "file:///C:/Flutter_setup/flutter_windows_2.2.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.1.0",
       "packageUri": "lib/",
@@ -70,6 +82,12 @@
     {
       "name": "collection",
       "rootUri": "file:///C:/Flutter_setup/flutter_windows_2.2.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "convex_bottom_bar",
+      "rootUri": "file:///C:/Flutter_setup/flutter_windows_2.2.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/convex_bottom_bar-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -554,7 +572,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-03-06T14:53:15.159756Z",
+  "generated": "2022-03-09T21:57:42.015892Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

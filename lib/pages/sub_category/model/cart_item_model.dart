@@ -11,25 +11,41 @@ String cartItemModelToJson(CartItemModel data) => json.encode(data.toJson());
 
 class CartItemModel {
   CartItemModel({
-    this.id = -1,
+    this.category = -1,
     this.item = -1,
     this.cart = -1,
+    this.description = "",
+    this.name = "",
+    this.image = "",
+    this.price = -1,
   });
 
-  int id;
+  int category;
 
   int item;
   int cart;
+  String description;
+  String name;
+  String image;
+  double price;
 
   factory CartItemModel.fromJson(Map<String, dynamic> json) => CartItemModel(
-        id: json["id"] ?? -1,
+        category: json["item__service__category"] ?? -1,
         item: json["item"] ?? -1,
         cart: json["cart"] ?? -1,
+        description: json["item__service__description"] ?? "",
+        name: json["item__service__name"] ?? "",
+        image: json["item__service__image"] ?? "",
+        price: json["item__price"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
+        "item__service__category": category,
         "item": item,
         "cart": cart,
+        "item__service__description": description,
+        "item__service__name": name,
+        "item__service__image": image,
+        "item__price": price,
       };
 }

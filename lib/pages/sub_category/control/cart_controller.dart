@@ -42,21 +42,19 @@ class CartController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
+        // Read Cart
         cart.value = CartModel.fromJson(response.data['cart']);
-
         cart.value.cartItems =
             fillCartItemFromjson(response.data['cart items']);
         List<CartItemModel> _listitems = [];
+        cartIDList.value = [];
         response.data['cart items'].forEach((_itemdata) {
           final CartItemModel _item = CartItemModel.fromJson(_itemdata);
-
           _listitems.add(_item);
-          cartIDList.add(_item.id);
+          cartIDList.add(_item.item);
         });
 
-        if (_listitems.isNotEmpty) {
-          cart.value.cartItems = _listitems;
-        }
+        cart.value.cartItems = _listitems;
       } else {
         mySnackbar('Sorry', 'No List cant be updated', false);
       }
@@ -85,7 +83,19 @@ class CartController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
-        getcartList();
+        // Read Cart
+        cart.value = CartModel.fromJson(response.data['cart']);
+        cart.value.cartItems =
+            fillCartItemFromjson(response.data['cart items']);
+        List<CartItemModel> _listitems = [];
+        cartIDList.value = [];
+        response.data['cart items'].forEach((_itemdata) {
+          final CartItemModel _item = CartItemModel.fromJson(_itemdata);
+          _listitems.add(_item);
+          cartIDList.add(_item.item);
+        });
+        cart.value.cartItems = _listitems;
+
         // cart.value = CartModel.fromJson(response.data['cart']);
 
         // cart.value.cartItems =
@@ -109,7 +119,7 @@ class CartController extends GetxController {
     }
   }
 
-  Future delFromCart(int cartitem_id) async {
+  Future delFromCart(int service_id) async {
     try {
       isLoading(true);
       var dio = Dio();
@@ -118,7 +128,7 @@ class CartController extends GetxController {
         cartDelUrl,
         data: {
           'user_id': currentUserController.currentUser.value.id.toString(),
-          'cartitem_id': cartitem_id.toString(),
+          'service_id': service_id.toString(),
         },
         options: Options(
           followRedirects: false,
@@ -129,7 +139,20 @@ class CartController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
-        getcartList();
+        // Read Cart
+        cart.value = CartModel.fromJson(response.data['cart']);
+        cart.value.cartItems =
+            fillCartItemFromjson(response.data['cart items']);
+        List<CartItemModel> _listitems = [];
+        cartIDList.value = [];
+        response.data['cart items'].forEach((_itemdata) {
+          final CartItemModel _item = CartItemModel.fromJson(_itemdata);
+          _listitems.add(_item);
+          cartIDList.add(_item.item);
+        });
+
+        cart.value.cartItems = _listitems;
+
         // cart.value = CartModel.fromJson(response.data['cart']);
 
         // cart.value.cartItems =

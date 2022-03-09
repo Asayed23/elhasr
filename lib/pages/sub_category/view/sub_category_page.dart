@@ -1,4 +1,5 @@
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
+import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,22 +20,14 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
 
   final SubCategoryController subcategoryController =
       Get.put(SubCategoryController());
+
+  final CartController cartController = Get.put(CartController());
   @override
   void initState() {
     super.initState();
-    // categoryController.getdata();
-
-    // scrollController.addListener(() {
-    //   if (scrollController.position.pixels ==
-    //       scrollController.position.maxScrollExtent) {
-    //     if (categoryController.from.value < categoryController.totalListLen.value) {
-    //       unlockController.getlist();
-    //       categoryController.getdata();
-    //     }
-
-    //     //return state.products;
-    //   }
-    // });
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      cartController.getcartList();
+    });
   }
 
   @override
