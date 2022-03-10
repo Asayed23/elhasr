@@ -23,43 +23,45 @@ class CartController extends GetxController {
   }
 
   Future getcartList() async {
-    try {
-      isLoading(true);
-      var dio = Dio();
-      cart.value = CartModel();
-      var response = await dio.post(
-        cartListUrl,
-        data: {
-          'user_id': currentUserController.currentUser.value.id.toString(),
-          // 'user_id': '1',
-        },
-        options: Options(
-          followRedirects: false,
-          validateStatus: (status) {
-            return status! < 800;
+    if (currentUserController.currentUser.value.id != -1) {
+      try {
+        isLoading(true);
+        var dio = Dio();
+        cart.value = CartModel();
+        var response = await dio.post(
+          cartListUrl,
+          data: {
+            'user_id': currentUserController.currentUser.value.id.toString(),
+            // 'user_id': '1',
           },
-          //headers: {},
-        ),
-      );
-      if (response.statusCode == 200) {
-        // Read Cart
-        cart.value = CartModel.fromJson(response.data['cart']);
-        cart.value.cartItems =
-            fillCartItemFromjson(response.data['cart items']);
-        List<CartItemModel> _listitems = [];
-        cartIDList.value = [];
-        response.data['cart items'].forEach((_itemdata) {
-          final CartItemModel _item = CartItemModel.fromJson(_itemdata);
-          _listitems.add(_item);
-          cartIDList.add(_item.item);
-        });
+          options: Options(
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 800;
+            },
+            //headers: {},
+          ),
+        );
+        if (response.statusCode == 200) {
+          // Read Cart
+          cart.value = CartModel.fromJson(response.data['cart']);
+          cart.value.cartItems =
+              fillCartItemFromjson(response.data['cart items']);
+          List<CartItemModel> _listitems = [];
+          cartIDList.value = [];
+          response.data['cart items'].forEach((_itemdata) {
+            final CartItemModel _item = CartItemModel.fromJson(_itemdata);
+            _listitems.add(_item);
+            cartIDList.add(_item.item);
+          });
 
-        cart.value.cartItems = _listitems;
-      } else {
-        mySnackbar('Sorry', 'No List cant be updated', false);
+          cart.value.cartItems = _listitems;
+        } else {
+          mySnackbar('Sorry', 'No List cant be updated', false);
+        }
+      } finally {
+        isLoading.value = false;
       }
-    } finally {
-      isLoading.value = false;
     }
   }
 
@@ -83,34 +85,20 @@ class CartController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
-        // Read Cart
-        cart.value = CartModel.fromJson(response.data['cart']);
-        cart.value.cartItems =
-            fillCartItemFromjson(response.data['cart items']);
-        List<CartItemModel> _listitems = [];
-        cartIDList.value = [];
-        response.data['cart items'].forEach((_itemdata) {
-          final CartItemModel _item = CartItemModel.fromJson(_itemdata);
-          _listitems.add(_item);
-          cartIDList.add(_item.item);
-        });
-        cart.value.cartItems = _listitems;
-
-        // cart.value = CartModel.fromJson(response.data['cart']);
-
-        // cart.value.cartItems =
-        //     fillCartItemFromjson(response.data['cart items']);
-        // List<CartItemModel> _listitems = [];
-        // response.data['cart items'].forEach((_itemdata) {
-        //   final CartItemModel _item = CartItemModel.fromJson(_itemdata);
-
-        //   _listitems.add(_item);
-        //   cartIDList.add(_item.id);
-        // });
-
-        // if (_listitems.isNotEmpty) {
-        //   cart.value.cartItems = _listitems;
-        // }
+        if (!response.data?.containsKey('message')) {
+          // Read Cart
+          cart.value = CartModel.fromJson(response.data['cart']);
+          cart.value.cartItems =
+              fillCartItemFromjson(response.data['cart items']);
+          List<CartItemModel> _listitems = [];
+          cartIDList.value = [];
+          response.data['cart items'].forEach((_itemdata) {
+            final CartItemModel _item = CartItemModel.fromJson(_itemdata);
+            _listitems.add(_item);
+            cartIDList.add(_item.item);
+          });
+          mySnackbar('Thanks', 'added', true);
+        }
       } else {
         mySnackbar('Sorry', 'No List cant be updated', false);
       }
@@ -152,6 +140,7 @@ class CartController extends GetxController {
         });
 
         cart.value.cartItems = _listitems;
+        mySnackbar('Thanks', 'removed', true);
 
         // cart.value = CartModel.fromJson(response.data['cart']);
 

@@ -32,10 +32,10 @@ Widget showcartItemOrder(CartItemModel shownItem) {
     child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-            width: w(22),
+            width: w(30),
             height: h(12),
             decoration: BoxDecoration(
               color: Colors.grey,
@@ -71,24 +71,27 @@ Widget showcartItemOrder(CartItemModel shownItem) {
                 // ),
                 ),
           ),
-          Column(children: [
-            Text(
-              shownItem.name,
-              style: TextStyle(
-                  overflow: TextOverflow.fade,
-                  //  color: lgreen,
-                  //  fontSize: h(2),
-                  fontSize: sp(8)),
-            ),
-            Text(
-              shownItem.price.toString() + ' SR',
-              style: TextStyle(
-                  overflow: TextOverflow.fade,
-                  //  color: lgreen,
-                  //  fontSize: h(2),
-                  fontSize: sp(10)),
-            ),
-          ]),
+          Container(
+            width: w(50),
+            child: Column(children: [
+              Text(
+                shownItem.name,
+                style: TextStyle(
+                    overflow: TextOverflow.fade,
+                    //  color: lgreen,
+                    //  fontSize: h(2),
+                    fontSize: sp(8)),
+              ),
+              Text(
+                shownItem.price.toString() + ' SR',
+                style: TextStyle(
+                    overflow: TextOverflow.fade,
+                    //  color: lgreen,
+                    //  fontSize: h(2),
+                    fontSize: sp(10)),
+              ),
+            ]),
+          ),
           IconButton(
               onPressed: () {
                 cartController.delFromCart(shownItem.item);

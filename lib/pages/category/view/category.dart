@@ -1,3 +1,4 @@
+import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,8 @@ class _CategoryPageState extends State<CategoryPage> {
   //final SearchController searchController = Get.put(SearchController());
 
   final CategoryController categoryController = Get.put(CategoryController());
+  final CurrentUserController currentUserController =
+      Get.put(CurrentUserController());
   @override
   void initState() {
     super.initState();
@@ -46,7 +49,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(),
+      //appBar: AppBar(),
       body: Obx(() => RefreshIndicator(
             onRefresh: categoryController.getdatarefresh,
             child: Column(children: [
@@ -107,7 +110,18 @@ class _CategoryPageState extends State<CategoryPage> {
               //   ),
               // ]),
               SizedBox(
-                height: h(2),
+                height: h(10),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Hi ${currentUserController.currentUser.value.fullName}',
+                      style: TextStyle(
+                          fontSize: sp(12), overflow: TextOverflow.fade),
+                    ),
+                  ),
+                ),
               ),
               Expanded(
                 child: GridView.builder(

@@ -36,7 +36,7 @@ class CartItemModel {
         description: json["item__service__description"] ?? "",
         name: json["item__service__name"] ?? "",
         image: json["item__service__image"] ?? "",
-        price: json["item__price"] ?? "",
+        price: json["item__price"] ?? -1,
       );
 
   Map<String, dynamic> toJson() => {

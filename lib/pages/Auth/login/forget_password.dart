@@ -56,17 +56,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    "assets/images/mylogo.svg",
+                  Image.asset(
+                    "assets/images/hasr_logo.png",
                     width: sp(60),
                     height: sp(60),
+                    fit: BoxFit.cover,
                     //color: Colors.red,
                   ),
-                  SvgPicture.asset(
-                    "assets/images/sportive1.svg",
-                    width: sp(30),
-                    height: sp(30),
-                  ),
+
                   SizedBox(height: h(1)),
 
                   SizedBox(height: sp(10)),

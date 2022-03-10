@@ -1,3 +1,5 @@
+import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
+import 'package:elhasr/pages/Auth/register/register_page.dart';
 import 'package:elhasr/pages/detail/view/detail_page.dart';
 import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,8 @@ import '../model/subCategory_model.dart';
 //   String gender;
 final SubCategoryController subCategoryController =
     Get.put(SubCategoryController());
-
+final CurrentUserController currentUserController =
+    Get.put(CurrentUserController());
 final CartController cartController = Get.put(CartController());
 Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
   return GestureDetector(
@@ -41,7 +44,9 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey, borderRadius: BorderRadius.circular(15)),
+            border: Border.all(width: sp(2), color: Colors.black38),
+            color: Colors.grey[50],
+            borderRadius: BorderRadius.circular(15)),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -102,19 +107,25 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
                     //  fontSize: h(2),
                     fontSize: sp(10)),
               ),
-              Obx(() => IconButton(
-                  onPressed: () {
-                    cartController.cartIDList.contains(shownItem.service_id)
-                        ? cartController.delFromCart(shownItem.service_id)
-                        : cartController.addtoCart(shownItem.service_id);
-                  },
-                  icon: Icon(
-                    Icons.add_chart,
-                    color:
+              Obx(() => currentUserController.currentUser.value.id == -1
+                  ? IconButton(
+                      onPressed: () {
+                        Get.to(RegisterPage());
+                      },
+                      icon: Icon(Icons.login))
+                  : IconButton(
+                      onPressed: () {
                         cartController.cartIDList.contains(shownItem.service_id)
+                            ? cartController.delFromCart(shownItem.service_id)
+                            : cartController.addtoCart(shownItem.service_id);
+                      },
+                      icon: Icon(
+                        Icons.add_chart,
+                        color: cartController.cartIDList
+                                .contains(shownItem.service_id)
                             ? Colors.red
                             : Colors.white,
-                  )))
+                      )))
             ]),
           ],
         ),

@@ -53,21 +53,12 @@ class _SplashScreenState extends State<SplashScreen> {
       body: AnimatedSplashScreen.withScreenFunction(
         animationDuration: const Duration(seconds: 2),
 
-        splash: SizedBox(
-          height: h(50),
-          child: ListView(children: [
-            // "assets/images/logigif.gif",
-
-            Image.asset(
-              "assets/images/app_logo.jpg",
-              width: sp(120),
-              height: sp(120),
-              //color: Colors.red,
-            ),
-            // SvgPicture.asset("assets/images/mylogo.svg",
-            //     width: sp(80), height: sp(90)),
-            const Text('Elhasr'),
-          ]),
+        splash: Image.asset(
+          "assets/images/hasr_logo.png",
+          width: w(30),
+          height: h(30),
+          fit: BoxFit.cover,
+          //color: Colors.red,
         ),
         screenFunction: () async {
           // bool isOnline = await hasNetwork();

@@ -72,9 +72,10 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/app_logo.jpg",
-                  width: sp(80),
-                  height: sp(80),
+                  "assets/images/hasr_logo.png",
+                  width: w(50),
+                  height: h(20),
+                  fit: BoxFit.cover,
                   //color: Colors.red,
                 ),
                 // SvgPicture.asset(
@@ -241,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   TextButton(
                       onPressed: () {
-                        Get.to(() => PloicyPage());
+                        Get.to(() => RegisterPage());
                       },
                       child: Text('No_account_register'.tr,
                           style: TextStyle(fontSize: sp(10)))),

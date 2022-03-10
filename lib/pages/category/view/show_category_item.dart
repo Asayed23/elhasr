@@ -39,7 +39,7 @@ Widget showCategoryItem(CategoryModel shownItem, int _selecteditem) {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey, borderRadius: BorderRadius.circular(15)),
+            color: Colors.grey[300], borderRadius: BorderRadius.circular(15)),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -48,7 +48,7 @@ Widget showCategoryItem(CategoryModel shownItem, int _selecteditem) {
               width: w(22),
               height: h(12),
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: Colors.grey[100],
                 borderRadius: BorderRadius.circular(sp(8)),
                 border: Border.all(
                   color: Colors.grey.shade800,

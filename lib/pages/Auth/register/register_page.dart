@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    "assets/images/app_logo.jpg",
+                    "assets/images/hasr_logo.png",
                     width: sp(60),
                     height: sp(60),
                     //color: Colors.red,
@@ -110,9 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     //autofocus: false,
                     // Text Style
-                    style: TextStyle(
-                        fontSize: sp(10),
-                        color: Color.fromARGB(255, 180, 56, 56)),
+                    style: TextStyle(fontSize: sp(10), color: Colors.black),
                     // keyboardType: TextInputType.phone,
                     // inputFormatters: [
                     //   FilteringTextInputFormatter.allow(RegExp('[0-9.,+]+'))
@@ -161,9 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     //autofocus: false,
                     // Text Style
-                    style: TextStyle(
-                        fontSize: sp(10),
-                        color: Color.fromARGB(255, 180, 56, 56)),
+                    style: TextStyle(fontSize: sp(10), color: Colors.black),
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp('[0-9.,]'))
@@ -257,9 +253,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   /// Password
                   TextFormField(
-                    style: TextStyle(
-                        fontSize: sp(10),
-                        color: Color.fromARGB(255, 180, 56, 56)),
+                    style: TextStyle(fontSize: sp(10), color: Colors.black),
                     onSaved: (val) => _password = val!,
 
                     validator: (val) {
@@ -313,9 +307,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   /// Password
                   TextFormField(
-                    style: TextStyle(
-                        fontSize: sp(10),
-                        color: Color.fromARGB(255, 180, 56, 56)),
+                    style: TextStyle(fontSize: sp(10), color: Colors.black),
                     onSaved: (val) => registerController
                         .registeruserdata.value.password = val!,
 

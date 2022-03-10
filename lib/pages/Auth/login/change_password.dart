@@ -264,17 +264,13 @@ class _ChangePasswordState extends State<ChangePassword> {
                           style: TextStyle(fontSize: sp(10)))),
                 ]),
 
-                SvgPicture.asset(
-                  "assets/images/mylogo.svg",
-                  width: sp(60),
-                  height: sp(60),
-                  color: Colors.red,
+                Image.asset(
+                  "assets/images/hasr_logo.png",
+                  width: w(50),
+                  height: h(30),
+                  fit: BoxFit.cover,
                 ),
-                SvgPicture.asset(
-                  "assets/images/sportive1.svg",
-                  width: sp(30),
-                  height: sp(30),
-                ),
+
                 SizedBox(height: h(1)),
 
                 SizedBox(height: sp(10)),
