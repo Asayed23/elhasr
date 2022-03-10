@@ -97,7 +97,7 @@ class CartController extends GetxController {
             _listitems.add(_item);
             cartIDList.add(_item.item);
           });
-          mySnackbar('Thanks', 'added', true);
+          mySnackbar('Item', 'added', true);
         }
       } else {
         mySnackbar('Sorry', 'No List cant be updated', false);
@@ -127,38 +127,23 @@ class CartController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
-        // Read Cart
-        cart.value = CartModel.fromJson(response.data['cart']);
-        cart.value.cartItems =
-            fillCartItemFromjson(response.data['cart items']);
-        List<CartItemModel> _listitems = [];
-        cartIDList.value = [];
-        response.data['cart items'].forEach((_itemdata) {
-          final CartItemModel _item = CartItemModel.fromJson(_itemdata);
-          _listitems.add(_item);
-          cartIDList.add(_item.item);
-        });
-
-        cart.value.cartItems = _listitems;
-        mySnackbar('Thanks', 'removed', true);
-
+        getcartList();
+        // // Read Cart
         // cart.value = CartModel.fromJson(response.data['cart']);
-
         // cart.value.cartItems =
         //     fillCartItemFromjson(response.data['cart items']);
         // List<CartItemModel> _listitems = [];
+        // cartIDList.value = [];
         // response.data['cart items'].forEach((_itemdata) {
         //   final CartItemModel _item = CartItemModel.fromJson(_itemdata);
-
         //   _listitems.add(_item);
-        //   cartIDList.add(_item.id);
+        //   cartIDList.add(_item.item);
         // });
 
-        // if (_listitems.isNotEmpty) {
-        //   cart.value.cartItems = _listitems;
-        // }
+        // cart.value.cartItems = _listitems;
+        mySnackbar('Item', 'removed', true);
       } else {
-        mySnackbar('Sorry', 'No List cant be delete', false);
+        mySnackbar('Sorry', 'No item cannot deleted', false);
       }
     } finally {
       isLoading.value = false;

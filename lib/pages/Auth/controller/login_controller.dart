@@ -1,4 +1,5 @@
 import 'package:elhasr/pages/category/view/category.dart';
+import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
@@ -17,6 +18,7 @@ class LoginController extends GetxController {
   var password = "".obs;
   var isLoading = false.obs;
   final CurrentUserController userctrl = Get.put(CurrentUserController());
+  final CartController cartController = Get.put(CartController());
 
   @override
   void onInit() {
@@ -51,6 +53,7 @@ class LoginController extends GetxController {
         storeUserData(userctrl.currentUser.value,
             'user'); // save UserID, User name , Phone Num
         Get.offAll(CategoryPage());
+        cartController.getcartList();
 
         ///
         ///

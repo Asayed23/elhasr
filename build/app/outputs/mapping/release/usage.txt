@@ -1543,11 +1543,11 @@ com.google.common.reflect.Types$GenericArrayTypeImpl
 kotlinx.coroutines.flow.SharedFlowImpl$WhenMappings
 javax.annotation.WillClose
 com.google.common.collect.SortedMultisets$NavigableElementSet
+kotlinx.coroutines.flow.FlowKt__ZipKt$combineUnsafe$1$1
 com.google.firebase.messaging.ServiceStarter:
     public static void setForTesting(com.google.firebase.messaging.ServiceStarter)
     public static final int SUCCESS
     public static final int ERROR_UNKNOWN
-kotlinx.coroutines.flow.FlowKt__ZipKt$combineUnsafe$1$1
 kotlin.sequences.SubSequence
 com.google.android.gms.internal.firebase-auth-api.zzix:
     static void <clinit>()
@@ -11547,6 +11547,7 @@ com.google.common.util.concurrent.UncaughtExceptionHandlers
 kotlin.annotation.Target
 com.google.android.datatransport.runtime.time.TestClock
 kotlinx.coroutines.JobSupport$children$1
+kotlinx.coroutines.flow.FlowKt__ChannelsKt$WhenMappings
 kotlinx.coroutines.internal.LockFreeLinkedListNode$PrepareOp:
     public void <init>(kotlinx.coroutines.internal.LockFreeLinkedListNode,kotlinx.coroutines.internal.LockFreeLinkedListNode,kotlinx.coroutines.internal.LockFreeLinkedListNode$AbstractAtomicDesc)
     public kotlinx.coroutines.internal.AtomicOp getAtomicOp()
@@ -11554,7 +11555,6 @@ kotlinx.coroutines.internal.LockFreeLinkedListNode$PrepareOp:
     public java.lang.String toString()
     public final kotlinx.coroutines.internal.LockFreeLinkedListNode affected
     public final kotlinx.coroutines.internal.LockFreeLinkedListNode next
-kotlinx.coroutines.flow.FlowKt__ChannelsKt$WhenMappings
 com.google.common.collect.Sets$PowerSet$1
 com.google.android.gms.common.data.DataBufferIterator
 kotlin.coroutines.ContinuationInterceptor$DefaultImpls:
@@ -15470,5 +15470,5 @@ com.google.android.gms.internal.measurement.zzfq:
     static synthetic void zzd(com.google.android.gms.internal.measurement.zzfq,long)
 kotlin.KotlinVersion:
     public static final kotlin.KotlinVersion$Companion Companion
-io.flutter.plugin.platform.PlatformView$-CC
 io.flutter.plugin.common.BinaryMessenger$-CC
+io.flutter.plugin.platform.PlatformView$-CC

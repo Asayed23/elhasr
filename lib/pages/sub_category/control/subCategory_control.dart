@@ -77,7 +77,7 @@ class SubCategoryController extends GetxController {
           shownsubCatgeroy.add(SubCategoryModel.fromJson(dic));
         }
 
-        // print(shownCatgeroy);
+        print(shownsubCatgeroy.value);
         // print(shownCatgeroy);
         //);
 

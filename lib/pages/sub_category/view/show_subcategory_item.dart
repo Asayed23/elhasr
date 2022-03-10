@@ -124,7 +124,7 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
                         color: cartController.cartIDList
                                 .contains(shownItem.service_id)
                             ? Colors.red
-                            : Colors.white,
+                            : Colors.grey,
                       )))
             ]),
           ],

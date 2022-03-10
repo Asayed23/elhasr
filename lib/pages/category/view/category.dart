@@ -109,6 +109,7 @@ class _CategoryPageState extends State<CategoryPage> {
               //     ),
               //   ),
               // ]),
+              SizedBox(height: h(2)),
               SizedBox(
                 height: h(10),
                 child: Align(

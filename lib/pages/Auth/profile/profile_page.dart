@@ -2,12 +2,15 @@ import 'package:elhasr/pages/Auth/login/change_password.dart';
 import 'package:elhasr/pages/Auth/login/forget_password.dart';
 import 'package:elhasr/pages/category/view/category.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
+import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/size_config.dart';
 import '../../../core/theme.dart';
 import '../../common_widget/error_snackbar.dart';
+import '../../common_widget/mybottom_bar/bottom_bar_controller.dart';
+import '../../sub_category/model/cart_model.dart';
 import '../Model/users.dart';
 import '../controller/currentUser_controller.dart';
 import '../controller/sharedpref_function.dart';
@@ -21,6 +24,8 @@ class UserProfilePage extends StatefulWidget {
 
 final CurrentUserController currentUserController =
     Get.put(CurrentUserController());
+final CartController cartController = Get.put(CartController());
+final MyBottomBarCtrl myBottomBarCtrl = Get.put(MyBottomBarCtrl());
 
 class _UserProfilePageState extends State<UserProfilePage> {
   @override
@@ -123,6 +128,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   onTap: () async {
                     await removeUserData('user');
                     currentUserController.currentUser.value = User();
+                    cartController.cartIDList.value = [];
+                    cartController.cart = CartModel().obs;
+                    myBottomBarCtrl.selectedIndBottomBar.value = 0;
+
                     Get.to(CategoryPage());
                   })
               : Text('')),

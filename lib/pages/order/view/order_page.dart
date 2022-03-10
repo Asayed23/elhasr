@@ -51,9 +51,12 @@ class _OrderPageState extends State<OrderPage> {
                     ? Center(
                         child: Text(
                         'No_selected_items',
-                        style: TextStyle(fontSize: sp(20)),
+                        style: TextStyle(fontSize: sp(15)),
                       ))
                     : Column(children: [
+                        SizedBox(
+                          height: h(5),
+                        ),
                         SizedBox(
                             height: h(10),
                             child: Padding(
