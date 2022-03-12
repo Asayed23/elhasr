@@ -1,5 +1,6 @@
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
+import 'package:elhasr/pages/common_widget/simple_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -53,7 +54,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      //appBar: AppBar(),
+      appBar: simplAppbar(),
       body: Obx(() => RefreshIndicator(
             onRefresh: categoryController.getdatarefresh,
             child: Column(children: [
