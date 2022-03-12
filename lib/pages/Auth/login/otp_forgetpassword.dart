@@ -61,7 +61,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                       'Please Wait. Sending SMS..',
                   child: Center(
                       child: LoadingBouncingGrid.circle(
-                    backgroundColor: lgreen,
+                    backgroundColor: clickIconColor,
                   )))),
               SizedBox(height: h(8)),
 
@@ -134,7 +134,6 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                       // This Callback will execute when the Countdown Starts.
                       onStart: () {
                         // Here, do whatever you want
-                        print('Countdown Started');
                       },
 
                       // This Callback will execute when the Countdown Ends.
@@ -143,7 +142,6 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                         setState(() {
                           _showotpButton = true;
                         });
-                        print('Countdown Ended');
                       },
                     ),
                   ))),
@@ -155,7 +153,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text('Enter Code'),
+                          const Text('enter_otp'),
                           _showotpButton
                               ? ArgonTimerButton(
                                   height: 50,
@@ -174,7 +172,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                                   },
                                   // initialTimer: 10,
                                   child: Text(
-                                    "Resend OTP",
+                                    "resend_otp",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: sp(10),
@@ -231,7 +229,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                                   forgerPassController.resetPassword.value,
                                   phoneController.usernum.value);
                             } else {
-                              Get.snackbar("Invalid", 'user error');
+                              Get.snackbar("Invalid", 'user_error');
                             }
                           }
                           //  print(value);

@@ -1,3 +1,4 @@
+import 'package:elhasr/core/theme.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -78,12 +79,6 @@ class _LoginPageState extends State<LoginPage> {
                   fit: BoxFit.cover,
                   //color: Colors.red,
                 ),
-                // SvgPicture.asset(
-                //   "assets/images/sportive1.svg",
-                //   width: sp(50),
-                //   height: sp(50),
-                // ),
-                // SizedBox(height: h(1)),
 
                 SizedBox(height: sp(10)),
 
@@ -105,39 +100,6 @@ class _LoginPageState extends State<LoginPage> {
                     // print(phone.completeNumber);
                   },
                 ),
-                // InternationalPhoneNumberInput(
-                //   hintText: "Phone_Number".tr,
-                //   onInputChanged: (PhoneNumber number) {
-                //     print(number.phoneNumber);
-                //     print(number.isoCode);
-                //     loginController.phone.value =
-                //         number.phoneNumber.toString();
-                //   },
-                //   onInputValidated: (bool value) {
-                //     print(value);
-                //   },
-                //   selectorConfig: SelectorConfig(
-                //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                //     showFlags: true,
-                //     useEmoji: false,
-                //     setSelectorButtonAsPrefixIcon: false,
-                //   ),
-                //   ignoreBlank: false,
-                //   textStyle: TextStyle(fontSize: sp(10)),
-                //   autoValidateMode: AutovalidateMode.disabled,
-                //   selectorTextStyle: TextStyle(fontSize: sp(10)),
-                //   initialValue: number,
-                //   textFieldController: controller,
-                //   formatInput: false,
-                //   keyboardType: TextInputType.numberWithOptions(
-                //       signed: true, decimal: true),
-                //   inputBorder: OutlineInputBorder(),
-                //   onSaved: (PhoneNumber number) {
-                //     print('On Saved: $number');
-                //     loginController.phone.value =
-                //         number.phoneNumber.toString();
-                //   },
-                // ),
 
                 SizedBox(height: sp(10)),
 
@@ -210,10 +172,10 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: sp(12)),
                 Obx(() => loginController.isLoading.isTrue
                     ? LoadingFlipping.circle(
-                        borderColor: lgreen,
+                        borderColor: clickIconColor,
                         borderSize: 3.0,
                         size: sp(20),
-                        backgroundColor: Color(0xff112A04),
+                        // backgroundColor: Color(0xff112A04),
                         duration: Duration(milliseconds: 500),
                       )
                     : Container(

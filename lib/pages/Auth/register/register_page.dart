@@ -1,7 +1,7 @@
+import 'package:elhasr/core/theme.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -15,7 +15,6 @@ import 'package:elhasr/pages/Auth/controller/phone_controller.dart';
 import 'package:elhasr/pages/Auth/controller/register_controller.dart';
 import 'package:elhasr/pages/Auth/login/login_page.dart';
 import 'package:elhasr/pages/Auth/register/otp_dialogue.dart';
-import 'package:elhasr/pages/Auth/register/phone_handler.dart';
 import 'package:elhasr/translation/translate_ctrl.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
@@ -150,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       if (value == null ||
                           value.isEmpty ||
                           int.parse(value) < 80) {
-                        return 'Less Size is 100 m'.tr;
+                        return 'less_size_100'.tr;
                       }
                       return null;
                     },
@@ -172,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const FaIcon(FontAwesomeIcons.rulerVertical),
                       ),
                       border: InputBorder.none,
-                      hintText: 'Enter Size in metere'.tr,
+                      hintText: 'enter_size'.tr,
                       filled: false,
                       fillColor: lblue,
                       contentPadding: const EdgeInsets.only(
@@ -191,40 +190,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   SizedBox(height: sp(10)),
 
-                  ///=======================================================================
-                  ///==================== Phone Number ========================================
-                  ///=======================================================================
-                  // InternationalPhoneNumberInput(
-                  //   onInputChanged: (PhoneNumber number) {
-                  //     print(number.phoneNumber);
-                  //     print(number.isoCode);
-                  //     registerController.registeruserdata.value.phoneNumber = number.phoneNumber.toString();
-                  //   },
-                  //   onInputValidated: (bool value) {
-                  //     print(value);
-                  //   },
-                  //   selectorConfig: SelectorConfig(
-                  //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                  //     showFlags: true,
-                  //     useEmoji: false,
-                  //     setSelectorButtonAsPrefixIcon: false,
-                  //   ),
-                  //   ignoreBlank: false,
-                  //   autoValidateMode: AutovalidateMode.disabled,
-                  //   selectorTextStyle: TextStyle(fontSize: sp(10)),
-                  //   textStyle: TextStyle(fontSize: sp(10)),
-                  //   initialValue: number,
-                  //   textFieldController: controller,
-                  //   formatInput: false,
-                  //   keyboardType: TextInputType.numberWithOptions(
-                  //       signed: true, decimal: true),
-                  //   inputBorder: OutlineInputBorder(),
-                  //   onSaved: (PhoneNumber number) {
-                  //     print('On Saved: $number');
-                  //     registerController.registeruserdata.value.phoneNumber = number.phoneNumber.toString();
-                  //   },
-                  // ),
-
                   IntlPhoneField(
                     decoration: InputDecoration(
                       labelText: 'Phone_Number'.tr,
@@ -241,11 +206,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
 
                   SizedBox(height: sp(10)),
-
-                  ///=======================================================================
-                  ///==================== Email/ SocialLink ========================================
-                  ///=======================================================================
-                  // Name
 
                   ///=======================================================================
                   ///==================== Password ========================================
@@ -357,10 +317,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: sp(12)),
                   Obx(() => registerController.isLoading.isTrue
                       ? LoadingFlipping.circle(
-                          borderColor: lgreen,
+                          borderColor: clickIconColor,
                           borderSize: 3.0,
                           size: sp(40),
-                          backgroundColor: const Color(0xff112A04),
+                          //backgroundColor: const Color(0xff112A04),
                           duration: const Duration(milliseconds: 500),
                         )
                       : SizedBox(
@@ -393,89 +353,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                         .registeruserdata.value.phoneNumber);
                                 await SmsAutoFill().listenForCode;
                                 Get.to(const OtpDialogue());
-
-                                // =======================
-                                /// check OTP===================
-                                // =======================
-
-                                // Get.defaultDialog(
-                                //   barrierDismissible: false,
-                                //   onCancel: () {},
-                                //   title: "OTP_Check",
-                                //   content: Form(
-                                //     key: _formKeyotp,
-                                //     child: Column(
-                                //       children: [
-                                //         TextFormField(
-                                //             validator: (value) {
-                                //               if (value == null ||
-                                //                   value.isEmpty ||
-                                //                   value.length < 2) {
-                                //                 return 'Enter_OTP'.tr;
-                                //               }
-                                //               return null;
-                                //             },
-                                //             onSaved: (val) => phoneController
-                                //                 .userotp.value = val!,
-                                //             decoration: InputDecoration(
-                                //               prefixIcon: const Icon(
-                                //                 Icons.sms,
-                                //                 //color: Colors.white,
-                                //               ),
-                                //               border: InputBorder.none,
-                                //               hintText: 'Enter_OTP'.tr,
-                                //             )),
-                                //         Obx(() => (phoneController
-                                //                     .authStatus.value) !=
-                                //                 'OTP_Sent'
-                                //             ? Text(phoneController
-                                //                 .authStatus.value)
-                                //             : ElevatedButton(
-                                //                 child: Text(
-                                //                   'OTP_Check'.tr,
-                                //                 ),
-                                //                 onPressed: () async {
-                                //                   Navigator.of(context).pop();
-
-                                //                   final form2 =
-                                //                       _formKeyotp.currentState;
-                                //                   if (form2!.validate()) {
-                                //                     form2.save();
-                                //                     // phoneController.verifyPhone("+201022645564");
-
-                                //                     var otpcorrect =
-                                //                         await phoneController
-                                //                             .otpVerify(
-                                //                                 phoneController
-                                //                                     .userotp
-                                //                                     .value);
-
-                                //                     if (otpcorrect) {
-                                //                       phoneController
-                                //                           .otpcorrect(false);
-                                //                       await registerController
-                                //                           .registeruser();
-                                //                     } else {
-                                //                       Get.snackbar("Invalid",
-                                //                           'user error');
-                                //                     }
-                                //                   }
-                                //                 },
-                                //               )),
-                                //       ],
-                                //     ),
-                                //   ),
-                                // );
-                                // =======================
-                                // / Save User in DB===================
-                                // =======================
-
-                                // if (otpcorrect) {
-                                //   phoneController.otpcorrect(false);
-                                //   await registerController
-                                //       .registeruser(registerController.registeruserdata.value);
-                                // }
-
                               }
                             },
                           ),

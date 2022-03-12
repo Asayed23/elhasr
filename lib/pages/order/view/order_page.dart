@@ -4,9 +4,12 @@ import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animations/loading_animations.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 import '../../../core/size_config.dart';
 import '../../sub_category/control/subCategory_control.dart';
+import '../control/send_data_whatsapp.dart';
 import 'order_cart_item.dart';
 
 class OrderPage extends StatefulWidget {
@@ -19,7 +22,7 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   final scrollController = ScrollController();
   //final SearchController searchController = Get.put(SearchController());
-
+  String _number = "+201022645564";
   final CartController cartController = Get.put(CartController());
   @override
   void initState() {
@@ -62,7 +65,11 @@ class _OrderPageState extends State<OrderPage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: ElevatedButton(
-                                  onPressed: () {}, child: Text('Submit')),
+                                  onPressed: () async {
+                                    await launch(
+                                        "https://wa.me/${_number}?text=Please go processed with my order number *xxxx*");
+                                  },
+                                  child: const Text('Submit')),
                             )),
                         Expanded(
                           child: ListView.builder(

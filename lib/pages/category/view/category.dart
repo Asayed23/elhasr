@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/size_config.dart';
+import '../../common_widget/mybottom_bar/bottom_bar_controller.dart';
 import '../control/category_controller.dart';
 import 'show_category_item.dart';
 
@@ -21,6 +22,8 @@ class _CategoryPageState extends State<CategoryPage> {
   final CategoryController categoryController = Get.put(CategoryController());
   final CurrentUserController currentUserController =
       Get.put(CurrentUserController());
+  final MyBottomBarCtrl myBottomBarCtrl = Get.put(MyBottomBarCtrl());
+
   @override
   void initState() {
     super.initState();
@@ -43,6 +46,7 @@ class _CategoryPageState extends State<CategoryPage> {
   void dispose() {
     scrollController.dispose();
     super.dispose();
+    myBottomBarCtrl.selectedIndBottomBar.value = 0;
   }
 
   @override

@@ -3,6 +3,7 @@ import 'package:elhasr/pages/Auth/login/forget_password.dart';
 import 'package:elhasr/pages/category/view/category.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
+import 'package:elhasr/translation/translation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -114,7 +115,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 color: clickIconColor,
               ),
               title: Text('Change Language'),
-              onTap: () async {}),
+              onTap: () async {
+                Get.to(TrnaslationPage());
+              }),
 
           ///
           ///

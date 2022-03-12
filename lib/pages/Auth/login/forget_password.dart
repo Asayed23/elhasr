@@ -1,6 +1,5 @@
+import 'package:elhasr/core/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -82,39 +81,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     initialCountryCode: 'SA',
                     onChanged: (phone) {
                       _user.phoneNumber = phone.completeNumber.toString();
-                      print(phone.completeNumber);
                     },
                   ),
-                  // InternationalPhoneNumberInput(
-                  //   onInputChanged: (PhoneNumber number) {
-                  //     print(number.phoneNumber);
-                  //     print(number.isoCode);
-                  //     _user.phoneNumber = number.phoneNumber.toString();
-                  //   },
-                  //   onInputValidated: (bool value) {
-                  //     print(value);
-                  //   },
-                  //   selectorConfig: SelectorConfig(
-                  //     selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                  //     showFlags: true,
-                  //     useEmoji: false,
-                  //     setSelectorButtonAsPrefixIcon: false,
-                  //   ),
-                  //   ignoreBlank: false,
-                  //   autoValidateMode: AutovalidateMode.disabled,
-                  //   selectorTextStyle: TextStyle(fontSize: sp(10)),
-                  //   textStyle: TextStyle(fontSize: sp(10)),
-                  //   initialValue: number,
-                  //   textFieldController: controller,
-                  //   formatInput: false,
-                  //   keyboardType: TextInputType.numberWithOptions(
-                  //       signed: true, decimal: true),
-                  //   inputBorder: OutlineInputBorder(),
-                  //   onSaved: (PhoneNumber number) {
-                  //     print('On Saved: $number');
-                  //     _user.phoneNumber = number.phoneNumber.toString();
-                  //   },
-                  // ),
 
                   SizedBox(height: sp(10)),
 
@@ -139,7 +107,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'New_password'.tr,
+                      hintText: 'new_password'.tr,
                       filled: false,
                       fillColor: lblue,
                       prefixIcon: Icon(
@@ -190,7 +158,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'reEnter_New_password'.tr,
+                      hintText: 're_enter_new_password'.tr,
                       filled: false,
                       fillColor: lblue,
                       prefixIcon: Icon(
@@ -212,7 +180,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       contentPadding: const EdgeInsets.only(
                           left: 14.0, bottom: 6.0, top: 8.0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: lgreen),
+                        //borderSide: BorderSide(color: lgreen),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -221,43 +189,17 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       ),
                     ),
                   ),
-////////
-                  ///
-                  ///
-                  // AnimatedButton(
-                  //   text: 'Info Dialog fixed width and sqare buttons',
-                  //   pressEvent: () {
-                  //     AwesomeDialog(
-                  //       context: context,
-                  //       dialogType: DialogType.INFO_REVERSED,
-                  //       borderSide: BorderSide(color: Colors.green, width: 2),
-                  //       width: 280,
-                  //       buttonsBorderRadius:
-                  //           BorderRadius.all(Radius.circular(2)),
-                  //       headerAnimationLoop: false,
-                  //       animType: AnimType.BOTTOMSLIDE,
-                  //       title: 'INFO',
-                  //       desc: 'Dialog description here...',
-                  //       showCloseIcon: true,
-                  //       btnCancelOnPress: () {},
-                  //       btnOkOnPress: () {},
-                  //     )..show();
-                  //   },
-                  // ),
 
-                  ///=======================================================================
-                  ///==================== Register button========================================
-                  ///=======================================================================
                   ///=======================================================================
                   ///==================== Register button========================================
                   ///=======================================================================
                   SizedBox(height: sp(12)),
                   Obx(() => registerController.isLoading.isTrue
                       ? LoadingFlipping.circle(
-                          borderColor: lgreen,
+                          borderColor: clickIconColor,
                           borderSize: 3.0,
                           size: sp(40),
-                          backgroundColor: Color(0xff112A04),
+                          //backgroundColor: Color(0xff112A04),
                           duration: Duration(milliseconds: 500),
                         )
                       : Container(
@@ -265,7 +207,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           child:
                               // our local Elvated Button (text , color , onpress:(){})
                               ElevatedButton(
-                            child: Text('Change_password'.tr,
+                            child: Text('change_password'.tr,
                                 style: TextStyle(fontSize: sp(20))),
                             onPressed: () async {
                               ///=====================
@@ -288,91 +230,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     .verifyPhone(_user.phoneNumber);
 
                                 Get.to(OtpForgetPassPage());
-                                // =======================
-                                /// check OTP===================
-                                // =======================
-
-                                // Get.defaultDialog(
-                                //   barrierDismissible: false,
-                                //   onCancel: () {},
-                                //   title: "code_check",
-                                //   content: Form(
-                                //     key: _formKeyotp,
-                                //     child: Column(
-                                //       children: [
-                                //         TextFormField(
-                                //             validator: (value) {
-                                //               if (value == null ||
-                                //                   value.isEmpty ||
-                                //                   value.length < 1) {
-                                //                 return 'Enter_OTP'.tr;
-                                //               }
-                                //               return null;
-                                //             },
-                                //             onSaved: (val) => phoneController
-                                //                 .userotp.value = val!,
-                                //             decoration: InputDecoration(
-                                //               prefixIcon: Icon(
-                                //                 Icons.sms,
-                                //                 //color: Colors.white,
-                                //               ),
-                                //               border: InputBorder.none,
-                                //               hintText: 'Enter_OTP'.tr,
-                                //             )),
-                                //         Obx(() => (phoneController
-                                //                     .authStatus.value) !=
-                                //                 'OTP_Sent'
-                                //             ? Text(phoneController
-                                //                 .authStatus.value)
-                                //             : ElevatedButton(
-                                //                 child: Text(
-                                //                   'code_check'.tr,
-                                //                 ),
-                                //                 onPressed: () async {
-                                //                   Navigator.of(context).pop();
-
-                                //                   final form2 =
-                                //                       _formKeyotp.currentState;
-                                //                   if (form2!.validate()) {
-                                //                     form2.save();
-                                //                     // phoneController.verifyPhone("+201022645564");
-                                //                     var otpcorrect =
-                                //                         await phoneController
-                                //                             .otpVerify(
-                                //                                 phoneController
-                                //                                     .userotp
-                                //                                     .value);
-
-                                //                     if (otpcorrect) {
-                                //                       phoneController
-                                //                           .otpcorrect(false);
-                                //                       await forgerPassController
-                                //                           .resetpassword(
-                                //                               _password,
-                                //                               phoneController
-                                //                                   .usernum
-                                //                                   .value);
-                                //                     } else {
-                                //                       Get.snackbar("Invalid",
-                                //                           'user error');
-                                //                     }
-                                //                   }
-                                //                 },
-                                //               )),
-                                //       ],
-                                //     ),
-                                //   ),
-                                // );
-                                // =======================
-                                /// Save User in DB===================
-                                // =======================
-
-                                // if (otpcorrect) {
-                                //   phoneController.otpcorrect(false);
-                                //   await registerController
-                                //       .registeruser(_user);
-                                // }
-
                               }
                             },
                           ),

@@ -1,16 +1,14 @@
 import 'package:elhasr/pages/category/view/category.dart';
 import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
-import 'package:intl/intl.dart';
 import 'package:elhasr/core/db_links/db_links.dart';
 import 'package:elhasr/pages/Auth/Model/users.dart';
-import 'package:elhasr/pages/Auth/controller/profileIdStoring.dart';
 
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/common_widget/error_snackbar.dart';
 
+import '../../common_widget/mybottom_bar/bottom_bar_controller.dart';
 import 'sharedpref_function.dart';
 
 class LoginController extends GetxController {
@@ -19,6 +17,7 @@ class LoginController extends GetxController {
   var isLoading = false.obs;
   final CurrentUserController userctrl = Get.put(CurrentUserController());
   final CartController cartController = Get.put(CartController());
+  final MyBottomBarCtrl myBottomBarCtrl = Get.put(MyBottomBarCtrl());
 
   @override
   void onInit() {
@@ -52,33 +51,14 @@ class LoginController extends GetxController {
 
         storeUserData(userctrl.currentUser.value,
             'user'); // save UserID, User name , Phone Num
+
+        myBottomBarCtrl.selectedIndBottomBar.value = 0;
         Get.offAll(CategoryPage());
+
+        // to read all cart data ( can be removed in other apps)
         cartController.getcartList();
-
-        ///
-        ///
-        ///
-        // Remove it later
-        ///
-        ///
-        ///
-        ///
-        // userctrl.currentUser.value.membership = "Gold";
-        // userctrl.currentUser.value.memberShipExpireDate =
-        //     DateFormat('yyyy-MM-dd')
-        //         .format(DateTime.now().add(Duration(days: 30)));
-        //getprofileID(_regiuser);
-
-        // storeUserData(userctrl.currentUser.value, 'user');
-
-        // Get.snackbar('Thanks'.tr, 'Login_Successfuly'.tr,
-        //     snackPosition: SnackPosition.BOTTOM,
-        //     backgroundColor: Colors.greenAccent);
-        // _redirectUser();
-
-        //Get.to(()=>SearchPage(), arguments: _regiuser.playerId);
       } else {
-        mySnackbar('Failed'.tr, 'phone_password_not'.tr, false);
+        mySnackbar('failed'.tr, 'phone_password_not'.tr, false);
       }
     } finally {
       isLoading.value = false;

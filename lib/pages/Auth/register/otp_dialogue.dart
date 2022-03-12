@@ -1,6 +1,7 @@
 import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:elhasr/core/theme.dart';
+import 'package:elhasr/translation/translate_ctrl.dart';
 
 import 'package:elhasr/pages/common_widget/error_snackbar.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +153,7 @@ class _OtpDialogueState extends State<OtpDialogue> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text('Enter Code'),
+                          Text('enter_otp'.tr),
                           _showotpButton
                               ? ArgonTimerButton(
                                   height: 50,
@@ -172,7 +173,7 @@ class _OtpDialogueState extends State<OtpDialogue> {
                                   },
                                   // initialTimer: 10,
                                   child: Text(
-                                    "Resend OTP",
+                                    "resend_otp".tr,
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: sp(10),
