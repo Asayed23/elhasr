@@ -115,20 +115,20 @@ class _CategoryPageState extends State<CategoryPage> {
               //   ),
               // ]),
               SizedBox(height: h(2)),
-              SizedBox(
-                height: h(10),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Hi ${currentUserController.currentUser.value.fullName}',
-                      style: TextStyle(
-                          fontSize: sp(12), overflow: TextOverflow.fade),
-                    ),
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   height: h(10),
+              //   child: Align(
+              //     alignment: Alignment.centerLeft,
+              //     child: Padding(
+              //       padding: const EdgeInsets.all(8.0),
+              //       child: Text(
+              //         'Hi ${currentUserController.currentUser.value.fullName}',
+              //         style: TextStyle(
+              //             fontSize: sp(12), overflow: TextOverflow.fade),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Expanded(
                 child: GridView.builder(
                     controller: scrollController,
