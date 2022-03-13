@@ -68,7 +68,7 @@ const String dburl = "http://elhasrapp.pythonanywhere.com/services";
 const String dbImageurl = "http://elhasrapp.pythonanywhere.com";
 
 const String categoryUrl = "$dburl/category/list/";
-const String phoneCheckUrl = "$dburl/api/numbercheck/";
+const String phoneCheckUrl = "$dbImageurl/api/numbercheck/";
 
 const String subcategoryUrl = "$dburl/category/details/";
 

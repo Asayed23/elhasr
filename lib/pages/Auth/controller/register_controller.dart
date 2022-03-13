@@ -104,11 +104,14 @@ class RegisterController extends GetxController {
 
       if (response.statusCode == 200) {
         //final responseData = json.decode(response.data);
-        if (response.data['Data'] == "phone number not exist") {
+        print(response.data['Date']);
+        if (response.data['Date'] == "phone number not exist") {
           phoneExist.value = false;
           var resp = await phoneController.verifyPhone(_number);
           await SmsAutoFill().listenForCode;
           Get.to(const OtpDialogue());
+        } else {
+          mySnackbar("Failed".tr, "invalid_num_or_already_exist".tr, "Error");
         }
       } else {
         mySnackbar("Failed".tr, "invalid_num_or_already_exist".tr, "Error");

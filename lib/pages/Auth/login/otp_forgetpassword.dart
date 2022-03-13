@@ -241,7 +241,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
               Obx(() => (phoneController.authStatus.value) != 'OTP_Sent'
                   ? Center(
                       child: Text(phoneController.authStatus.value,
-                          style: TextStyle(fontSize: sp(12), color: lgreen)))
+                          style: TextStyle(fontSize: sp(12))))
                   : Text('')),
 
               ///=======================================================================

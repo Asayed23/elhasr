@@ -1,4 +1,5 @@
 import 'package:elhasr/pages/Auth/controller/phone_controller.dart';
+import 'package:elhasr/pages/category/view/category.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
@@ -55,7 +56,7 @@ class ForgerPassController extends GetxController {
             backgroundColor: Colors.greenAccent);
         // _redirectUser();
 
-        Get.to(() => HomePage());
+        Get.to(() => CategoryPage());
       } else {
         _failmessage(response);
       }
@@ -130,7 +131,7 @@ class ForgerPassController extends GetxController {
 
       if (response.statusCode == 200) {
         //final responseData = json.decode(response.data);
-        if (response.data['Data'] == "phone number exist") {
+        if (response.data['Date'] == "phone number exist") {
           var resp = await phoneController.verifyPhone(_number);
 
           Get.to(OtpForgetPassPage());

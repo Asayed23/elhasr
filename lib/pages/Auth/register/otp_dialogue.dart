@@ -41,7 +41,7 @@ class _OtpDialogueState extends State<OtpDialogue> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: simplAppbar(true),
       // backgroundColor: Colors.transparent,
       body: Center(
         child: Form(
@@ -59,7 +59,7 @@ class _OtpDialogueState extends State<OtpDialogue> {
                       'Please Wait. Sending SMS..',
                   child: Center(
                       child: LoadingBouncingGrid.circle(
-                    backgroundColor: lgreen,
+                    backgroundColor: clickIconColor,
                   )))),
               SizedBox(height: h(8)),
 
@@ -308,7 +308,7 @@ class _OtpDialogueState extends State<OtpDialogue> {
               Obx(() => (phoneController.authStatus.value) != 'OTP_Sent'
                   ? Center(
                       child: Text(phoneController.authStatus.value,
-                          style: TextStyle(fontSize: sp(12), color: lgreen)))
+                          style: TextStyle(fontSize: sp(12))))
                   : Text('')),
 
               ///=======================================================================
