@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/techiecube/elhasr/BuildConfig.java
+ com.techiecube.elhasr.BuildConfig

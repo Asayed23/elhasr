@@ -25,7 +25,7 @@ mybottomBarWidget() {
         items: [
           TabItem(
             icon: Icon(Icons.home),
-            title: 'Home',
+            title: 'Home'.tr,
           ),
 
           TabItem(
@@ -39,12 +39,12 @@ mybottomBarWidget() {
                 Icon(Icons.remove_from_queue),
 
             //  ),
-            title: 'Requst',
+            title: 'Request'.tr,
           ),
 
           TabItem(
             icon: Icon(Icons.settings),
-            title: 'Profile',
+            title: 'Profile'.tr,
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.chat),

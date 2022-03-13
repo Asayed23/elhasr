@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:elhasr/core/size_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-simplAppbar() {
+simplAppbar(bool showbackbutton) {
   return AppBar(
+    automaticallyImplyLeading: showbackbutton,
+
+    iconTheme: IconThemeData(
+      color: Colors.black, //change your color here
+    ),
     backgroundColor: backgroundColor, // 1
     //elevation: 0, // 2
     title: Image.asset(

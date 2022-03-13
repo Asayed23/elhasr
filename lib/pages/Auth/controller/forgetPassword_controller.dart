@@ -1,3 +1,4 @@
+import 'package:elhasr/pages/Auth/controller/phone_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
@@ -6,6 +7,10 @@ import 'package:elhasr/core/db_links/db_links.dart';
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/Auth/login/login_page.dart';
 import 'package:elhasr/pages/home_page/view/home_page.dart';
+import 'package:sms_autofill/sms_autofill.dart';
+
+import '../../common_widget/error_snackbar.dart';
+import '../login/otp_forgetpassword.dart';
 
 class ForgerPassController extends GetxController {
   var newPassword = "".obs;
@@ -15,7 +20,7 @@ class ForgerPassController extends GetxController {
   String _token = '';
   final CurrentUserController currentUserController =
       Get.put(CurrentUserController());
-
+  final PhoneController phoneController = Get.put(PhoneController());
   @override
   void onInit() {
     super.onInit();
@@ -95,6 +100,43 @@ class ForgerPassController extends GetxController {
         Get.to(() => LoginPage());
       } else {
         _failmessage(response);
+      }
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future chdeck_number(String _number) async {
+    // var f = _loadUserData('user');
+    // print(f);
+
+    try {
+      isLoading(true);
+      var dio = Dio(); // DIO is library to deal with APIs
+
+      var response = await dio.post(
+        phoneCheckUrl,
+        data: {
+          'phoneNumber': _number,
+        },
+        options: Options(
+          followRedirects: false,
+          validateStatus: (status) {
+            return status! < 505;
+          },
+          //headers: {},
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        //final responseData = json.decode(response.data);
+        if (response.data['Data'] == "phone number exist") {
+          var resp = await phoneController.verifyPhone(_number);
+
+          Get.to(OtpForgetPassPage());
+        }
+      } else {
+        mySnackbar("Failed".tr, "invalid_num_or_already_exist".tr, "Error");
       }
     } finally {
       isLoading.value = false;

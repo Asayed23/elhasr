@@ -1,4 +1,5 @@
 import 'package:elhasr/core/theme.dart';
+import 'package:elhasr/pages/common_widget/error_snackbar.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
       Get.put(CurrentUserController());
   final _formKey = GlobalKey<FormState>();
   final _formKeyotp = GlobalKey<FormState>();
-  bool _isobscureText = true;
+  bool _isobscureText1 = true, _isobscureText2 = true;
 
   String _password = "";
   final TextEditingController controller = TextEditingController();
@@ -45,8 +46,6 @@ class _RegisterPageState extends State<RegisterPage> {
       currentUserController.currentUser.value.accountToken = mytoken!;
       mytoken = mytoken;
     });
-    print('==================================');
-    print(currentUserController.currentUser.value.accountToken);
   }
 
   @override
@@ -168,7 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: InputDecoration(
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: const FaIcon(FontAwesomeIcons.rulerVertical),
+                        child: const FaIcon(FontAwesomeIcons.houseUser),
                       ),
                       border: InputBorder.none,
                       hintText: 'enter_size'.tr,
@@ -201,7 +200,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     onChanged: (phone) {
                       registerController.registeruserdata.value.phoneNumber =
                           phone.completeNumber.toString();
-                      print(phone.completeNumber);
                     },
                   ),
 
@@ -223,7 +221,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               _password = val;
                             });
                     },
-                    obscureText: _isobscureText, // to show stars for password
+                    obscureText: _isobscureText1, // to show stars for password
                     autofocus: false,
 
                     decoration: InputDecoration(
@@ -238,11 +236,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              _isobscureText = !_isobscureText;
+                              _isobscureText1 = !_isobscureText1;
                             });
                           },
                           icon: Icon(
-                            _isobscureText
+                            _isobscureText1
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             //   color: Colors.white60,
@@ -274,7 +272,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (val) => val!.length < 2 || val != _password
                         ? 'password_are_not_matching'.tr
                         : null,
-                    obscureText: _isobscureText, // to show stars for password
+                    obscureText: _isobscureText2, // to show stars for password
                     autofocus: false,
 
                     decoration: InputDecoration(
@@ -289,11 +287,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              _isobscureText = !_isobscureText;
+                              _isobscureText2 = !_isobscureText2;
                             });
                           },
                           icon: Icon(
-                            _isobscureText
+                            _isobscureText2
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             // color: Colors.white60,
@@ -328,34 +326,43 @@ class _RegisterPageState extends State<RegisterPage> {
                           child:
                               // our local Elvated Button (text , color , onpress:(){})
                               ElevatedButton(
-                            child: Text('Sign_up'.tr,
-                                style: TextStyle(fontSize: sp(20))),
-                            onPressed: () async {
-                              ///=====================
-                              /// OTP Check ===================
-                              // =======================
+                                  child: Text('Sign_up'.tr,
+                                      style: TextStyle(fontSize: sp(20))),
+                                  onPressed: () async {
+                                    ///=====================
+                                    /// OTP Check ===================
+                                    // =======================
 
-                              final form = _formKey.currentState;
-                              if (form!.validate()) {
-                                form.save();
-                                // await registerController.registeruser();
-                                // Get.to(() => PhoneSMSHandler());
+                                    final form = _formKey.currentState;
+                                    if (form!.validate()) {
+                                      form.save();
+                                      // await registerController.registeruser();
+                                      // Get.to(() => PhoneSMSHandler());
 
-                                // =======================
-                                /// check Phonenumber and send OTP===================
-                                // =======================
+                                      // =======================
+                                      /// check Phonenumber and send OTP===================
+                                      // =======================
 
-                                // phoneController.usernum.value =
-                                //     registerController
-                                //         .registeruserdata.value.phoneNumber;
-                                var resp = await phoneController.verifyPhone(
-                                    registerController
-                                        .registeruserdata.value.phoneNumber);
-                                await SmsAutoFill().listenForCode;
-                                Get.to(const OtpDialogue());
-                              }
-                            },
-                          ),
+                                      // phoneController.usernum.value =
+                                      //     registerController
+                                      //         .registeruserdata.value.phoneNumber;
+
+                                      registerController.chdeck_number(
+                                          registerController.registeruserdata
+                                              .value.phoneNumber);
+
+                                      // var resp = await phoneController.verifyPhone(
+                                      //     registerController
+                                      //         .registeruserdata.value.phoneNumber);
+                                      // await SmsAutoFill().listenForCode;
+                                      // Get.to(const OtpDialogue());
+                                    } else {
+                                      mySnackbar(
+                                          'Invalid'.tr,
+                                          'invalid phone or already Exist',
+                                          false);
+                                    }
+                                  }),
                         )),
                   SizedBox(height: sp(5)),
 

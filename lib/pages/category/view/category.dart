@@ -54,7 +54,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: simplAppbar(),
+      appBar: simplAppbar(false),
       body: Obx(() => RefreshIndicator(
             onRefresh: categoryController.getdatarefresh,
             child: Column(children: [

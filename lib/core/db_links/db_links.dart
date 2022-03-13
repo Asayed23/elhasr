@@ -4,6 +4,7 @@ const String db_url = "http://elhasrapp.pythonanywhere.com/";
 
 const String login_url = "${db_url1}login/";
 const String register_url = "${db_url1}register/";
+
 const String accountdetails_url = "${db_url1}accountdetails/";
 
 const String video_url = "${db_url1}uploadvideo/";
@@ -67,6 +68,7 @@ const String dburl = "http://elhasrapp.pythonanywhere.com/services";
 const String dbImageurl = "http://elhasrapp.pythonanywhere.com";
 
 const String categoryUrl = "$dburl/category/list/";
+const String phoneCheckUrl = "$dburl/api/numbercheck/";
 
 const String subcategoryUrl = "$dburl/category/details/";
 

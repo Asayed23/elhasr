@@ -43,7 +43,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: simplAppbar(),
+      appBar: simplAppbar(true),
       body: Obx(() => RefreshIndicator(
             onRefresh: subcategoryController.getdatarefresh,
             child: subcategoryController.isLoading.value

@@ -36,6 +36,7 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
       // subCategoryController.selecteditem = _selecteditem;
       // subCategoryController.categoryimage.value = shownItem.image;
       // Get.to(const SubCategoryPage());
+      subCategoryController.selectsubCategory.value = shownItem;
       Get.to(() => DetailPage());
       // _paymentCheckController
       //     .showProfileCheking(currentProfileController.profile.value);
@@ -119,13 +120,13 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
                             ? cartController.delFromCart(shownItem.service_id)
                             : cartController.addtoCart(shownItem.service_id);
                       },
-                      icon: Icon(
-                        Icons.add_chart,
-                        color: cartController.cartIDList
-                                .contains(shownItem.service_id)
-                            ? Colors.red
-                            : Colors.grey,
-                      )))
+                      icon: cartController.cartIDList
+                              .contains(shownItem.service_id)
+                          ? Icon(Icons.remove, color: Colors.red)
+                          : Icon(
+                              Icons.add_chart,
+                              color: Colors.grey,
+                            )))
             ]),
           ],
         ),

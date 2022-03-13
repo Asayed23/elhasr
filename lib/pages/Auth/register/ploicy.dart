@@ -21,7 +21,7 @@ class _PloicyPageState extends State {
         decoration: ldecoration,
         child: Scaffold(
             backgroundColor: Colors.transparent,
-            appBar: simplAppbar(),
+            appBar: simplAppbar(true),
             body: Center(
               child: ListView(children: [
                 SizedBox(

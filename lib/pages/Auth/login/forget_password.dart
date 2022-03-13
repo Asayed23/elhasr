@@ -32,7 +32,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
   final _formKey = GlobalKey<FormState>();
   final _formKeyotp = GlobalKey<FormState>();
-  bool _isobscureText = true;
+  bool _isobscureText1 = true, _isobscureText2 = true;
   User _user = User();
   String _password = "";
   final TextEditingController controller = TextEditingController();
@@ -102,7 +102,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               _password = val;
                             });
                     },
-                    obscureText: _isobscureText, // to show stars for password
+                    obscureText: _isobscureText1, // to show stars for password
                     autofocus: false,
 
                     decoration: InputDecoration(
@@ -117,11 +117,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              _isobscureText = !_isobscureText;
+                              _isobscureText1 = !_isobscureText1;
                             });
                           },
                           icon: Icon(
-                            _isobscureText
+                            _isobscureText1
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             //         color: Colors.white60,
@@ -153,7 +153,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     validator: (val) => val!.length < 2 || val != _password
                         ? 'password_are_not_matching'.tr
                         : null,
-                    obscureText: _isobscureText, // to show stars for password
+                    obscureText: _isobscureText2, // to show stars for password
                     autofocus: false,
 
                     decoration: InputDecoration(
@@ -168,11 +168,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              _isobscureText = !_isobscureText;
+                              _isobscureText2 = !_isobscureText2;
                             });
                           },
                           icon: Icon(
-                            _isobscureText
+                            _isobscureText2
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             //             color: Colors.white60,
@@ -225,11 +225,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     _user.phoneNumber;
                                 forgerPassController.resetPassword.value =
                                     _password;
+                                forgerPassController
+                                    .chdeck_number(_user.phoneNumber);
+                                // var resp = await phoneController
+                                //     .verifyPhone(_user.phoneNumber);
 
-                                var resp = await phoneController
-                                    .verifyPhone(_user.phoneNumber);
-
-                                Get.to(OtpForgetPassPage());
+                                // Get.to(OtpForgetPassPage());
                               }
                             },
                           ),

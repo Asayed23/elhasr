@@ -1,3 +1,4 @@
+import 'package:elhasr/core/theme.dart';
 import 'package:elhasr/pages/category/view/category.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: simplAppbar(),
+      appBar: simplAppbar(true),
 
       ///=======================================================================
       ///==================== Body ========================================
@@ -63,7 +64,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ///==================== old password ========================================
                 ///=======================================================================
                 TextFormField(
-                  style: TextStyle(fontSize: sp(10), color: Colors.white),
+                  style: TextStyle(fontSize: sp(10)),
                   onSaved: (val) =>
                       forgerPassController.oldPassword.value = val!,
 
@@ -119,7 +120,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
                 /// Password
                 TextFormField(
-                  style: TextStyle(fontSize: sp(10), color: Colors.white),
+                  style: TextStyle(fontSize: sp(10)),
                   onSaved: (val) => _password = val!,
 
                   validator: (val) {
@@ -173,7 +174,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
                 /// Password
                 TextFormField(
-                  style: TextStyle(fontSize: sp(10), color: Colors.white),
+                  style: TextStyle(fontSize: sp(10)),
                   onSaved: (val) =>
                       forgerPassController.newPassword.value = val!,
 
@@ -223,10 +224,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                 SizedBox(height: sp(12)),
                 Obx(() => forgerPassController.isLoading.isTrue
                     ? LoadingFlipping.circle(
-                        borderColor: lgreen,
+                        borderColor: clickIconColor,
                         borderSize: 3.0,
                         size: sp(40),
-                        backgroundColor: Color(0xff112A04),
+                        //  backgroundColor: Color(0xff112A04),
                         duration: Duration(milliseconds: 500),
                       )
                     : Container(

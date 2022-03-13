@@ -1,8 +1,13 @@
+import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
+import 'package:elhasr/pages/common_widget/simple_appbar.dart';
+import 'package:elhasr/pages/sub_category/control/subCategory_control.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/db_links/db_links.dart';
 import '../../../core/size_config.dart';
+import '../../Auth/register/register_page.dart';
 import '../../category/control/category_controller.dart';
 
 class DetailPage extends StatefulWidget {
@@ -15,8 +20,10 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   final scrollController = ScrollController();
   //final SearchController searchController = Get.put(SearchController());
-
-  final CategoryController categoryController = Get.put(CategoryController());
+  final CurrentUserController currentUserController =
+      Get.put(CurrentUserController());
+  final SubCategoryController subCategoryController =
+      Get.put(SubCategoryController());
   @override
   void initState() {
     super.initState();
@@ -45,87 +52,117 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(),
-      body: Obx(() => RefreshIndicator(
-            onRefresh: categoryController.getdatarefresh,
-            child: Column(children: [
-              // Row(children: [
-              //   Expanded(
-              //     flex: 6,
-              //     child: TextField(
-              //       textInputAction: TextInputAction.search,
-              //       onSubmitted: (value) {
-              //         searchController.searchWords.value.searchWord = value;
-              //         searchController.from.value = 0;
-              //         searchController.shownItems.value = [
-              //           GlobalProfileModel()
-              //         ];
-              //         searchController.getdata(false);
-              //         Get.to(() => SearchPage());
-              //       },
-              //       style: TextStyle(color: Colors.white70),
-              //       decoration: InputDecoration(
-              //           enabledBorder: OutlineInputBorder(
-              //             borderRadius:
-              //                 BorderRadius.all(Radius.circular(sp(7))),
-              //             borderSide:
-              //                 BorderSide(width: 1, color: Colors.grey.shade700),
-              //           ),
-              //           prefixIcon: Icon(
-              //             Icons.search,
-              //             color: lgreen,
-              //           ),
-              //           fillColor: Colors.black,
-              //           filled: true,
-              //           hintText:
-              //               searchController.searchWords.value.searchWord != ""
-              //                   ? searchController.searchWords.value.searchWord
-              //                   : "Search.....",
-              //           hintStyle: TextStyle(color: Colors.white),
-              //           border: OutlineInputBorder(
-              //             borderRadius: BorderRadius.circular(sp(3)),
-              //             borderSide: BorderSide(
-              //               width: 0,
-              //               style: BorderStyle.none,
-              //             ),
-              //           )),
-              //     ),
-              //   ),
-              //   Expanded(
-              //     flex: 1,
-              //     child: IconButton(
-              //       onPressed: () {
-              //         //   Get.to(() => FilterSearch());
-              //       },
-              //       icon: FaIcon(
-              //         FontAwesomeIcons.filter,
-              //         color: Colors.white,
-              //         //size: 100,
-              //       ),
-              //     ),
-              //   ),
-              // ]),
-              SizedBox(
-                height: h(2),
+      appBar: simplAppbar(true),
+      body: Obx(() => ListView(
+            children: [
+              SizedBox(height: h(2)),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: w(22),
+                  height: h(30),
+                  decoration: BoxDecoration(
+                    // color: Colors.grey,
+                    borderRadius: BorderRadius.circular(sp(8)),
+                    border: Border.all(
+                      color: Colors.grey.shade800,
+                      width: sp(1),
+                    ),
+                  ),
+                  child: Padding(
+                      padding: EdgeInsets.all(sp(10)),
+                      child: Hero(
+                        tag:
+                            subCategoryController.selectsubCategory.value.image,
+                        child: Image.network(
+                          dbImageurl +
+                              subCategoryController
+                                  .selectsubCategory.value.image,
+                          fit: BoxFit.fill,
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            );
+                          },
+                        ),
+                      )
+                      //  fit: BoxFit.contain,
+                      //   imageUrl: dbImageurl + subCategoryController.selectsubCategory.value.image,
+                      //   progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      //       CircularProgressIndicator(value: downloadProgress.progress),
+                      //   errorWidget: (context, url, error) => Icon(Icons.error),
+                      // ),
+                      ),
+                ),
               ),
-              Expanded(
-                child: GridView.builder(
-                    controller: scrollController,
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: sp(200),
-                        childAspectRatio: 1 / 1,
-                        crossAxisSpacing: sp(10),
-                        mainAxisSpacing: sp(10)),
-                    itemCount: categoryController.shownCatgeroy.length - 1,
-                    itemBuilder: (BuildContext ctx, index) {
-                      return Text('detail');
+              Divider(),
+              SizedBox(height: h(2)),
+              Center(
+                child: Text(
+                  subCategoryController.selectsubCategory.value.name,
+                  style: TextStyle(
+                      overflow: TextOverflow.fade,
+                      //  color: lgreen,
+                      //  fontSize: h(2),
+                      fontSize: sp(20)),
+                ),
+              ),
+              SizedBox(height: h(2)),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                Text(
+                  subCategoryController.selectsubCategory.value.price
+                          .toString() +
+                      ' SR',
+                  style: TextStyle(
+                      //  color: lgreen,
+                      //  fontSize: h(2),
+                      fontSize: sp(10)),
+                ),
+                Obx(() => currentUserController.currentUser.value.id == -1
+                    ? IconButton(
+                        onPressed: () {
+                          Get.to(RegisterPage());
+                        },
+                        icon: Icon(Icons.login))
+                    : IconButton(
+                        onPressed: () {
+                          cartController.cartIDList.contains(
+                                  subCategoryController
+                                      .selectsubCategory.value.service_id)
+                              ? cartController.delFromCart(subCategoryController
+                                  .selectsubCategory.value.service_id)
+                              : cartController.addtoCart(subCategoryController
+                                  .selectsubCategory.value.service_id);
+                        },
+                        icon: cartController.cartIDList.contains(
+                                subCategoryController
+                                    .selectsubCategory.value.service_id)
+                            ? Icon(Icons.remove, color: Colors.red)
+                            : Icon(
+                                Icons.add_chart,
+                                color: Colors.grey,
+                              )))
+              ]),
+              SizedBox(height: h(2)),
+              Text(
+                subCategoryController.selectsubCategory.value.description
+                        .toString() +
+                    ' SR',
+                style: TextStyle(
 
-                      //  showCategoryItem(
-                      //     categoryController.shownCatgeroy[index + 1],
-                      //    index + 1);
-                    }),
+                    //  color: lgreen,
+                    //  fontSize: h(2),
+                    fontSize: sp(10)),
               ),
-            ]),
+            ],
           )),
       bottomNavigationBar: mybottomBarWidget(),
     );

@@ -19,6 +19,7 @@ class SubCategoryController extends GetxController {
   var from = 0.obs;
   int _step = 30;
   var shownsubCatgeroy = [SubCategoryModel()].obs;
+  var selectsubCategory = SubCategoryModel().obs;
   var isLoading = false.obs;
   final CurrentUserController currentUserController =
       Get.put(CurrentUserController());

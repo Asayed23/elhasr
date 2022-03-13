@@ -43,7 +43,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: simplAppbar(),
+      appBar: simplAppbar(true),
       // backgroundColor: Colors.transparent,
       body: Center(
         child: Form(
