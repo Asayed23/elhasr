@@ -1544,11 +1544,11 @@ com.google.common.reflect.Types$GenericArrayTypeImpl
 kotlinx.coroutines.flow.SharedFlowImpl$WhenMappings
 javax.annotation.WillClose
 com.google.common.collect.SortedMultisets$NavigableElementSet
-kotlinx.coroutines.flow.FlowKt__ZipKt$combineUnsafe$1$1
 com.google.firebase.messaging.ServiceStarter:
     public static void setForTesting(com.google.firebase.messaging.ServiceStarter)
     public static final int SUCCESS
     public static final int ERROR_UNKNOWN
+kotlinx.coroutines.flow.FlowKt__ZipKt$combineUnsafe$1$1
 kotlin.sequences.SubSequence
 com.google.android.gms.internal.firebase-auth-api.zzix:
     static void <clinit>()
@@ -15491,5 +15491,5 @@ com.google.android.gms.internal.measurement.zzfq:
     static synthetic void zzd(com.google.android.gms.internal.measurement.zzfq,long)
 kotlin.KotlinVersion:
     public static final kotlin.KotlinVersion$Companion Companion
-io.flutter.plugin.common.BinaryMessenger$-CC
 io.flutter.plugin.platform.PlatformView$-CC
+io.flutter.plugin.common.BinaryMessenger$-CC
