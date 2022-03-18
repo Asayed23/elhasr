@@ -18,6 +18,7 @@ class SubCategoryModel {
     this.category = -1,
     this.description = "",
     this.price = 0.0,
+    this.itemloading = false,
   });
 
   int service_id;
@@ -26,6 +27,7 @@ class SubCategoryModel {
   String description;
   int category;
   double price;
+  bool itemloading;
 
   factory SubCategoryModel.fromJson(Map<String, dynamic> json) =>
       SubCategoryModel(

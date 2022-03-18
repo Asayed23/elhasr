@@ -18,6 +18,7 @@ class CartItemModel {
     this.name = "",
     this.image = "",
     this.price = -1,
+    this.itemloading = false,
   });
 
   int category;
@@ -28,6 +29,7 @@ class CartItemModel {
   String name;
   String image;
   double price;
+  bool itemloading;
 
   factory CartItemModel.fromJson(Map<String, dynamic> json) => CartItemModel(
         category: json["item__service__category"] ?? -1,

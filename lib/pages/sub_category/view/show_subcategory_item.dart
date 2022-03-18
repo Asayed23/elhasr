@@ -53,8 +53,8 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              width: w(22),
-              height: h(12),
+              width: w(25),
+              height: h(15),
               decoration: BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.circular(sp(8)),
@@ -122,7 +122,7 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
                       },
                       icon: cartController.cartIDList
                               .contains(shownItem.service_id)
-                          ? Icon(Icons.remove, color: Colors.red)
+                          ? Icon(Icons.delete, color: Colors.red)
                           : Icon(
                               Icons.add_chart,
                               color: Colors.grey,

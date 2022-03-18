@@ -1,11 +1,11 @@
 # compiler: R8
 # compiler_version: 2.1.62
 # min_api: 21
-# pg_map_id: f5af91a
+# pg_map_id: ce4dd62
 # common_typos_disable
 $$ServiceLoaderMethods -> a:
-    java.util.Iterator $load$15676() -> a
-    java.util.Iterator $load$16374() -> b
+    java.util.Iterator $load$15677() -> a
+    java.util.Iterator $load$16375() -> b
 $r8$backportedMethods$utility$Boolean$1$hashCode -> b:
     int hashCode(boolean) -> a
 $r8$backportedMethods$utility$Long$1$hashCode -> c:
@@ -20902,11 +20902,12 @@ io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException -> io.flutte
     java.util.Map additionalData -> p
     java.lang.String message -> o
     java.lang.String code -> n
-    java.util.Map getAdditionalData() -> a
-    java.lang.String getCode() -> b
-    io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException invalidCredential() -> c
-    io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException noSuchProvider() -> d
-    io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException noUser() -> e
+    io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException alreadyLinkedProvider() -> a
+    java.util.Map getAdditionalData() -> b
+    java.lang.String getCode() -> c
+    io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException invalidCredential() -> d
+    io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException noSuchProvider() -> e
+    io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPluginException noUser() -> f
 io.flutter.plugins.firebase.auth.IdTokenChannelStreamHandler -> io.flutter.plugins.firebase.auth.p0:
     com.google.firebase.auth.FirebaseAuth firebaseAuth -> a
     com.google.firebase.auth.FirebaseAuth$IdTokenListener idTokenListener -> b

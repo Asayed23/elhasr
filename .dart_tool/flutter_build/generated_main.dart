@@ -11,7 +11,10 @@ export 'package:elhasr/main.dart';
 import 'package:elhasr/main.dart' as entrypoint;
 import 'dart:io'; // flutter_ignore: dart_io_import.
 import 'package:path_provider_android/path_provider_android.dart';
+import 'package:shared_preferences_android/shared_preferences_android.dart';
 import 'package:url_launcher_android/url_launcher_android.dart';
+import 'package:path_provider_ios/path_provider_ios.dart';
+import 'package:shared_preferences_ios/shared_preferences_ios.dart';
 import 'package:url_launcher_ios/url_launcher_ios.dart';
 import 'package:path_provider_linux/path_provider_linux.dart';
 import 'package:shared_preferences_linux/shared_preferences_linux.dart';
@@ -40,6 +43,16 @@ class _PluginRegistrant {
       }
 
       try {
+        SharedPreferencesAndroid.registerWith();
+      } catch (err) {
+        print(
+          '`shared_preferences_android` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+        rethrow;
+      }
+
+      try {
         UrlLauncherAndroid.registerWith();
       } catch (err) {
         print(
@@ -50,6 +63,26 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isIOS) {
+      try {
+        PathProviderIOS.registerWith();
+      } catch (err) {
+        print(
+          '`path_provider_ios` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+        rethrow;
+      }
+
+      try {
+        SharedPreferencesIOS.registerWith();
+      } catch (err) {
+        print(
+          '`shared_preferences_ios` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+        rethrow;
+      }
+
       try {
         UrlLauncherIOS.registerWith();
       } catch (err) {

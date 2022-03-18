@@ -26,6 +26,8 @@ class CartModel {
     this.user = -1,
     this.date_created = "",
     this.total_price = 0.0,
+    this.coupon_code = "",
+    this.discount_percent = 0,
     this.cartItems = const [],
   });
 
@@ -34,6 +36,8 @@ class CartModel {
   String date_created;
   int user;
   double total_price;
+  double discount_percent;
+  String coupon_code;
   List<CartItemModel> cartItems;
 
   factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
@@ -41,6 +45,8 @@ class CartModel {
         date_created: json["date_created"] ?? "",
         user: json["user"] ?? -1,
         total_price: json["total_price"] ?? 0.0,
+        coupon_code: json["coupon_code"] ?? "",
+        discount_percent: json["discount_percent"] ?? 0.0,
       );
 
   Map<String, dynamic> toJson() => {

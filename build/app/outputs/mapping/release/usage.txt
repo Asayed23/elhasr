@@ -15491,5 +15491,5 @@ com.google.android.gms.internal.measurement.zzfq:
     static synthetic void zzd(com.google.android.gms.internal.measurement.zzfq,long)
 kotlin.KotlinVersion:
     public static final kotlin.KotlinVersion$Companion Companion
-io.flutter.plugin.platform.PlatformView$-CC
 io.flutter.plugin.common.BinaryMessenger$-CC
+io.flutter.plugin.platform.PlatformView$-CC

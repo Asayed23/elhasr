@@ -138,7 +138,6 @@ class _LoginPageState extends State<LoginPage> {
                           _isobscureText
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.white60,
                         )),
                     contentPadding: const EdgeInsets.only(
                         left: 14.0, bottom: 6.0, top: 8.0),
