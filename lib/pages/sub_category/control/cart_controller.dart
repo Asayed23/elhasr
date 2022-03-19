@@ -196,7 +196,7 @@ class CartController extends GetxController {
         var dio = Dio();
 
         var response = await dio.post(
-          couponCheckUrl,
+          createOrderUrl,
           data: {
             'coupon_code': cart.value.coupon_code,
             'user_id': currentUserController.currentUser.value.id.toString(),

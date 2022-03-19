@@ -108,7 +108,7 @@ class _OrderPageState extends State<OrderPage> {
                                     ),
                                     TextSpan(
                                       text:
-                                          ' ${cartController.cart.value.total_price - cartController.cart.value.total_price * cartController.cart.value.discount_percent}',
+                                          ' ${cartController.cart.value.total_price - (cartController.cart.value.total_price * cartController.cart.value.discount_percent / 100)}',
                                     ),
                                   ],
                                 ),
