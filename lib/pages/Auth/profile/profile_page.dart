@@ -1,8 +1,12 @@
 import 'package:elhasr/pages/Auth/login/change_password.dart';
 import 'package:elhasr/pages/Auth/login/forget_password.dart';
+import 'package:elhasr/pages/Auth/login/login_page.dart';
+import 'package:elhasr/pages/Auth/profile/aboutUs.dart';
+import 'package:elhasr/pages/Auth/profile/contactUs.dart';
 import 'package:elhasr/pages/category/view/category.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
+import 'package:elhasr/pages/order/view/order_histrory.dart';
 import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:elhasr/translation/translation_page.dart';
 import 'package:flutter/material.dart';
@@ -54,15 +58,26 @@ class _UserProfilePageState extends State<UserProfilePage> {
           // UserName
           ///
           ///
-          ListTile(
-              leading: Icon(
-                Icons.person,
-                color: clickIconColor,
-              ),
-              title: Text(currentUserController.currentUser.value.username),
-              onTap: () async {
-                mySnackbar('Failed'.tr, 'please_Loging_First'.tr, 'Error');
-              }),
+          ///
+          currentUserController.currentUser.value.id != -1
+              ? ListTile(
+                  leading: Icon(
+                    Icons.person,
+                    color: clickIconColor,
+                  ),
+                  title: Text(currentUserController.currentUser.value.username),
+                  onTap: () async {
+                    mySnackbar('Failed'.tr, 'please_Loging_First'.tr, 'Error');
+                  })
+              : ListTile(
+                  leading: Icon(
+                    Icons.login,
+                    color: clickIconColor,
+                  ),
+                  title: Text('Login/Register'),
+                  onTap: () async {
+                    Get.to(() => LoginPage());
+                  }),
 
           ///
           ///
@@ -156,18 +171,24 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       color: clickIconColor,
                     ),
                     title: Text('order_histroy'.tr),
-                    onTap: () async {}),
+                    onTap: () async {
+                      Get.to(() => OrderHistroyPage());
+                    }),
               )),
 
           ListTile(
               leading: FaIcon(FontAwesomeIcons.hardHat),
               title: Text('aboutus'.tr),
-              onTap: () async {}),
+              onTap: () async {
+                Get.to(() => AboutUsPage());
+              }),
 
           ListTile(
               leading: FaIcon(FontAwesomeIcons.headset),
               title: Text('contactus'.tr),
-              onTap: () async {}),
+              onTap: () async {
+                Get.to(() => ContactUsPage());
+              }),
 
           ///
           ///
@@ -189,7 +210,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
           // Logout
           ///
           ///
-          Obx(() => currentUserController.currentUser.value != -1
+          Obx(() => currentUserController.currentUser.value.id != -1
               ? ListTile(
                   title: Text('logout'.tr),
                   leading: Icon(Icons.exit_to_app),

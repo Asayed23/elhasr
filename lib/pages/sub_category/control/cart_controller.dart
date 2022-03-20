@@ -176,10 +176,12 @@ class CartController extends GetxController {
           ),
         );
         if (response.statusCode == 200) {
-          if (response.data[0].containsKey('discount_percent')) {
-            cart.value.discount_percent = response.data[0]['discount_percent'];
+          if (response.data['status']) {
+            cart.value.discount_percent =
+                response.data['Data']['discount_percent'];
+          } else {
+            mySnackbar('Sorry', 'code_error', false);
           }
-          print(cart.value.discount_percent);
         } else {
           mySnackbar('Sorry', 'No order cant be updated', false);
         }

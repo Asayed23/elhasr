@@ -59,9 +59,7 @@ mybottomBarWidget() {
           } else if (index == 1) {
             Get.to(const OrderPage());
           } else if (index == 2) {
-            userctrl.currentUser.value.id != -1
-                ? Get.to(const UserProfilePage())
-                : Get.to(RegisterPage());
+            Get.to(const UserProfilePage());
           }
         },
       ));
@@ -100,9 +98,7 @@ mybottomBarWidget2() {
           } else if (index == 1) {
             Get.to(const OrderPage());
           } else if (index == 2) {
-            userctrl.currentUser.value.id != -1
-                ? Get.to(const UserProfilePage())
-                : Get.to(RegisterPage());
+            Get.to(const UserProfilePage());
           }
         },
       ));

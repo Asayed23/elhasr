@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1054964926117-0tar6l6rf8830duf92gccms6mur6u0kr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techiecube.elhasr",
+            "certificate_hash": "64919b81f881fe1ba9137cbc79677685da121cb4"
+          }
+        },
+        {
           "client_id": "1054964926117-lcbnsifu68gbp64i4fv7rm8kc96b0jg4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
