@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/category/model/category_model.dart';
 
 import 'package:flutter/material.dart';
@@ -11,29 +12,76 @@ import '../../sub_category/control/subCategory_control.dart';
 import '../../sub_category/view/sub_category_page.dart';
 import '../control/category_controller.dart';
 
-//  String playerFirstName;
-//   String playerLastName;
-//   String nationality;
-//   String birthday;
-//   double height;
-//   double weight;
-//   String currentCountry;
-//   String currentCity;
-//   String game;
-//   String image;
-//   String gender;
 final SubCategoryController subCategoryController =
     Get.put(SubCategoryController());
+final CurrentUserController currentUserController =
+    Get.put(CurrentUserController());
+
 Widget showCategoryItem(CategoryModel shownItem, int _selecteditem) {
   return GestureDetector(
     onTap: () async {
-      subCategoryController.getsubcategorydata(shownItem.id);
-      print(dbImageurl + shownItem.image);
-      subCategoryController.selecteditem = _selecteditem;
-      subCategoryController.categoryimage.value = shownItem.image;
-      Get.to(SubCategoryPage());
-      // _paymentCheckController
-      //     .showProfileCheking(currentProfileController.profile.value);
+      if (currentUserController.currentUser.value.showsizeSelect) {
+        Get.defaultDialog(
+            // barrierDismissible: false,
+            title: '',
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  initialValue: currentUserController
+                      .currentUser.value.villaArea
+                      .toString(),
+                  onChanged: ((value) {
+                    currentUserController.currentUser.value.villaAreatemp =
+                        value;
+                  }),
+                  keyboardType: TextInputType.number,
+                  maxLines: 1,
+                  decoration: InputDecoration(
+                      labelText: 'enter_size'.tr,
+                      hintMaxLines: 1,
+                      border: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.green, width: 4.0))),
+                ),
+                SizedBox(
+                  height: h(2),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (currentUserController.currentUser.value.villaAreatemp !=
+                        "") {
+                      Get.back();
+                      currentUserController.currentUser.value.villaArea =
+                          int.parse(currentUserController
+                              .currentUser.value.villaAreatemp);
+
+                      currentUserController.updateUserData(
+                          currentUserController.currentUser.value);
+                      // Get.back(closeOverlays: true);
+                      subCategoryController.selecteditem = _selecteditem;
+                      subCategoryController.categoryimage.value =
+                          shownItem.image;
+                      subCategoryController.getsubcategorydata(shownItem.id);
+
+                      //Get.back();
+                    }
+                  },
+                  child: Text('update_size'.tr),
+                ),
+                Obx(() => CheckboxListTile(
+                      title: Text("don't show again"), //    <-- label
+                      value: !currentUserController
+                          .currentUser.value.showsizeSelect,
+                      onChanged: (value) {
+                        currentUserController.currentUser.value.showsizeSelect =
+                            !value!;
+                      },
+                    ))
+              ],
+            ),
+            radius: 10.0);
+      }
     },
     child: Padding(
       padding: const EdgeInsets.all(8.0),

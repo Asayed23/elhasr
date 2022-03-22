@@ -1,4 +1,5 @@
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
+import 'package:elhasr/pages/category/view/show_categ_item.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
 import 'package:flutter/material.dart';
@@ -139,9 +140,10 @@ class _CategoryPageState extends State<CategoryPage> {
                         mainAxisSpacing: sp(10)),
                     itemCount: categoryController.shownCatgeroy.length - 1,
                     itemBuilder: (BuildContext ctx, index) {
-                      return showCategoryItem(
-                          categoryController.shownCatgeroy[index + 1],
-                          index + 1);
+                      return ShowCategoryItem(
+                          shownItem:
+                              categoryController.shownCatgeroy[index + 1],
+                          selecteditem: index + 1);
                     }),
               ),
             ]),

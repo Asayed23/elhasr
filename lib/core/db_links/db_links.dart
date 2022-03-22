@@ -81,3 +81,5 @@ const String couponCheckUrl = "$dbImageurl/orders/cart/CouponCheck/";
 const String createOrderUrl = "$dbImageurl/orders/order/createOrder/";
 
 const String listordersUrl = "$dbImageurl/orders/order/Listorders/";
+
+const String editprofileUrl = "$dbImageurl/api/editprofile/";

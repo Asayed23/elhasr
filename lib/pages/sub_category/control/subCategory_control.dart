@@ -1,4 +1,6 @@
 import 'package:elhasr/pages/category/model/category_model.dart';
+import 'package:elhasr/pages/common_widget/error_snackbar.dart';
+import 'package:elhasr/pages/sub_category/view/sub_category_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
@@ -39,6 +41,7 @@ class SubCategoryController extends GetxController {
   Future getsubcategorydata(int id) async {
     try {
       isLoading(true);
+      Get.to(() => const SubCategoryPage());
       var dio = Dio();
       shownsubCatgeroy.value = [SubCategoryModel()];
       var response = await dio.post(
@@ -77,57 +80,11 @@ class SubCategoryController extends GetxController {
           // dic['unlock'] = _list[dic['accountType']].contains(dic['accountId']);
           shownsubCatgeroy.add(SubCategoryModel.fromJson(dic));
         }
-
-        print(shownsubCatgeroy.value);
-        // print(shownCatgeroy);
-        //);
-
-        // Get.snackbar('Thanks'.tr, 'fetch_Successfuly'.tr,
-        //     snackPosition: SnackPosition.BOTTOM,
-        //     backgroundColor: Colors.greenAccent);
-        // _redirectUser();
-
       } else {
-        _failmessage(response);
+        mySnackbar('error', 'canot_upload_subcategory', false);
       }
     } finally {
       isLoading.value = false;
     }
   }
-
-  _failmessage(response) async {
-    isLoading(false);
-    Get.snackbar('${response.data['errorCode']}', 'fetch_failed'.tr,
-        snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.white);
-  }
-
-  // Future getplayeridlist(_userid) async {
-  //   var dio = Dio();
-  //   var response = await dio.get(
-  //     "$playerlist_Url${_userid.toString()}/",
-  //     options: Options(
-  //       followRedirects: false,
-  //       validateStatus: (status) {
-  //         return status! < 505;
-  //       },
-  //       //headers: {},
-  //     ),
-  //   );
-  //   var playeridlist = [];
-  //   if (response.statusCode == 200) {
-  //     //playerId
-
-  //     for (var item in response.data)
-  //       item.forEach((k, v) {
-  //         if (k == "playerId") {
-  //           playeridlist.add(v);
-  //         }
-  //       });
-
-  //     //_regiuser.playerId = response.data[0]['playerId'];
-  //   } else {
-  //     _failmessage(response);
-  //   }
-  //   return playeridlist;
-  // }
 }

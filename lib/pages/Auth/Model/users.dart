@@ -23,10 +23,12 @@ class User {
       this.email = "",
       this.phoneNumber = "",
       this.villaArea = 0,
+      this.villaAreatemp = "",
       this.fullName = "",
       this.city = "",
       this.country = "",
       this.image = "",
+      this.showsizeSelect = true,
       this.accountType = "",
       this.caneditContact = false,
       this.canshowcontact = false,
@@ -54,6 +56,7 @@ class User {
   String accountType;
   String token;
   int playerId;
+  bool showsizeSelect;
   String membership;
   String memberShipExpireDate;
   int accountId;
@@ -67,6 +70,7 @@ class User {
   bool canshowcontact;
   int profileBalance;
   int villaArea;
+  String villaAreatemp;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
@@ -74,7 +78,7 @@ class User {
         email: json["email"],
         phoneNumber: json["phoneNumber"],
         fullName: json["fullName"],
-        villaArea: json["villaArea"] ?? -1,
+        villaArea: json["villaArea"] ?? 100.0,
         // city: json["city"],
         // country: json["country"],
         // image: json["image"],

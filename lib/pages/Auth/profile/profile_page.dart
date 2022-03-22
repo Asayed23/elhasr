@@ -120,6 +120,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                   if (_size != "") {
                                     currentUserController.currentUser.value
                                         .villaArea = int.parse(_size);
+
+                                    currentUserController.updateUserData(
+                                        currentUserController
+                                            .currentUser.value);
                                     Navigator.of(context).pop();
                                     Get.to(() => const UserProfilePage());
 
