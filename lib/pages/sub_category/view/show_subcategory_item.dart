@@ -54,7 +54,7 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
           children: [
             Container(
               width: w(25),
-              height: h(15),
+              height: h(12),
               decoration: BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.circular(sp(8)),
