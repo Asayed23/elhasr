@@ -221,8 +221,8 @@ class CartController extends GetxController {
             _textMsg = _textMsg + " with offer_code " + cart.value.coupon_code;
           }
 
-          await launch(
-              "https://wa.me/${_number}?text=Please go processed with my order number *xxxx*");
+          await launch("https://wa.me/${_number}?text=Please");
+          // 'https://api.whatsapp.com/send?phone=${_number}&text=Please go processed with my order number *xxxx*');
 
           Get.off(ThanksPage());
         } else {
