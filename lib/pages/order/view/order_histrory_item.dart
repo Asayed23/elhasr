@@ -36,7 +36,7 @@ Widget showHistoryOrderItem(OrderHistoryModel shownItem) {
         width: w(30),
         height: h(12),
         decoration: BoxDecoration(
-          color: Colors.grey[100],
+          color: Colors.white,
           borderRadius: BorderRadius.circular(sp(8)),
           border: Border.all(
             color: Colors.grey.shade800,

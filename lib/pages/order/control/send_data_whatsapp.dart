@@ -11,6 +11,8 @@ sendtowhatsapp(String textdata) async {
   //     "whatsapp://send?phone=" + whatsapp + "&text=$textdata";
   var whatsappURl_android = "https://wa.me/$whatsapp?text=$textdata";
   var whatappURL_ios = "https://wa.me/$whatsapp?text=${Uri.parse("$textdata")}";
+
+  whatsappURl_android = whatsappURl_android.replaceAll(" ", "%20");
   if (Platform.isIOS) {
     // for iOS phone only
     if (await canLaunch(whatappURL_ios)) {

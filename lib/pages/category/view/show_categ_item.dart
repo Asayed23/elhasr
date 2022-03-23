@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/category/model/category_model.dart';
@@ -184,59 +185,78 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.grey[300], borderRadius: BorderRadius.circular(15)),
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                width: w(22),
-                height: h(12),
+        child: Stack(
+          textDirection: TextDirection.rtl,
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              width: w(45),
+              height: h(25),
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(sp(10)),
+                border: Border.all(
+                  color: Colors.grey.shade800,
+                  width: sp(1),
+                ),
+              ),
+              child: Padding(
+                  padding: EdgeInsets.all(sp(0)),
+                  child: Image.network(
+                    dbImageurl + widget.shownItem.image,
+                    fit: BoxFit.fill,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
+                  )
+                  //  fit: BoxFit.contain,
+                  //   imageUrl: dbImageurl + widget.shownItem.image,
+                  //   progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  //       CircularProgressIndicator(value: downloadProgress.progress),
+                  //   errorWidget: (context, url, error) => Icon(Icons.error),
+                  // ),
+                  ),
+            ),
+            Positioned(
+              bottom: h(6),
+              right: w(1),
+              //left: w(1),
+              child: Container(
+                width: w(30),
+                // height: h(10),
                 decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                  borderRadius: BorderRadius.circular(sp(8)),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(sp(20)),
                   border: Border.all(
                     color: Colors.grey.shade800,
                     width: sp(1),
                   ),
                 ),
                 child: Padding(
-                    padding: EdgeInsets.all(sp(0)),
-                    child: Image.network(
-                      dbImageurl + widget.shownItem.image,
-                      fit: BoxFit.fill,
-                      loadingBuilder: (BuildContext context, Widget child,
-                          ImageChunkEvent? loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        );
-                      },
-                    )
-                    //  fit: BoxFit.contain,
-                    //   imageUrl: dbImageurl + widget.shownItem.image,
-                    //   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    //       CircularProgressIndicator(value: downloadProgress.progress),
-                    //   errorWidget: (context, url, error) => Icon(Icons.error),
-                    // ),
+                  padding: EdgeInsets.only(left: sp(8), right: sp(8)),
+                  child: Center(
+                    child: AutoSizeText(
+                      widget.shownItem.name,
+
+                      style: TextStyle(fontSize: sp(20)),
+                      //minFontSize: sp(13),
+                      //maxLines: 2,
+                      overflow: TextOverflow.visible,
                     ),
+                  ),
+                ),
               ),
-              Text(
-                widget.shownItem.name,
-                style: TextStyle(
-                    //  color: lgreen,
-                    //  fontSize: h(2),
-                    fontSize: sp(20)),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

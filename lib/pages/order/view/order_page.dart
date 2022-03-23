@@ -69,9 +69,11 @@ class _OrderPageState extends State<OrderPage> {
                         ),
                         Row(children: [
                           Expanded(
-                            child: Text(
-                              'request_items'.tr,
-                              style: TextStyle(fontSize: sp(10)),
+                            child: Center(
+                              child: Text(
+                                'request_summary'.tr,
+                                style: TextStyle(fontSize: sp(15)),
+                              ),
                             ),
                           ),
                         ]),
@@ -99,8 +101,8 @@ class _OrderPageState extends State<OrderPage> {
                                   children: [
                                     TextSpan(
                                       text:
-                                          '${cartController.cart.value.total_price.toString()}' +
-                                              ' SR',
+                                          '${cartController.cart.value.total_price.toString()}'
+                                          ' SR',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         decoration: TextDecoration.lineThrough,
@@ -123,8 +125,8 @@ class _OrderPageState extends State<OrderPage> {
                                   children: [
                                     TextSpan(
                                       text:
-                                          '${cartController.cart.value.total_price.toString()}' +
-                                              ' SR',
+                                          '${cartController.cart.value.total_price.toString()}'
+                                          ' SR',
                                       style: TextStyle(
                                         color: textinBodyColor,
                                         // decoration: TextDecoration.lineThrough,

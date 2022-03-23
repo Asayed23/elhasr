@@ -1,3 +1,4 @@
+import 'package:elhasr/core/theme.dart';
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
@@ -60,15 +61,15 @@ class _DetailPageState extends State<DetailPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   width: w(22),
-                  height: h(30),
+                  height: h(37),
                   decoration: BoxDecoration(
-                    // color: Colors.grey,
-                    borderRadius: BorderRadius.circular(sp(8)),
-                    border: Border.all(
-                      color: Colors.grey.shade800,
-                      width: sp(1),
-                    ),
-                  ),
+                      // color: Colors.grey,
+                      // borderRadius: BorderRadius.circular(sp(8)),
+                      // border: Border.all(
+                      //   color: Colors.grey.shade800,
+                      //   width: sp(1),
+                      // ),
+                      ),
                   child: Padding(
                       padding: EdgeInsets.all(sp(10)),
                       child: Hero(
@@ -104,64 +105,110 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
               Divider(),
-              SizedBox(height: h(2)),
-              Center(
-                child: Text(
-                  subCategoryController.selectsubCategory.value.name,
-                  style: TextStyle(
-                      overflow: TextOverflow.fade,
-                      //  color: lgreen,
-                      //  fontSize: h(2),
-                      fontSize: sp(20)),
-                ),
+              SizedBox(height: h(1)),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    textDirection: TextDirection.rtl,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          subCategoryController.selectsubCategory.value.name,
+                          style: TextStyle(
+                              overflow: TextOverflow.fade,
+                              //  color: lgreen,
+                              //  fontSize: h(2),
+                              fontSize: sp(20)),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          subCategoryController.selectsubCategory.value.price
+                                  .toString() +
+                              ' SR',
+                          style: TextStyle(
+                              color: textbuttonColor,
+                              //  fontSize: h(2),
+                              fontSize: sp(15)),
+                        ),
+                      )
+                    ]),
               ),
-              SizedBox(height: h(2)),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                Text(
-                  subCategoryController.selectsubCategory.value.price
-                          .toString() +
-                      ' SR',
-                  style: TextStyle(
-                      //  color: lgreen,
-                      //  fontSize: h(2),
-                      fontSize: sp(10)),
-                ),
-                Obx(() => currentUserController.currentUser.value.id == -1
-                    ? IconButton(
-                        onPressed: () {
-                          Get.to(RegisterPage());
-                        },
-                        icon: Icon(Icons.login))
-                    : IconButton(
-                        onPressed: () {
-                          cartController.cartIDList.contains(
-                                  subCategoryController
-                                      .selectsubCategory.value.service_id)
-                              ? cartController.delFromCart(subCategoryController
-                                  .selectsubCategory.value.service_id)
-                              : cartController.addtoCart(subCategoryController
-                                  .selectsubCategory.value.service_id);
-                        },
-                        icon: cartController.cartIDList.contains(
-                                subCategoryController
-                                    .selectsubCategory.value.service_id)
-                            ? Icon(Icons.remove, color: Colors.red)
-                            : Icon(
-                                Icons.add_chart,
-                                color: Colors.grey,
-                              )))
-              ]),
-              SizedBox(height: h(2)),
-              Text(
-                subCategoryController.selectsubCategory.value.description
-                        .toString() +
-                    ' SR',
-                style: TextStyle(
+              // SizedBox(height: h(1)),
+              // Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              //   Text(
+              //     subCategoryController.selectsubCategory.value.price
+              //             .toString() +
+              //         ' SR',
+              //     style: TextStyle(
+              //         //  color: lgreen,
+              //         //  fontSize: h(2),
+              //         fontSize: sp(10)),
+              //   ),
+              //   Obx(() => currentUserController.currentUser.value.id == -1
+              //       ? IconButton(
+              //           onPressed: () {
+              //             Get.to(RegisterPage());
+              //           },
+              //           icon: Icon(Icons.login))
+              //       : IconButton(
+              //           onPressed: () {
+              //             cartController.cartIDList.contains(
+              //                     subCategoryController
+              //                         .selectsubCategory.value.service_id)
+              //                 ? cartController.delFromCart(subCategoryController
+              //                     .selectsubCategory.value.service_id)
+              //                 : cartController.addtoCart(subCategoryController
+              //                     .selectsubCategory.value.service_id);
+              //           },
+              //           icon: cartController.cartIDList.contains(
+              //                   subCategoryController
+              //                       .selectsubCategory.value.service_id)
+              //               ? Icon(Icons.remove, color: Colors.red)
+              //               : Icon(
+              //                   Icons.add_chart,
+              //                   color: Colors.grey,
+              //                 )))
+              // ]),
+              SizedBox(height: h(1)),
+              SizedBox(
+                height: h(14),
+                child: ListView(
+                  children: [
+                    Text(
+                      subCategoryController.selectsubCategory.value.description
+                          .toString(),
+                      style: TextStyle(
 
-                    //  color: lgreen,
-                    //  fontSize: h(2),
-                    fontSize: sp(10)),
+                          //  color: lgreen,
+                          //  fontSize: h(2),
+                          fontSize: sp(10)),
+                    )
+                  ],
+                ),
               ),
+              SizedBox(height: h(1)),
+              SizedBox(
+                width: w(60),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        cartController.cartIDList.contains(subCategoryController
+                                .selectsubCategory.value.service_id)
+                            ? cartController.delFromCart(subCategoryController
+                                .selectsubCategory.value.service_id)
+                            : cartController.addtoCart(subCategoryController
+                                .selectsubCategory.value.service_id);
+                      },
+                      child: cartController.cartIDList.contains(
+                              subCategoryController
+                                  .selectsubCategory.value.service_id)
+                          ? Text('remove_from_cart')
+                          : Text('add_tocart')),
+                ),
+              )
             ],
           )),
       bottomNavigationBar: mybottomBarWidget(),

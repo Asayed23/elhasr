@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
 import 'package:elhasr/pages/category/model/category_model.dart';
@@ -129,13 +130,20 @@ Widget showCategoryItem(CategoryModel shownItem, int _selecteditem) {
                   // ),
                   ),
             ),
-            Text(
+            AutoSizeText(
               shownItem.name,
-              style: TextStyle(
-                  //  color: lgreen,
-                  //  fontSize: h(2),
-                  fontSize: sp(20)),
-            )
+              style: TextStyle(fontSize: sp(20)),
+              minFontSize: sp(13),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            // Text(
+            //   shownItem.name,
+            //   style: TextStyle(
+            //       //  color: lgreen,
+            //       //  fontSize: h(2),
+            //       fontSize: sp(20)),
+            // )
           ],
         ),
       ),

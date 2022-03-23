@@ -125,7 +125,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                         currentUserController
                                             .currentUser.value);
                                     Navigator.of(context).pop();
-                                    Get.to(() => const UserProfilePage());
+                                    // Get.to(() => const UserProfilePage());
 
                                     setState(() {
                                       currentUserController.currentUser.value
