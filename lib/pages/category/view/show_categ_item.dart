@@ -79,11 +79,14 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
                   )),
               title: Text('enter Area Size'),
               actions: <Widget>[
-                InkWell(
+                ElevatedButton(
                   child: Text('OK   '),
-                  onTap: () {
+                  onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       // Do something like updating SharedPreferences or User Settings etc.
+                      currentUserController.currentUser.value.villaArea =
+                          int.parse(currentUserController
+                              .currentUser.value.villaAreatemp);
                       currentUserController.updateUserData(
                           currentUserController.currentUser.value);
                       // Get.back(closeOverlays: true);

@@ -215,13 +215,16 @@ class CartController extends GetxController {
         if (response.statusCode == 200) {
           getcartList();
 
+          Get.off(ThanksPage());
           String _textMsg =
               "Please go processed with my order number *xxxx* , total price  ${cart.value.total_price.toString()}";
+
           if (cart.value.coupon_code != "") {
             _textMsg = _textMsg + " with offer_code " + cart.value.coupon_code;
           }
-
-          await launch("https://wa.me/${_number}?text=Please");
+          _textMsg = _textMsg.replaceAll(" ", "%20");
+          print(_textMsg);
+          await launch("https://wa.me/$_number?text=" + _textMsg);
           // 'https://api.whatsapp.com/send?phone=${_number}&text=Please go processed with my order number *xxxx*');
 
           Get.off(ThanksPage());

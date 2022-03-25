@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: AnimatedSplashScreen.withScreenFunction(
-        animationDuration: const Duration(seconds: 2),
+        animationDuration: const Duration(seconds: 3),
 
         splash: Image.asset(
           "assets/images/hasr_logo.png",
@@ -78,8 +78,8 @@ class _SplashScreenState extends State<SplashScreen> {
           //   return NoConnectionPage();
           // }
         },
-        splashTransition: SplashTransition.rotationTransition,
-        //pageTransitionType: PageTransitionType.scale,
+        splashTransition: SplashTransition.scaleTransition,
+        //pageTransitionType: ,
         // backgroundColor: Colors.black,
       ),
     );
