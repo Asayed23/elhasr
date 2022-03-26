@@ -20,7 +20,11 @@ final CartController cartController = Get.put(CartController());
 
 mybottomBarWidget() {
   return Obx(() => ConvexAppBar.badge(
-        {1: cartController.cartIDList.length.toString()},
+        {
+          1: cartController.cartIDList.length > 0
+              ? cartController.cartIDList.length.toString()
+              : ''
+        },
         backgroundColor: Colors.white,
         items: [
           TabItem(
@@ -70,7 +74,7 @@ mybottomBarWidget2() {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Home'.tr,
           ),
 
           BottomNavigationBarItem(
@@ -78,12 +82,12 @@ mybottomBarWidget2() {
                 showBadge: cartController.cartIDList.length > 0,
                 badgeContent: Text(cartController.cartIDList.length.toString()),
                 child: Icon(Icons.remove_from_queue)),
-            label: 'Requst',
+            label: 'Requst'.tr,
           ),
 
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Profile',
+            label: 'Profile'.tr,
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.chat),

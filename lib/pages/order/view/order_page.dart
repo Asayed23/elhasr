@@ -97,7 +97,7 @@ class _OrderPageState extends State<OrderPage> {
                                       color: Colors.black,
                                       fontSize: sp(17),
                                       overflow: TextOverflow.fade),
-                                  text: 'This item costs ',
+                                  text: 'total_items_cost'.tr,
                                   children: [
                                     TextSpan(
                                       text:
@@ -121,7 +121,7 @@ class _OrderPageState extends State<OrderPage> {
                                       color: Colors.black,
                                       fontSize: sp(17),
                                       overflow: TextOverflow.fade),
-                                  text: 'This item costs ',
+                                  text: 'total_items_cost'.tr,
                                   children: [
                                     TextSpan(
                                       text:
@@ -210,7 +210,7 @@ class _OrderPageState extends State<OrderPage> {
                                       onPressed: () async {
                                         cartController.Checkcubon();
                                       },
-                                      child: const Text('Code_check')),
+                                      child: Text('Code_check'.tr)),
                                 ),
                               ),
                             )
@@ -239,7 +239,7 @@ class _OrderPageState extends State<OrderPage> {
 
                                   // Get.off(ThanksPage());
                                 },
-                                child: const Text('Submit')),
+                                child: Text('Submit'.tr)),
                           ),
                         ]))
                       ]),

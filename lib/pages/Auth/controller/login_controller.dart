@@ -58,41 +58,41 @@ class LoginController extends GetxController {
         // to read all cart data ( can be removed in other apps)
         cartController.getcartList();
       } else {
-        mySnackbar('failed'.tr, 'phone_password_not'.tr, false);
+        mySnackbar('Failed'.tr, 'phone_password_not'.tr, false);
       }
     } finally {
       isLoading.value = false;
     }
   }
 
-  Future getplayeridlist(_userid) async {
-    var dio = Dio();
-    var response = await dio.get(
-      "$playerlist_Url${_userid.toString()}/",
-      options: Options(
-        followRedirects: false,
-        validateStatus: (status) {
-          return status! < 505;
-        },
-        //headers: {},
-      ),
-    );
-    var playeridlist = [];
-    if (response.statusCode == 200) {
-      //playerId
+  // Future getplayeridlist(_userid) async {
+  //   var dio = Dio();
+  //   var response = await dio.get(
+  //     "$playerlist_Url${_userid.toString()}/",
+  //     options: Options(
+  //       followRedirects: false,
+  //       validateStatus: (status) {
+  //         return status! < 505;
+  //       },
+  //       //headers: {},
+  //     ),
+  //   );
+  //   var playeridlist = [];
+  //   if (response.statusCode == 200) {
+  //     //playerId
 
-      for (var item in response.data) {
-        item.forEach((k, v) {
-          if (k == "playerId") {
-            playeridlist.add(v);
-          }
-        });
-      }
+  //     for (var item in response.data) {
+  //       item.forEach((k, v) {
+  //         if (k == "playerId") {
+  //           playeridlist.add(v);
+  //         }
+  //       });
+  //     }
 
-      //_regiuser.playerId = response.data[0]['playerId'];
-    } else {
-      print('Erro login');
-    }
-    return playeridlist;
-  }
+  //     //_regiuser.playerId = response.data[0]['playerId'];
+  //   } else {
+  //     print('Erro login');
+  //   }
+  //   return playeridlist;
+  // }
 }

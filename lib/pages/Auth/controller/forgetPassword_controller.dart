@@ -51,25 +51,16 @@ class ForgerPassController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        Get.snackbar('Thanks'.tr, 'Password_changed_Successfuly'.tr,
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.greenAccent);
+        mySnackbar('Thanks'.tr, 'Password_changed_Successfuly'.tr, true);
         // _redirectUser();
 
         Get.to(() => CategoryPage());
       } else {
-        _failmessage(response);
+        mySnackbar('Failed'.tr, 'can_not_updated_password'.tr, false);
       }
     } finally {
       isLoading.value = false;
     }
-  }
-
-  _failmessage(response) async {
-    isLoading(false);
-
-    Get.snackbar('${response.data['errorCode']}', 'login_failed'.tr,
-        snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.white);
   }
 
   Future resetpassword(_password, _username) async {
@@ -93,14 +84,12 @@ class ForgerPassController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        Get.snackbar('Thanks'.tr, 'Password_changed_Successfuly'.tr,
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.greenAccent);
+        mySnackbar('Thanks'.tr, 'Password_changed_Successfuly'.tr, true);
         // _redirectUser();
 
         Get.to(() => LoginPage());
       } else {
-        _failmessage(response);
+        mySnackbar('Failed'.tr, 'can_not_updated_password'.tr, false);
       }
     } finally {
       isLoading.value = false;
@@ -137,7 +126,7 @@ class ForgerPassController extends GetxController {
           Get.to(OtpForgetPassPage());
         }
       } else {
-        mySnackbar("Failed".tr, "invalid_num_or_already_exist".tr, "Error");
+        mySnackbar("Failed".tr, "invalid_num_or_already_exist".tr, false);
       }
     } finally {
       isLoading.value = false;

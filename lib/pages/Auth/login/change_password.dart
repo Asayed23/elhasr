@@ -55,7 +55,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 SizedBox(height: h(5)),
 
                 FittedBox(
-                  child: Text('CHANGE PASSWORD',
+                  child: Text('CHANGE_PASSWORD'.tr,
                       style: TextStyle(fontSize: sp(30), color: lgreen)),
                 ),
                 SizedBox(height: sp(20)),
@@ -135,7 +135,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'New_password'.tr,
+                    hintText: 'new_password'.tr,
                     filled: false,
                     fillColor: lblue,
                     prefixIcon: Icon(
@@ -235,7 +235,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                         child:
                             // our local Elvated Button (text , color , onpress:(){})
                             ElevatedButton(
-                          child: Text('Change_Password'.tr,
+                          child: Text('change_password'.tr,
                               style: TextStyle(fontSize: sp(12))),
                           onPressed: () async {
                             ///=====================

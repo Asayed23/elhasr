@@ -97,7 +97,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              TextField(
+                              TextFormField(
+                                initialValue: currentUserController
+                                    .currentUser.value.villaArea
+                                    .toString(),
                                 onChanged: ((value) {
                                   setState(() {
                                     _size = value;

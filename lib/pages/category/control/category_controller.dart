@@ -60,7 +60,7 @@ class CategoryController extends GetxController {
           shownCatgeroy.add(CategoryModel.fromJson(dic));
         }
       } else {
-        mySnackbar('Invalid', 'ensure_internet_is_working', false);
+        mySnackbar('Failed'.tr, 'ensure_internet_is_working'.tr, false);
       }
     } finally {
       isLoading.value = false;

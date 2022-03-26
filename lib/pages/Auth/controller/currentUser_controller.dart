@@ -39,7 +39,7 @@ class CurrentUserController extends GetxController {
       if (response.statusCode == 200) {
         storeUserData(currentUser.value, 'user');
       } else {
-        mySnackbar("Failed".tr, "cannot_update_user_data".tr, "Error");
+        //mySnackbar("Failed".tr, "cannot_update_user_data".tr, false);
       }
     } finally {
       isLoading.value = false;

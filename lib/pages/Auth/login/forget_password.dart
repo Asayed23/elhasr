@@ -73,7 +73,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   ///
                   IntlPhoneField(
                     decoration: InputDecoration(
-                      labelText: 'Phone Number',
+                      labelText: 'Phone_Number'.tr,
                       border: OutlineInputBorder(
                         borderSide: BorderSide(),
                       ),
@@ -127,7 +127,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             //         color: Colors.white60,
                           )),
                       contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 6.0, top: 8.0),
+                          left: 14.0, right: 14.0, bottom: 6.0, top: 8.0),
                       focusedBorder: OutlineInputBorder(
                         //      borderSide: BorderSide(color: lgreen),
                         borderRadius: BorderRadius.circular(10.0),
@@ -178,7 +178,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             //             color: Colors.white60,
                           )),
                       contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 6.0, top: 8.0),
+                          left: 14.0, right: 14.0, bottom: 6.0, top: 8.0),
                       focusedBorder: OutlineInputBorder(
                         //borderSide: BorderSide(color: lgreen),
                         borderRadius: BorderRadius.circular(10.0),

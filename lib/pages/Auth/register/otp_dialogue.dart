@@ -141,7 +141,6 @@ class _OtpDialogueState extends State<OtpDialogue> {
                         setState(() {
                           _showotpButton = true;
                         });
-                        print('Countdown Ended');
                       },
                     ),
                   ))),
@@ -261,7 +260,7 @@ class _OtpDialogueState extends State<OtpDialogue> {
                             phoneController.otpcorrect(false);
                             await registerController.registeruser();
                           } else {
-                            Get.snackbar("Invalid", 'user error');
+                            mySnackbar('Failed'.tr, 'error_data'.tr, false);
                           }
                         },
                         onCodeChanged: (value) async {
@@ -274,7 +273,7 @@ class _OtpDialogueState extends State<OtpDialogue> {
                               phoneController.otpcorrect(false);
                               await registerController.registeruser();
                             } else {
-                              Get.snackbar("Invalid", 'user error');
+                              mySnackbar('Failed'.tr, 'error_data'.tr, false);
                             }
                           }
                           //  print(value);

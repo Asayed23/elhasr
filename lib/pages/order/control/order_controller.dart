@@ -51,7 +51,7 @@ class OrderController extends GetxController {
             orderList.add(OrderHistoryModel.fromJson(_itemdata));
           });
         } else {
-          mySnackbar('Sorry', 'cannot_load_order'.tr, false);
+          mySnackbar('Sorry'.tr, 'cannot_load_order'.tr, false);
         }
       } finally {
         isLoading.value = false;

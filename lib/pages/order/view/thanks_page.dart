@@ -56,7 +56,7 @@ class _ThanksPageState extends State<ThanksPage> {
           ),
           Center(
             child: Text(
-              'CONGRATULATION..!'.tr,
+              'congr'.tr,
               style: TextStyle(fontSize: sp(15)),
             ),
           ),
@@ -64,8 +64,7 @@ class _ThanksPageState extends State<ThanksPage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Your request has been Successfully Sent we will contact you shortly'
-                    .tr,
+                'request_success'.tr.tr,
                 style: TextStyle(fontSize: sp(11)),
               ),
             ),
@@ -76,7 +75,7 @@ class _ThanksPageState extends State<ThanksPage> {
                     myBottomBarCtrl.selectedIndBottomBar.value = 0;
                     Get.off(CategoryPage());
                   },
-                  child: Text('go_to_homePage'.tr))),
+                  child: Text('Go_To_home_page'.tr))),
         ]),
       ),
       bottomNavigationBar: mybottomBarWidget(),

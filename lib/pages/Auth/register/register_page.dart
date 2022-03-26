@@ -116,15 +116,18 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     /// decoration
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.person
-                          //color: Colors.white,
-                          ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: const Icon(Icons.person
+                            //color: Colors.white,
+                            ),
+                      ),
                       border: InputBorder.none,
                       hintText: 'Enter_yourName'.tr,
                       filled: false,
                       fillColor: lblue,
                       contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 6.0, top: 8.0),
+                          left: 14.0, right: 14.0, bottom: 6.0, top: 8.0),
                       focusedBorder: OutlineInputBorder(
                         //  borderSide: BorderSide(color: lgreen),
                         borderRadius: BorderRadius.circular(10.0),
@@ -144,6 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ///=======================================================================
                   // Name
                   TextFormField(
+                    // textDirection: TextDirection.rtl,
                     validator: (value) {
                       if (value == null ||
                           value.isEmpty ||
@@ -165,6 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     /// decoration
                     decoration: InputDecoration(
+                      // contentPadding: EdgeInsets.symmetric(vertical: 5),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: const FaIcon(FontAwesomeIcons.houseUser),
@@ -174,7 +179,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       filled: false,
                       fillColor: lblue,
                       contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 6.0, top: 8.0),
+                          left: 14.0, right: 14, bottom: 14, top: 14),
                       focusedBorder: OutlineInputBorder(
                         //  borderSide: BorderSide(color: lgreen),
                         borderRadius: BorderRadius.circular(10.0),
@@ -246,7 +251,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             //   color: Colors.white60,
                           )),
                       contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 6.0, top: 8.0),
+                          left: 14.0, right: 14.0, bottom: 6.0, top: 8.0),
                       focusedBorder: OutlineInputBorder(
                         //borderSide: BorderSide(color: lgreen),
                         borderRadius: BorderRadius.circular(10.0),
@@ -297,7 +302,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             // color: Colors.white60,
                           )),
                       contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 6.0, top: 8.0),
+                          left: 14.0, right: 14.0, bottom: 6.0, top: 8.0),
                       focusedBorder: OutlineInputBorder(
                         // borderSide: BorderSide(color: lgreen),
                         borderRadius: BorderRadius.circular(10.0),
@@ -359,7 +364,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     } else {
                                       mySnackbar(
                                           'Invalid'.tr,
-                                          'invalid phone or already Exist',
+                                          'invalid_num_or_already_exist'.tr,
                                           false);
                                     }
                                   }),

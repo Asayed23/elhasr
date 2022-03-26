@@ -87,8 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                 ///=======================================================================
                 ///
                 IntlPhoneField(
-                  decoration: const InputDecoration(
-                    labelText: 'Phone_Number',
+                  decoration: InputDecoration(
+                    labelText: 'Phone_Number'.tr,
                     border: OutlineInputBorder(
                       borderSide: BorderSide(),
                     ),
@@ -182,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                         child:
                             // our local Elvated Button (text , color , onpress:(){})
                             ElevatedButton(
-                          child: Text('Login'.tr,
+                          child: Text('login'.tr,
                               style: TextStyle(fontSize: sp(20))),
                           onPressed: () async {
                             //Get.to(()=>MainProfilePage());

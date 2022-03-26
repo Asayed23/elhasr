@@ -61,7 +61,7 @@ class CartController extends GetxController {
 
           cart.value.cartItems = _listitems;
         } else {
-          mySnackbar('Sorry', 'No List cant be updated', false);
+          mySnackbar('Sorry'.tr, 'list_not_updated'.tr, false);
         }
       } finally {
         isLoading.value = false;
@@ -101,10 +101,11 @@ class CartController extends GetxController {
             _listitems.add(_item);
             cartIDList.add(_item.item);
           });
-          mySnackbar('Item', 'added', true);
+
+          mySnackbar('Thanks'.tr, 'item_added'.tr, true);
         }
       } else {
-        mySnackbar('Sorry', 'No List cant be updated', false);
+        mySnackbar('Sorry'.tr, 'please_try_again'.tr, false);
       }
     } finally {
       isLoading.value = false;
@@ -145,10 +146,10 @@ class CartController extends GetxController {
         // });
 
         // cart.value.cartItems = _listitems;
-        mySnackbar('Item', 'removed', true);
+        mySnackbar('Thanks'.tr, 'item_removed'.tr, true);
       } else {
         isLoading.value = false;
-        mySnackbar('Sorry', 'No item cannot deleted', false);
+        mySnackbar('Sorry'.tr, 'please_try_again'.tr, false);
       }
     } finally {
       // isLoading.value = false;

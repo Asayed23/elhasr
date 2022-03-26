@@ -153,7 +153,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text('enter_otp'),
+                          Text('enter_otp'.tr),
                           _showotpButton
                               ? ArgonTimerButton(
                                   height: 50,
@@ -172,7 +172,7 @@ class _OtpForgetPassPageState extends State<OtpForgetPassPage> {
                                   },
                                   // initialTimer: 10,
                                   child: Text(
-                                    "resend_otp",
+                                    "resend_otp".tr,
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: sp(10),

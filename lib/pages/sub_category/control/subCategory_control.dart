@@ -81,7 +81,7 @@ class SubCategoryController extends GetxController {
           shownsubCatgeroy.add(SubCategoryModel.fromJson(dic));
         }
       } else {
-        mySnackbar('error', 'canot_upload_subcategory', false);
+        mySnackbar('sorry'.tr, 'canot_upload_subcategory'.tr, false);
       }
     } finally {
       isLoading.value = false;

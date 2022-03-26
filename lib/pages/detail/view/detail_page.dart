@@ -119,7 +119,7 @@ class _DetailPageState extends State<DetailPage> {
                               overflow: TextOverflow.fade,
                               //  color: lgreen,
                               //  fontSize: h(2),
-                              fontSize: sp(20)),
+                              fontSize: sp(14)),
                         ),
                       ),
                       Expanded(
@@ -194,6 +194,14 @@ class _DetailPageState extends State<DetailPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
+                      style: cartController.cartIDList.contains(
+                              subCategoryController
+                                  .selectsubCategory.value.service_id)
+                          ? ElevatedButton.styleFrom(
+                              primary: Colors.redAccent,
+                              side: BorderSide(color: Colors.red),
+                            )
+                          : ElevatedButton.styleFrom(),
                       onPressed: () {
                         cartController.cartIDList.contains(subCategoryController
                                 .selectsubCategory.value.service_id)
@@ -205,8 +213,8 @@ class _DetailPageState extends State<DetailPage> {
                       child: cartController.cartIDList.contains(
                               subCategoryController
                                   .selectsubCategory.value.service_id)
-                          ? Text('remove_from_cart')
-                          : Text('add_tocart')),
+                          ? Text('remove_from_cart'.tr)
+                          : Text('add_tocart'.tr)),
                 ),
               )
             ],

@@ -57,13 +57,12 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
                         }),
                         keyboardType: TextInputType.number,
                         //controller: _textEditingController,
-                        decoration:
-                            InputDecoration(hintText: "Please area size"),
+                        decoration: InputDecoration(hintText: "enter_size".tr),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("donot_show_again"),
+                          Text("not_show_again".tr),
                           Checkbox(
                               value: isChecked,
                               onChanged: (checked) {
@@ -77,10 +76,10 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
                       )
                     ],
                   )),
-              title: Text('enter Area Size'),
+              title: Text('enter_size'.tr),
               actions: <Widget>[
                 ElevatedButton(
-                  child: Text('OK   '),
+                  child: Text('OK'.tr),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       // Do something like updating SharedPreferences or User Settings etc.
