@@ -2,6 +2,7 @@ import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
 import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:loading_animations/loading_animations.dart';
 
@@ -23,6 +24,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
 
   final SubCategoryController subcategoryController =
       Get.put(SubCategoryController());
+  String _size = '100';
 
   final CartController cartController = Get.put(CartController());
   @override
@@ -109,8 +111,79 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                     //   ),
                     // ]),
                     SizedBox(
-                      height: h(2),
+                      height: h(8),
+                      child: ListTile(
+                          trailing: Text(
+                            'edit'.tr,
+                            style: TextStyle(color: textbuttonColor),
+                          ),
+                          leading: FaIcon(FontAwesomeIcons.houseUser),
+                          title: Text('myarea_size_price'.tr +
+                              ' ${currentUserController.currentUser.value.villaArea.toString()}'),
+                          onTap: () async {
+                            Get.defaultDialog(
+                                title: '',
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TextFormField(
+                                      initialValue: currentUserController
+                                          .currentUser.value.villaArea
+                                          .toString(),
+                                      onChanged: ((value) {
+                                        setState(() {
+                                          _size = value;
+                                        });
+                                      }),
+                                      keyboardType: TextInputType.number,
+                                      maxLines: 1,
+                                      decoration: InputDecoration(
+                                          labelText: 'enter_size'.tr,
+                                          hintMaxLines: 1,
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.green,
+                                                  width: 4.0))),
+                                    ),
+                                    SizedBox(
+                                      height: h(2),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        if (_size != "") {
+                                          currentUserController
+                                              .currentUser
+                                              .value
+                                              .villaArea = int.parse(_size);
+
+                                          currentUserController.updateUserData(
+                                              currentUserController
+                                                  .currentUser.value);
+                                          subCategoryController
+                                              .getsubcategorydata(
+                                                  subCategoryController
+                                                      .selecteditem);
+                                          Navigator.of(context).pop();
+                                          // Get.to(() => const UserProfilePage());
+
+                                          setState(() {
+                                            currentUserController
+                                                .currentUser
+                                                .value
+                                                .villaArea = int.parse(_size);
+                                          });
+
+                                          //Get.back();
+                                        }
+                                      },
+                                      child: Text('update_size'.tr),
+                                    )
+                                  ],
+                                ),
+                                radius: 10.0);
+                          }),
                     ),
+                    Divider(),
                     Expanded(
                       child: GridView.builder(
                           controller: scrollController,

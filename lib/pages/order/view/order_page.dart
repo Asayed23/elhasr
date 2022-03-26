@@ -59,9 +59,12 @@ class _OrderPageState extends State<OrderPage> {
                   ))
                 : cartController.cart.value.cartItems.isEmpty & _showEmpty
                     ? Center(
+                        child: Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Text(
-                        'No_selected_items',
-                        style: TextStyle(fontSize: sp(15)),
+                          'No_selected_items'.tr,
+                          style: TextStyle(fontSize: sp(15)),
+                        ),
                       ))
                     : Column(children: [
                         SizedBox(

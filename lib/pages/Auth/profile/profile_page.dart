@@ -87,7 +87,10 @@ class _UserProfilePageState extends State<UserProfilePage> {
           Obx(() => Visibility(
                 visible: currentUserController.currentUser.value.id != -1,
                 child: ListTile(
-                    trailing: Text('edit'.tr),
+                    trailing: Text(
+                      'edit'.tr,
+                      style: TextStyle(color: textbuttonColor),
+                    ),
                     leading: FaIcon(FontAwesomeIcons.houseUser),
                     title: Text('myarea_size'.tr +
                         ' ${currentUserController.currentUser.value.villaArea.toString()}'),

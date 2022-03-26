@@ -53,23 +53,23 @@ Widget showSubCategoryItem(SubCategoryModel shownItem, int _selecteditem) {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              width: w(25),
-              height: h(12),
+              width: w(30),
+              height: h(15),
               decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(sp(8)),
-                border: Border.all(
-                  color: Colors.grey.shade800,
-                  width: sp(1),
-                ),
+                // color: Colors.grey,
+                borderRadius: BorderRadius.circular(sp(15)),
+                // border: Border.all(
+                //   //   color: Colors.grey.shade800,
+                //   width: sp(1),
+                // ),
               ),
               child: Padding(
-                  padding: EdgeInsets.all(sp(0)),
+                  padding: EdgeInsets.all(sp(3)),
                   child: Hero(
                     tag: shownItem.image,
                     child: Image.network(
                       dbImageurl + shownItem.image,
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                       loadingBuilder: (BuildContext context, Widget child,
                           ImageChunkEvent? loadingProgress) {
                         if (loadingProgress == null) return child;

@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                               : Icons.visibility_off,
                         )),
                     contentPadding: const EdgeInsets.only(
-                        left: 14.0, bottom: 6.0, top: 8.0),
+                        left: 14.0, right: 14.0, bottom: 6.0, top: 8.0),
                     focusedBorder: OutlineInputBorder(
                       //borderSide: BorderSide(color: lgreen),
                       borderRadius: BorderRadius.circular(10.0),

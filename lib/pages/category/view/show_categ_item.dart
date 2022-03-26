@@ -189,6 +189,7 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
         padding: const EdgeInsets.all(8.0),
         child: Stack(
           textDirection: TextDirection.rtl,
+          alignment: Alignment.bottomRight,
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
@@ -228,15 +229,13 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
                   // ),
                   ),
             ),
-            Positioned(
-              bottom: h(6),
-              right: w(1),
-              //left: w(1),
+            Padding(
+              padding: const EdgeInsets.all(2),
               child: Container(
                 width: w(30),
-                // height: h(10),
+                height: h(8),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.white.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(sp(20)),
                   border: Border.all(
                     color: Colors.grey.shade800,
@@ -249,10 +248,10 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
                     child: AutoSizeText(
                       widget.shownItem.name,
 
-                      style: TextStyle(fontSize: sp(20)),
+                      style: TextStyle(fontSize: sp(16)),
                       //minFontSize: sp(13),
                       //maxLines: 2,
-                      overflow: TextOverflow.visible,
+                      overflow: TextOverflow.fade,
                     ),
                   ),
                 ),

@@ -79,6 +79,7 @@ class User {
         phoneNumber: json["phoneNumber"],
         fullName: json["fullName"],
         villaArea: json["villaArea"] ?? 100.0,
+        showsizeSelect: json["showsizeSelect"] ?? true,
         // city: json["city"],
         // country: json["country"],
         // image: json["image"],
@@ -113,5 +114,6 @@ class User {
         "fullName": fullName,
         "profileBalance": profileBalance,
         "villaArea": villaArea,
+        "showsizeSelect": showsizeSelect,
       };
 }

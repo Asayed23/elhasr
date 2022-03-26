@@ -6,6 +6,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/size_config.dart';
 import '../Auth/controller/currentUser_controller.dart';
@@ -70,8 +71,15 @@ class _SplashScreenState extends State<SplashScreen> {
             currentUserController.currentUser.value =
                 await loadUserData('user');
             cartController.getcartList();
+
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+
+            var _lang = prefs.getString('lang');
+            var locale = Locale(_lang!, _lang);
+            Get.updateLocale(locale);
           } catch (e) {
-            removeUserData('user');
+            print(e);
+            // removeUserData('user');
           }
           return CategoryPage();
           // } else {

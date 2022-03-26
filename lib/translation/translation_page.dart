@@ -52,7 +52,7 @@ class _TrnaslationPageState extends State {
                 var locale = Locale('en', 'en');
                 Get.updateLocale(locale);
                 SharedPreferences prefs = await SharedPreferences.getInstance();
-                bool reult = await prefs.setBool('isArabic', false);
+                await prefs.setString('lang', 'en');
                 myBottomBarCtrl.selectedIndBottomBar.value = 0;
                 Get.to(CategoryPage());
               },
@@ -78,7 +78,8 @@ class _TrnaslationPageState extends State {
                 var locale = Locale('ar', 'ar');
                 Get.updateLocale(locale);
                 SharedPreferences prefs = await SharedPreferences.getInstance();
-                bool reult = await prefs.setBool('isArabic', true);
+
+                await prefs.setString('lang', 'ar');
                 myBottomBarCtrl.selectedIndBottomBar.value = 0;
 
                 Get.to(CategoryPage());

@@ -51,14 +51,14 @@ const Map<String, String> en = {
   'less_size_100': 'Min Size is 100 meter',
   'ensure_internet_is_working': 'Ensure that network is well',
   'OK': 'Ok',
-  'not_show_again': 'Dont show Again',
+  'not_show_again': 'Do not show Again',
   'remove_from_cart': 'Remove from Order',
   'add_tocart': 'Add to Order',
   'item_removed': 'Item has been removed',
   'item_cannot_del': 'Item cannot deleted',
   'Sorry': 'Sorry',
   'item_added': 'Item has been Added',
-  'please_try_again': 'Please tray again later',
+  'please_try_again': 'Please try again later',
   'list_not_updated': 'your list cannot be fetched , please try later',
   'canot_upload_subcategory': 'Cannot Upload all sub category data, try later',
   'reEnter_New_password': 'Renter new Password',
@@ -74,4 +74,6 @@ const Map<String, String> en = {
   'request_success':
       'Your request has been Successfully Sent we will contact you shortly',
   'congr': 'CONGRATULATION..!',
+  'myarea_size_price': 'below prices based on Area',
+  'No_selected_items': 'There is no selection , please select your items first',
 };
