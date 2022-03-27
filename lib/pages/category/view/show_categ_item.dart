@@ -42,6 +42,9 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
           bool isChecked = false;
           return StatefulBuilder(builder: (context, setState) {
             return AlertDialog(
+              backgroundColor: Colors.white.withOpacity(0.9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(sp(10)))),
               content: Form(
                   key: _formKey,
                   child: Column(
@@ -192,42 +195,44 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
           alignment: Alignment.bottomRight,
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              width: w(45),
-              height: h(25),
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(sp(10)),
-                border: Border.all(
-                  color: Colors.grey.shade800,
-                  width: sp(1),
-                ),
-              ),
-              child: Padding(
-                  padding: EdgeInsets.all(sp(0)),
-                  child: Image.network(
-                    dbImageurl + widget.shownItem.image,
-                    fit: BoxFit.fill,
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
-                    },
-                  )
-                  //  fit: BoxFit.contain,
-                  //   imageUrl: dbImageurl + widget.shownItem.image,
-                  //   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  //       CircularProgressIndicator(value: downloadProgress.progress),
-                  //   errorWidget: (context, url, error) => Icon(Icons.error),
-                  // ),
+            Center(
+              child: Container(
+                width: w(95),
+                height: h(25),
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(sp(10)),
+                  border: Border.all(
+                    color: Colors.grey.shade800,
+                    width: sp(1),
                   ),
+                ),
+                child: Padding(
+                    padding: EdgeInsets.all(sp(0)),
+                    child: Image.network(
+                      dbImageurl + widget.shownItem.image,
+                      fit: BoxFit.fill,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
+                    )
+                    //  fit: BoxFit.contain,
+                    //   imageUrl: dbImageurl + widget.shownItem.image,
+                    //   progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    //       CircularProgressIndicator(value: downloadProgress.progress),
+                    //   errorWidget: (context, url, error) => Icon(Icons.error),
+                    // ),
+                    ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(2),

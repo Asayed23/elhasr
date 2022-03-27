@@ -133,13 +133,13 @@ class _CategoryPageState extends State<CategoryPage> {
               //   ),
               // ),
               Expanded(
-                child: GridView.builder(
+                child: ListView.builder(
                     controller: scrollController,
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: sp(200),
-                        childAspectRatio: 1 / 1,
-                        crossAxisSpacing: sp(10),
-                        mainAxisSpacing: sp(10)),
+                    // gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    //     maxCrossAxisExtent: sp(200),
+                    //     childAspectRatio: 1 / 1,
+                    //     crossAxisSpacing: sp(10),
+                    //     mainAxisSpacing: sp(10)),
                     itemCount: categoryController.shownCatgeroy.length - 1,
                     itemBuilder: (BuildContext ctx, index) {
                       return ShowCategoryItem(

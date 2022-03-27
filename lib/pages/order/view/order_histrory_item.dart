@@ -9,6 +9,7 @@ import '../../sub_category/control/subCategory_control.dart';
 import '../../sub_category/model/cart_item_model.dart';
 import '../../sub_category/view/sub_category_page.dart';
 import '../model/order_history_model.dart';
+import 'order_details.dart';
 
 //  String playerFirstName;
 //   String playerLastName;
@@ -28,7 +29,9 @@ final CartController cartController = Get.put(CartController());
 Widget showHistoryOrderItem(OrderHistoryModel shownItem) {
   return GestureDetector(
     onTap: () async {
-      // Get.to(() => DetailPage());
+      cartController.selectidhistory = shownItem.id;
+
+      Get.to(() => OrderDetailPage());
     },
     child: Padding(
       padding: const EdgeInsets.all(8.0),

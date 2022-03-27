@@ -73,6 +73,8 @@ const String phoneCheckUrl = "$dbImageurl/api/numbercheck/";
 const String subcategoryUrl = "$dburl/category/details/";
 
 const String cartListUrl = "$dbImageurl/orders/cart/list/";
+const String orderdetailUrl = "$dbImageurl/orders/order/orderdetail/";
+
 const String cartAddUrl = "$dbImageurl/orders/cart/add/";
 const String cartDelUrl = "$dbImageurl/orders/cart/delete/";
 

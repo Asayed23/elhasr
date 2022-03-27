@@ -92,11 +92,14 @@ Widget showcartItemOrder(CartItemModel shownItem) {
               ),
             ]),
           ),
-          IconButton(
-              onPressed: () {
-                cartController.delFromCart(shownItem.item);
-              },
-              icon: Icon(Icons.delete, color: Colors.black))
+          Visibility(
+            visible: cartController.cart.value.showdelete,
+            child: IconButton(
+                onPressed: () {
+                  cartController.delFromCart(shownItem.item);
+                },
+                icon: Icon(Icons.delete, color: Colors.black)),
+          )
         ],
       ),
     ),

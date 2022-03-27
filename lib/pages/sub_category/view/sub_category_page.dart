@@ -202,6 +202,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                                 index + 1);
                           }),
                     ),
+                    SizedBox(height: h(4))
                   ]),
           )),
       bottomNavigationBar: mybottomBarWidget(),

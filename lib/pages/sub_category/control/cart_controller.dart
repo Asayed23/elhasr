@@ -16,6 +16,7 @@ class CartController extends GetxController {
   var cart = CartModel().obs;
   var isLoading = false.obs;
   var cartloading = false.obs;
+  var selectidhistory = -1.obs;
   var cartIDList = [].obs;
   final CurrentUserController currentUserController =
       Get.put(CurrentUserController());
@@ -49,6 +50,51 @@ class CartController extends GetxController {
         if (response.statusCode == 200) {
           // Read Cart
           cart.value = CartModel.fromJson(response.data['cart']);
+          cart.value.showdelete = true;
+          // cart.value.cartItems =
+          //     fillCartItemFromjson(response.data['cart items']);
+          List<CartItemModel> _listitems = [];
+          cartIDList.value = [];
+          response.data['cart items'].forEach((_itemdata) {
+            final CartItemModel _item = CartItemModel.fromJson(_itemdata);
+            _listitems.add(_item);
+            cartIDList.add(_item.item);
+          });
+
+          cart.value.cartItems = _listitems;
+        } else {
+          mySnackbar('Sorry'.tr, 'list_not_updated'.tr, false);
+        }
+      } finally {
+        isLoading.value = false;
+      }
+    }
+  }
+
+  Future getcartHistoryList() async {
+    if (currentUserController.currentUser.value.id != -1) {
+      try {
+        isLoading(true);
+        var dio = Dio();
+        cart.value = CartModel();
+        var response = await dio.post(
+          orderdetailUrl,
+          data: {
+            'order_id': selectidhistory.toString(),
+            // 'user_id': '1',
+          },
+          options: Options(
+            followRedirects: false,
+            validateStatus: (status) {
+              return status! < 800;
+            },
+            //headers: {},
+          ),
+        );
+        if (response.statusCode == 200) {
+          // Read Cart
+          cart.value = CartModel.fromJsonforOrderHist(response.data['cart'][0]);
+          cart.value.showdelete = false;
           // cart.value.cartItems =
           //     fillCartItemFromjson(response.data['cart items']);
           List<CartItemModel> _listitems = [];
@@ -215,14 +261,17 @@ class CartController extends GetxController {
         );
         if (response.statusCode == 200) {
           getcartList();
-
+          String _ordernumber = response.data['order number'].toString();
+          String _totalprice = response.data['total price'].toString();
           Get.off(ThanksPage());
           String _textMsg =
-              "Please go processed with my order number *xxxx* , total price  ${cart.value.total_price.toString()}";
+              "Order $_ordernumber has been suucessfuly created, total price  $_totalprice  .";
+          _textMsg = _textMsg +
+              " الطلب رقم $_ordernumber $_totalprice تم طلبه بنجاح والسعر الكلى ";
 
-          if (cart.value.coupon_code != "") {
-            _textMsg = _textMsg + " with offer_code " + cart.value.coupon_code;
-          }
+          // if (cart.value.coupon_code != "") {
+          //   _textMsg = _textMsg + " with offer_code " + cart.value.coupon_code;
+          // }
           _textMsg = _textMsg.replaceAll(" ", "%20");
           print(_textMsg);
           await launch("https://wa.me/$_number?text=" + _textMsg);
