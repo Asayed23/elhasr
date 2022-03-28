@@ -14,6 +14,7 @@ import '../model/subCategory_model.dart';
 
 class CartController extends GetxController {
   var cart = CartModel().obs;
+
   var isLoading = false.obs;
   var cartloading = false.obs;
   var selectidhistory = -1.obs;
@@ -98,11 +99,11 @@ class CartController extends GetxController {
           // cart.value.cartItems =
           //     fillCartItemFromjson(response.data['cart items']);
           List<CartItemModel> _listitems = [];
-          cartIDList.value = [];
+          // cartIDList.value = [];
           response.data['cart items'].forEach((_itemdata) {
             final CartItemModel _item = CartItemModel.fromJson(_itemdata);
             _listitems.add(_item);
-            cartIDList.add(_item.item);
+            // cartIDList.add(_item.item);
           });
 
           cart.value.cartItems = _listitems;
@@ -265,9 +266,9 @@ class CartController extends GetxController {
           String _totalprice = response.data['total price'].toString();
           Get.off(ThanksPage());
           String _textMsg =
-              "Order $_ordernumber has been suucessfuly created, total price  $_totalprice  .";
+              "Order No. $_ordernumber has been suucessfuly created with total price  $_totalprice  .";
           _textMsg = _textMsg +
-              " الطلب رقم $_ordernumber $_totalprice تم طلبه بنجاح والسعر الكلى ";
+              " الطلب رقم $_ordernumber قد تم بنجاح والمبلغ الكلى  $_totalprice ";
 
           // if (cart.value.coupon_code != "") {
           //   _textMsg = _textMsg + " with offer_code " + cart.value.coupon_code;

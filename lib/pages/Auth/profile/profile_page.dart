@@ -23,7 +23,8 @@ import '../controller/currentUser_controller.dart';
 import '../controller/sharedpref_function.dart';
 
 class UserProfilePage extends StatefulWidget {
-  const UserProfilePage({Key? key}) : super(key: key);
+  bool showbottombar;
+  UserProfilePage({Key? key, required this.showbottombar}) : super(key: key);
 
   @override
   _UserProfilePageState createState() => _UserProfilePageState();
@@ -67,7 +68,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   ),
                   title: Text(currentUserController.currentUser.value.username),
                   onTap: () async {
-                    mySnackbar('Failed'.tr, 'please_Loging_First'.tr, 'Error');
+                    // mySnackbar('Failed'.tr, 'please_Loging_First'.tr, 'Error');
                   })
               : ListTile(
                   leading: Icon(
@@ -93,7 +94,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     ),
                     leading: FaIcon(FontAwesomeIcons.houseUser),
                     title: Text('myarea_size'.tr +
-                        ' ${currentUserController.currentUser.value.villaArea.toString()}'),
+                        ' ${currentUserController.currentUser.value.villaArea.toString()} m2'),
                     onTap: () async {
                       Get.defaultDialog(
                           title: '',
@@ -236,7 +237,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
               : Text('')),
         ],
       ),
-      bottomNavigationBar: mybottomBarWidget(),
+      bottomNavigationBar:
+          widget.showbottombar ? mybottomBarWidget() : Text(''),
     );
   }
 }

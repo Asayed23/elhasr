@@ -40,7 +40,7 @@ mybottomBarWidget() {
                 //     badgeContent: Text(cartController.cartIDList.length.toString()),
                 //     child:
 
-                Icon(Icons.remove_from_queue),
+                Icon(Icons.chat_rounded),
 
             //  ),
             title: 'Request'.tr,
@@ -63,7 +63,7 @@ mybottomBarWidget() {
           } else if (index == 1) {
             Get.to(const OrderPage());
           } else if (index == 2) {
-            Get.to(const UserProfilePage());
+            Get.to(UserProfilePage(showbottombar: true));
           }
         },
       ));
@@ -102,7 +102,7 @@ mybottomBarWidget2() {
           } else if (index == 1) {
             Get.to(const OrderPage());
           } else if (index == 2) {
-            Get.to(const UserProfilePage());
+            Get.to(UserProfilePage(showbottombar: true));
           }
         },
       ));

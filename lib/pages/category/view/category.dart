@@ -56,7 +56,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      drawer: Drawer(child: UserProfilePage()),
+      drawer: Drawer(child: UserProfilePage(showbottombar: false)),
       appBar: simplAppbar(true),
       body: Obx(() => RefreshIndicator(
             onRefresh: categoryController.getdatarefresh,
