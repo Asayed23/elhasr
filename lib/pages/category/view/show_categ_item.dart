@@ -51,6 +51,14 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextFormField(
+                        validator: (value) {
+                          if (value == null ||
+                              value.isEmpty ||
+                              int.parse(value) < 20) {
+                            return 'less_size_100'.tr;
+                          }
+                          return null;
+                        },
                         initialValue: currentUserController
                             .currentUser.value.villaArea
                             .toString(),

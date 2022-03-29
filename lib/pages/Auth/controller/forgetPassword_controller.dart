@@ -1,5 +1,6 @@
 import 'package:elhasr/pages/Auth/controller/phone_controller.dart';
 import 'package:elhasr/pages/category/view/category.dart';
+import 'package:elhasr/pages/common_widget/mybottom_bar/bottom_bar_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
@@ -22,6 +23,8 @@ class ForgerPassController extends GetxController {
   final CurrentUserController currentUserController =
       Get.put(CurrentUserController());
   final PhoneController phoneController = Get.put(PhoneController());
+
+  final MyBottomBarCtrl myBottomBarCtrl = Get.put(MyBottomBarCtrl());
   @override
   void onInit() {
     super.onInit();
@@ -53,7 +56,7 @@ class ForgerPassController extends GetxController {
       if (response.statusCode == 200) {
         mySnackbar('Thanks'.tr, 'Password_changed_Successfuly'.tr, true);
         // _redirectUser();
-
+        myBottomBarCtrl.selectedIndBottomBar.value = 0;
         Get.to(() => CategoryPage());
       } else {
         mySnackbar('Failed'.tr, 'can_not_updated_password'.tr, false);

@@ -35,6 +35,7 @@ final CurrentUserController currentUserController =
 final CartController cartController = Get.put(CartController());
 final MyBottomBarCtrl myBottomBarCtrl = Get.put(MyBottomBarCtrl());
 String _size = "";
+final _formKey = GlobalKey<FormState>();
 
 class _UserProfilePageState extends State<UserProfilePage> {
   @override
@@ -97,54 +98,74 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         ' ${currentUserController.currentUser.value.villaArea.toString()} m2'),
                     onTap: () async {
                       Get.defaultDialog(
+                          backgroundColor: Colors.white.withOpacity(0.9),
                           title: '',
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              TextFormField(
-                                initialValue: currentUserController
-                                    .currentUser.value.villaArea
-                                    .toString(),
-                                onChanged: ((value) {
-                                  setState(() {
-                                    _size = value;
-                                  });
-                                }),
-                                keyboardType: TextInputType.number,
-                                maxLines: 1,
-                                decoration: InputDecoration(
-                                    labelText: 'enter_size'.tr,
-                                    hintMaxLines: 1,
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.green, width: 4.0))),
-                              ),
-                              SizedBox(
-                                height: h(2),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  if (_size != "") {
-                                    currentUserController.currentUser.value
-                                        .villaArea = int.parse(_size);
-
-                                    currentUserController.updateUserData(
-                                        currentUserController
-                                            .currentUser.value);
-                                    Navigator.of(context).pop();
-                                    // Get.to(() => const UserProfilePage());
-
+                          content: Form(
+                            key: _formKey,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextFormField(
+                                  validator: (value) {
+                                    if (value == null ||
+                                        value.isEmpty ||
+                                        int.parse(value) < 20) {
+                                      return 'less_size_100'.tr;
+                                    }
+                                    return null;
+                                  },
+                                  initialValue: currentUserController
+                                      .currentUser.value.villaArea
+                                      .toString(),
+                                  onChanged: ((value) {
                                     setState(() {
-                                      currentUserController.currentUser.value
-                                          .villaArea = int.parse(_size);
+                                      _size = value;
                                     });
+                                  }),
+                                  keyboardType: TextInputType.number,
+                                  maxLines: 1,
+                                  decoration: InputDecoration(
+                                      labelText: 'enter_size'.tr + ' (m2)',
+                                      hintMaxLines: 1,
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.green,
+                                              width: 4.0))),
+                                ),
+                                SizedBox(
+                                  height: h(2),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    final form = _formKey.currentState;
+                                    if (form!.validate()) {
+                                      form.save();
 
-                                    //Get.back();
-                                  }
-                                },
-                                child: Text('update_size'.tr),
-                              )
-                            ],
+                                      if (_size != "") {
+                                        currentUserController.currentUser.value
+                                            .villaArea = int.parse(_size);
+
+                                        currentUserController.updateUserData(
+                                            currentUserController
+                                                .currentUser.value);
+                                        Navigator.of(context).pop();
+                                        // Get.to(() => const UserProfilePage());
+
+                                        setState(() {
+                                          currentUserController
+                                              .currentUser
+                                              .value
+                                              .villaArea = int.parse(_size);
+                                        });
+
+                                        //Get.back();
+                                      }
+                                    }
+                                  },
+                                  child: Text('update_size'.tr),
+                                )
+                              ],
+                            ),
                           ),
                           radius: 10.0);
                     }),

@@ -151,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value == null ||
                           value.isEmpty ||
-                          int.parse(value) < 80) {
+                          int.parse(value) < 20) {
                         return 'less_size_100'.tr;
                       }
                       return null;
@@ -175,7 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const FaIcon(FontAwesomeIcons.houseUser),
                       ),
                       border: InputBorder.none,
-                      hintText: 'enter_size'.tr,
+                      hintText: 'enter_size'.tr + ' (m2)',
                       filled: false,
                       fillColor: lblue,
                       contentPadding: const EdgeInsets.only(

@@ -56,7 +56,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
                 FittedBox(
                   child: Text('CHANGE_PASSWORD'.tr,
-                      style: TextStyle(fontSize: sp(30), color: lgreen)),
+                      style: TextStyle(fontSize: sp(30))),
                 ),
                 SizedBox(height: sp(20)),
 
