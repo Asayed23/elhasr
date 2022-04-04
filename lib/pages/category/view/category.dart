@@ -30,19 +30,9 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
     super.initState();
-    // categoryController.getdata();
-
-    // scrollController.addListener(() {
-    //   if (scrollController.position.pixels ==
-    //       scrollController.position.maxScrollExtent) {
-    //     if (categoryController.from.value < categoryController.totalListLen.value) {
-    //       unlockController.getlist();
-    //       categoryController.getdata();
-    //     }
-
-    //     //return state.products;
-    //   }
-    // });
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      categoryController.getdata();
+    });
   }
 
   @override

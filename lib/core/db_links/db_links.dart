@@ -1,5 +1,5 @@
-const String db_url1 = "http://elhasrapp.pythonanywhere.com/api/";
-const String db_url = "http://elhasrapp.pythonanywhere.com/";
+const String db_url1 = "http://3.125.67.31/api/";
+const String db_url = "http://3.125.67.31/";
 ///////////////////////////////////////////////////////////////////////
 
 const String login_url = "${db_url1}login/";
@@ -64,7 +64,7 @@ const String unlock_Url = "${db_url1}unlock/";
 
 // ElHasr
 
-const String dburl = "http://elhasrapp.pythonanywhere.com/services";
+const String dburl = "http://3.125.67.31/services";
 const String dbImageurl = "http://elhasrapp.pythonanywhere.com";
 
 const String categoryUrl = "$dburl/category/list/";

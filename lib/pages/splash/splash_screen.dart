@@ -52,14 +52,21 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: AnimatedSplashScreen.withScreenFunction(
-        animationDuration: const Duration(seconds: 3),
+        animationDuration: const Duration(milliseconds: 1500),
+        splashIconSize: sp(150),
+        //duration: 2,
 
-        splash: Image.asset(
-          "assets/images/hasr_logo.png",
-          width: w(30),
-          height: h(30),
-          fit: BoxFit.cover,
-          //color: Colors.red,
+        splash: Container(
+          width: w(45),
+          height: h(70),
+          child: Image.asset(
+            "assets/images/hasr_logolarge.png",
+
+            fit: BoxFit.cover,
+            // width: w(30),
+            // height: h(70),
+            //color: Colors.red,
+          ),
         ),
         screenFunction: () async {
           // bool isOnline = await hasNetwork();

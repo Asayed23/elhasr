@@ -215,31 +215,26 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
                     width: sp(1),
                   ),
                 ),
-                child: Padding(
-                    padding: EdgeInsets.all(sp(0)),
-                    child: Image.network(
-                      dbImageurl + widget.shownItem.image,
-                      fit: BoxFit.fill,
-                      loadingBuilder: (BuildContext context, Widget child,
-                          ImageChunkEvent? loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        );
-                      },
-                    )
-                    //  fit: BoxFit.contain,
-                    //   imageUrl: dbImageurl + widget.shownItem.image,
-                    //   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    //       CircularProgressIndicator(value: downloadProgress.progress),
-                    //   errorWidget: (context, url, error) => Icon(Icons.error),
-                    // ),
-                    ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(sp(10)), // Image border
+
+                  child: Image.network(
+                    dbImageurl + widget.shownItem.image,
+                    fit: BoxFit.fill,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
             ),
             Padding(
