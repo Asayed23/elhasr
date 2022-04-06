@@ -273,9 +273,11 @@ class CartController extends GetxController {
           // if (cart.value.coupon_code != "") {
           //   _textMsg = _textMsg + " with offer_code " + cart.value.coupon_code;
           // }
-          _textMsg = _textMsg.replaceAll(" ", "%20");
-          print(_textMsg);
-          await launch("https://wa.me/$_number?text=" + _textMsg);
+          String _textMsg1 = _textMsg.replaceAll(" ", "%20");
+
+          _textMsg1 = Uri.encodeComponent(_textMsg);
+          print(_textMsg1);
+          await launch("https://wa.me/$_number?text=" + _textMsg1);
           // 'https://api.whatsapp.com/send?phone=${_number}&text=Please go processed with my order number *xxxx*');
 
           Get.off(ThanksPage());
