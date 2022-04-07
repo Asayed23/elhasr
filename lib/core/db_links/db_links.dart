@@ -65,7 +65,7 @@ const String unlock_Url = "${db_url1}unlock/";
 // ElHasr
 
 const String dburl = "http://3.125.67.31/services";
-const String dbImageurl = "http://elhasrapp.pythonanywhere.com";
+const String dbImageurl = "http://3.125.67.31";
 
 const String categoryUrl = "$dburl/category/list/";
 const String phoneCheckUrl = "$dbImageurl/api/numbercheck/";

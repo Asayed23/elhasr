@@ -1,5 +1,6 @@
 import 'package:elhasr/core/theme.dart';
 import 'package:elhasr/pages/Auth/controller/currentUser_controller.dart';
+import 'package:elhasr/pages/Auth/login/login_page.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
 import 'package:elhasr/pages/sub_category/control/subCategory_control.dart';
@@ -203,18 +204,24 @@ class _DetailPageState extends State<DetailPage> {
                             )
                           : ElevatedButton.styleFrom(),
                       onPressed: () {
-                        cartController.cartIDList.contains(subCategoryController
-                                .selectsubCategory.value.service_id)
-                            ? cartController.delFromCart(subCategoryController
-                                .selectsubCategory.value.service_id)
-                            : cartController.addtoCart(subCategoryController
-                                .selectsubCategory.value.service_id);
+                        currentUserController.currentUser.value.id == -1
+                            ? Get.to(LoginPage())
+                            : cartController.cartIDList.contains(
+                                    subCategoryController
+                                        .selectsubCategory.value.service_id)
+                                ? cartController.delFromCart(
+                                    subCategoryController
+                                        .selectsubCategory.value.service_id)
+                                : cartController.addtoCart(subCategoryController
+                                    .selectsubCategory.value.service_id);
                       },
-                      child: cartController.cartIDList.contains(
-                              subCategoryController
-                                  .selectsubCategory.value.service_id)
-                          ? Text('remove_from_cart'.tr)
-                          : Text('add_tocart'.tr)),
+                      child: currentUserController.currentUser.value.id == -1
+                          ? Text('please_log_in'.tr)
+                          : cartController.cartIDList.contains(
+                                  subCategoryController
+                                      .selectsubCategory.value.service_id)
+                              ? Text('remove_from_cart'.tr)
+                              : Text('add_tocart'.tr)),
                 ),
               )
             ],
