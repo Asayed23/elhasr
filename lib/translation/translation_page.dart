@@ -3,6 +3,7 @@ import 'package:elhasr/pages/category/view/category.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,16 +27,42 @@ class _TrnaslationPageState extends State {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-        // appBar: simplAppbar(true),
+        //appBar: simplAppbar(false),
         body: Center(
             child: ListView(
       children: [
-        Image.asset(
-          "assets/images/hasr_logo.png",
-          width: w(40),
-          height: h(20),
-          //color: Colors.red,
-        ),
+        Container(
+            alignment: Alignment(0.0, -1.0),
+            height: h(60),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(sp(20)),
+                  bottomRight: Radius.circular(sp(20))),
+              image: DecorationImage(
+                  colorFilter: ColorFilter.mode(
+                      Colors.grey.withOpacity(0.4), BlendMode.dstATop),
+                  image: AssetImage("assets/images/hasr_logo.png"),
+                  fit: BoxFit.cover),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(top: h(50)),
+              child: Text('Welecom'.tr,
+                  style: TextStyle(
+                      fontSize: sp(15),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white)),
+            )),
+        // Container(
+        //   width: w(40),
+        //   height: h(20),
+        //   child: Image.asset(
+        //     "assets/images/hasr_logo.png",
+        //     width: w(40),
+        //     height: h(20),
+        //     //color: Colors.red,
+        //   ),
+        // ),
         SizedBox(height: h(20)),
         Padding(
           padding: EdgeInsets.only(right: w(40), left: w(1)),

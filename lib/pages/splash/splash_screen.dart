@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 import 'package:elhasr/pages/category/view/category.dart';
+import 'package:elhasr/translation/translation_page.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -73,22 +74,23 @@ class _SplashScreenState extends State<SplashScreen> {
           // if (isOnline) {
           // unlockController.getlist();
           categoryController.getdata();
+          SharedPreferences prefs = await SharedPreferences.getInstance();
 
+          var _lang = prefs.getString('lang');
           try {
             currentUserController.currentUser.value =
                 await loadUserData('user');
             cartController.getcartList();
 
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-
-            var _lang = prefs.getString('lang');
             var locale = Locale(_lang!, _lang);
             Get.updateLocale(locale);
           } catch (e) {
             print(e);
             // removeUserData('user');
           }
-          return CategoryPage();
+          return _lang == "ar" || _lang == "en"
+              ? CategoryPage()
+              : TrnaslationPage();
           // } else {
           //   return NoConnectionPage();
           // }
