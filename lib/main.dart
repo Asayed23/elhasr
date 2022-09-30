@@ -1,4 +1,5 @@
 import 'package:elhasr/pages/Auth/register/register_page.dart';
+import 'package:elhasr/pages/intro/intro.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: LocalThemes.lightTheme,
       debugShowCheckedModeBanner: false,
       // our home page is the splash
-      //home: Application(),
+      //home: IntroPage(),
       home: const SplashScreen(),
       // all the below for translating using getx
       translations: Translate(),

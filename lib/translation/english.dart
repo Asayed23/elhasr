@@ -1,5 +1,7 @@
 const Map<String, String> en = {
   'login': 'Login',
+  'departement': 'Departements',
+  'select': 'Select items',
   'Phone_Number': 'Phone Number',
   'Password': 'Password',
   'No_account_register': 'No Account , Please Register',

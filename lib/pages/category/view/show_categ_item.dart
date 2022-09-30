@@ -197,75 +197,98 @@ class _ShowCategoryItemState extends State<ShowCategoryItem> {
         }
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Stack(
-          textDirection: TextDirection.rtl,
-          alignment: Alignment.bottomRight,
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Center(
-              child: Container(
-                width: w(95),
-                height: h(25),
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(sp(10)),
-                  border: Border.all(
-                    color: Colors.grey.shade800,
-                    width: sp(1),
-                  ),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(sp(10)), // Image border
-
-                  child: Image.network(
-                    dbImageurl + widget.shownItem.image,
-                    fit: BoxFit.fill,
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
-                    },
-                  ),
-                ),
+        padding: const EdgeInsets.all(2.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            // border: Border ,
+            borderRadius: BorderRadius.circular(20), //border corner radius
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3), //color of shadow
+                spreadRadius: sp(1), //spread radius
+                blurRadius: sp(1), // blur radius
+                offset: Offset(0, 1.2), // changes position of shadow
+                //first paramerter of offset is left-right
+                //second parameter is top to down
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(2),
-              child: Container(
-                width: w(30),
-                height: h(8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.9),
-                  borderRadius: BorderRadius.circular(sp(20)),
-                  border: Border.all(
-                    color: Colors.grey.shade800,
-                    width: sp(1),
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: sp(8), right: sp(8)),
-                  child: Center(
-                    child: AutoSizeText(
-                      widget.shownItem.name,
+              //you can set more BoxShadow() here
+            ],
+          ),
+          child: Column(
+            textDirection: TextDirection.rtl,
+            //alignment: Alignment.bottomRight,
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Center(
+                child: Container(
+                  width: w(30),
+                  height: h(14),
 
-                      style: TextStyle(fontSize: sp(16)),
-                      //minFontSize: sp(13),
-                      //maxLines: 2,
-                      overflow: TextOverflow.fade,
+                  //  decoration: BoxDecoration(
+                  //color: Colors.grey,
+                  //  borderRadius: BorderRadius.circular(sp(10)),
+                  //border: Border.all(
+                  //   //color: Colors.grey.shade800,
+                  //   width: sp(1),
+                  // ),
+                  //  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: ClipRRect(
+                      borderRadius:
+                          BorderRadius.circular(sp(10)), // Image border
+
+                      child: Image.network(
+                        dbImageurl + widget.shownItem.image,
+                        fit: BoxFit.fill,
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.all(2),
+                child: Container(
+                  width: w(30),
+                  //height: h(8),
+                  decoration: BoxDecoration(
+                    // color: Colors.white.withOpacity(0.9),
+                    borderRadius: BorderRadius.circular(sp(20)),
+                    // border: Border.all(
+                    //   color: Colors.grey.shade800,
+                    //   width: sp(1),
+                    // ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: sp(8), right: sp(8)),
+                    child: Center(
+                      child: AutoSizeText(
+                        widget.shownItem.name,
+
+                        style: TextStyle(fontSize: sp(16)),
+                        //minFontSize: sp(13),
+                        //maxLines: 2,
+                        overflow: TextOverflow.fade,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

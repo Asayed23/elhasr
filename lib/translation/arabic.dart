@@ -1,5 +1,7 @@
 const Map<String, String> ar = {
   'login': 'إدخل',
+  'departement': 'اقسام الحصر الهندسى',
+  'select': 'اختر البنود المطلوبه للحصر الهندسى ',
   'Phone_Number': 'رقم التليفون',
   'Password': 'كلمة السر',
   'No_account_register': 'لا يوجد حساب من فضلك سجل',
@@ -29,7 +31,7 @@ const Map<String, String> ar = {
   'Invalid': 'خطأ',
   'user_error': 'خطأ فى بيانات المستخدم',
   'Less_size_100': 'أقل مساحه هى 100 متر',
-  'enter_size': 'إذخل المساحه',
+  'enter_size': '  اإذخل المساحه الخاصه بك',
   'Request': 'الطلبات',
   'Profile': 'الخصائص',
   'Home': 'الرئيسيه',

@@ -5,6 +5,7 @@ import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/size_config.dart';
 import '../../common_widget/mybottom_bar/bottom_bar_controller.dart';
@@ -108,26 +109,63 @@ class _CategoryPageState extends State<CategoryPage> {
               //   ),
               // ]),
               SizedBox(height: h(2)),
-              // SizedBox(
-              //   height: h(10),
-              //   child: Align(
-              //     alignment: Alignment.centerLeft,
-              //     child: Padding(
-              //       padding: const EdgeInsets.all(8.0),
-              //       child: Text(
-              //         'Hi ${currentUserController.currentUser.value.fullName}',
-              //         style: TextStyle(
-              //             fontSize: sp(12), overflow: TextOverflow.fade),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              Expanded(
-                child: ListView.builder(
-                    controller: scrollController,
-                    // gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              SizedBox(
+                height: h(30),
+                child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage("assets/images/discount.jpg"),
+                        ),
+                      ),
+                    )
+
+                    //  FittedBox(
+                    //   fit: BoxFit.fill,
+                    //   child: Image.asset(
+                    //     '',
+                    //     fit: BoxFit.fill,
+                    //   ),
+                    // )
+
+                    ),
+              ),
+
+              SizedBox(
+                height: h(7),
+                child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Text(
+                        'departement'.tr,
+                        style: GoogleFonts.tajawal(
+                          textStyle: TextStyle(
+                              color: Colors.blue,
+                              fontSize: sp(14),
+                              letterSpacing: .5),
+                        ),
+                      ),
+                    )),
+              ),
+              SizedBox(
+                height: h(50),
+                child: GridView.builder(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    //controller: scrollController,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: sp(0.97),
+                        crossAxisSpacing: sp(1),
+                        mainAxisSpacing: sp(1),
+                        crossAxisCount: 2),
+                    //gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     //     maxCrossAxisExtent: sp(200),
-                    //     childAspectRatio: 1 / 1,
+                    //     childAspectRatio: 1 / 1,)
                     //     crossAxisSpacing: sp(10),
                     //     mainAxisSpacing: sp(10)),
                     itemCount: categoryController.shownCatgeroy.length - 1,

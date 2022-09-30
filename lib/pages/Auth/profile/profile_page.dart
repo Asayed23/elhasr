@@ -6,6 +6,7 @@ import 'package:elhasr/pages/Auth/profile/contactUs.dart';
 import 'package:elhasr/pages/category/view/category.dart';
 import 'package:elhasr/pages/common_widget/mybottom_bar/my_bottom_bar.dart';
 import 'package:elhasr/pages/common_widget/simple_appbar.dart';
+import 'package:elhasr/pages/intro/intro.dart';
 import 'package:elhasr/pages/order/view/order_histrory.dart';
 import 'package:elhasr/pages/sub_category/control/cart_controller.dart';
 import 'package:elhasr/translation/translation_page.dart';
@@ -212,7 +213,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
               leading: FaIcon(FontAwesomeIcons.hardHat),
               title: Text('aboutus'.tr),
               onTap: () async {
-                Get.to(() => AboutUsPage());
+                Get.to(() => IntroPage());
               }),
 
           ListTile(

@@ -47,6 +47,7 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: simplAppbar(true),
+      //backgroundColor: Color.fromARGB(236, 236, 239, 239),
       body: Obx(() => RefreshIndicator(
             onRefresh: subcategoryController.getdatarefresh,
             child: subcategoryController.isLoading.value
@@ -205,15 +206,25 @@ class _SubCategoryPageState extends State<SubCategoryPage> {
                           }),
                     ),
                     Divider(),
+                    SizedBox(
+                        height: h(4),
+                        child: Text(
+                          'select'.tr,
+                          style: TextStyle(fontSize: sp(12)),
+                        )),
                     Expanded(
                       child: GridView.builder(
                           controller: scrollController,
                           gridDelegate:
-                              SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: sp(200),
-                                  childAspectRatio: 1 / 1,
-                                  crossAxisSpacing: sp(10),
-                                  mainAxisSpacing: sp(10)),
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            childAspectRatio: 2.2 / 1,
+
+                            // maxCrossAxisExtent: sp(200),
+                            //  childAspectRatio: 1 / 2,
+                            // crossAxisSpacing: sp(0.5),
+                            // mainAxisSpacing: sp(0.5)),
+                          ),
                           itemCount:
                               subcategoryController.shownsubCatgeroy.length - 1,
                           itemBuilder: (BuildContext ctx, index) {

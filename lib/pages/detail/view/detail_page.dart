@@ -57,83 +57,69 @@ class _DetailPageState extends State<DetailPage> {
       appBar: simplAppbar(true),
       body: Obx(() => ListView(
             children: [
-              SizedBox(height: h(2)),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: w(22),
-                  height: h(37),
-                  decoration: BoxDecoration(
-                      // color: Colors.grey,
-                      // borderRadius: BorderRadius.circular(sp(8)),
-                      // border: Border.all(
-                      //   color: Colors.grey.shade800,
-                      //   width: sp(1),
-                      // ),
-                      ),
-                  child: Padding(
-                      padding: EdgeInsets.all(sp(10)),
-                      child: Hero(
-                        tag:
-                            subCategoryController.selectsubCategory.value.image,
-                        child: Image.network(
-                          dbImageurl +
-                              subCategoryController
-                                  .selectsubCategory.value.image,
-                          fit: BoxFit.fill,
-                          loadingBuilder: (BuildContext context, Widget child,
-                              ImageChunkEvent? loadingProgress) {
-                            if (loadingProgress == null) return child;
-                            return Center(
-                              child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes !=
-                                        null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes!
-                                    : null,
-                              ),
-                            );
-                          },
+              //SizedBox(height: h(2)),
+              Container(
+                width: w(22),
+                height: h(37),
+                decoration: BoxDecoration(
+                    // color: Colors.grey,
+                    // borderRadius: BorderRadius.circular(sp(8)),
+                    // border: Border.all(
+                    //   color: Colors.grey.shade800,
+                    //   width: sp(1),
+                    // ),
+                    ),
+                child: Hero(
+                  tag: subCategoryController.selectsubCategory.value.image,
+                  child: Image.network(
+                    dbImageurl +
+                        subCategoryController.selectsubCategory.value.image,
+                    fit: BoxFit.fill,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
                         ),
-                      )
-                      //  fit: BoxFit.contain,
-                      //   imageUrl: dbImageurl + subCategoryController.selectsubCategory.value.image,
-                      //   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      //       CircularProgressIndicator(value: downloadProgress.progress),
-                      //   errorWidget: (context, url, error) => Icon(Icons.error),
-                      // ),
-                      ),
+                      );
+                    },
+                  ),
                 ),
               ),
               Divider(),
               SizedBox(height: h(1)),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(sp(12)),
                 child: Row(
                     textDirection: TextDirection.rtl,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: Text(
-                          subCategoryController.selectsubCategory.value.name,
-                          style: TextStyle(
-                              overflow: TextOverflow.fade,
-                              //  color: lgreen,
-                              //  fontSize: h(2),
-                              fontSize: sp(14)),
-                        ),
+                      Text(
+                        subCategoryController.selectsubCategory.value.name,
+                        style: TextStyle(
+                            overflow: TextOverflow.fade,
+                            //  color: lgreen,
+                            //  fontSize: h(2),
+                            fontSize: sp(14)),
                       ),
-                      Expanded(
-                        child: Text(
-                          subCategoryController.selectsubCategory.value.price
-                                  .toString() +
-                              ' SR',
-                          style: TextStyle(
-                              color: textbuttonColor,
-                              //  fontSize: h(2),
-                              fontSize: sp(15)),
-                        ),
-                      )
+                      Spacer(),
+                      //SizedBox(width: w(40)),
+                      Text(' SR'),
+                      Text(
+                        ' ' +
+                            subCategoryController.selectsubCategory.value.price
+                                .toString() +
+                            ' ',
+                        style: TextStyle(
+                            color: textbuttonColor,
+                            //  fontSize: h(2),
+                            fontSize: sp(15)),
+                      ),
+                      // Text('SR ')
                     ]),
               ),
               // SizedBox(height: h(1)),
