@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 import 'package:elhasr/pages/category/view/category.dart';
+import 'package:elhasr/pages/intro/video_intro.dart';
 import 'package:elhasr/translation/translation_page.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -13,6 +14,7 @@ import '../../core/size_config.dart';
 import '../Auth/controller/currentUser_controller.dart';
 import '../Auth/controller/sharedpref_function.dart';
 import '../category/control/category_controller.dart';
+import '../pay_2.dart';
 import '../sub_category/control/cart_controller.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -89,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
             // removeUserData('user');
           }
           return _lang == "ar" || _lang == "en"
-              ? CategoryPage()
+              ? ViedoIntro()
               : TrnaslationPage();
           // } else {
           //   return NoConnectionPage();
