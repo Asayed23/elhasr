@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
+
+import '../category/view/category.dart';
 
 class ViedoIntro extends StatefulWidget {
   @override
@@ -34,7 +37,7 @@ class _ViedoIntroState extends State<ViedoIntro> {
                   padding: EdgeInsets.all(10),
                   child: FlatButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('/home');
+                      Get.to(CategoryPage());
                     },
                     child: Text("Skip", style: TextStyle(color: Colors.white)),
                   ),
